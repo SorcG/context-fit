@@ -68,7 +68,7 @@ export default function BottomTabNav() {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-1.5 border-t border-border bg-surface px-3 pt-2"
+      className="fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-1.5 border-t border-border bg-surface px-3 pt-2 lg:hidden"
       style={{ paddingBottom: "max(10px, env(safe-area-inset-bottom))" }}
     >
       {navItems.map(({ href, label, Icon }) => {

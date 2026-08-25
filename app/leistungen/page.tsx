@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import PageHeader from "@/components/PageHeader";
+import MagneticButton from "@/components/MagneticButton";
 
 export const metadata: Metadata = {
   title: "Leistungen — Context Fit",
@@ -17,7 +18,7 @@ const services = [
     index: "01",
     title: "Online Coaching",
     tagline: "Jederzeit. Überall. Ohne Grenzen.",
-    body: "Du musst nicht in derselben Stadt – oder sogar im selben Land – sein, um professionelles Coaching zu erhalten.",
+    body: "Du musst nicht in derselben Stadt oder sogar im selben Land sein, um professionelles Coaching zu erhalten.",
     features: [
       "Individuelle Trainingspläne",
       "Personalisierte Ernährungsberatung",
@@ -48,7 +49,7 @@ const services = [
     index: "02",
     title: "Personal Training vor Ort",
     tagline: "Kraft mit Ziel.",
-    body: "Mit Personal Training vor Ort bekommst du nicht nur einen Trainingsplan – du erhältst direkte Unterstützung, Motivation und jemanden, der dich wirklich zur Verantwortung zieht.",
+    body: "Mit Personal Training vor Ort bekommst du nicht nur einen Trainingsplan. Du erhältst direkte Unterstützung, Motivation und jemanden, der dich wirklich zur Verantwortung zieht.",
     closing: "Trainiere smarter. Trainiere härter. Trainiere mit Ziel.",
     image: "/images/bram_explain_fitness.png",
     alt: "Bram im Coaching-Gespräch mit einem Klienten im Fitnessstudio",
@@ -107,27 +108,30 @@ export default function LeistungenPage() {
         alt="Bram beim Training im Fitnessstudio"
       />
 
-      <section className="py-12">
-        <Container className="flex flex-col gap-10">
+      <section className="py-12 lg:py-24">
+        <Container
+          variant="wide"
+          className="flex flex-col gap-10 lg:grid lg:grid-cols-3 lg:items-start lg:gap-8"
+        >
           {services.map((s, i) => (
-            <Reveal key={s.id} delay={i * 0.05}>
+            <Reveal key={s.id} delay={i * 0.05} className="lg:h-full">
               <article
                 id={s.id}
-                className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5"
+                className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5 lg:h-full lg:transition-colors lg:hover:border-accent/60"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border">
                   <Image
                     src={s.image}
                     alt={s.alt}
                     fill
-                    sizes="(max-width: 480px) 100vw, 480px"
+                    sizes="(min-width: 1024px) 33vw, (max-width: 480px) 100vw, 480px"
                     className={`object-cover ${s.imagePosition} ${
                       s.grayscale ? "grayscale" : ""
                     }`}
                   />
                 </div>
                 <p className="font-mono text-xs text-muted">{s.index}</p>
-                <h2 className="text-xl">{s.title}</h2>
+                <h2 className="text-xl lg:text-2xl">{s.title}</h2>
                 <p className="text-base font-medium text-accent">
                   {s.tagline}
                 </p>
@@ -162,7 +166,7 @@ export default function LeistungenPage() {
                         src={img.src}
                         alt={img.alt}
                         fill
-                        sizes="(max-width: 480px) 50vw, 240px"
+                        sizes="(min-width: 1024px) 16vw, (max-width: 480px) 50vw, 240px"
                         className={`object-cover ${img.imagePosition} ${
                           img.grayscale ? "grayscale" : ""
                         }`}
@@ -174,13 +178,15 @@ export default function LeistungenPage() {
             </Reveal>
           ))}
 
-          <Reveal>
-            <Link
-              href="/kontakt"
-              className="flex h-[52px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95"
-            >
-              Jetzt Erstgespräch sichern
-            </Link>
+          <Reveal className="lg:col-span-3 lg:flex lg:justify-center">
+            <MagneticButton>
+              <Link
+                href="/kontakt"
+                className="flex h-[52px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 lg:w-fit lg:px-14"
+              >
+                Jetzt Erstgespräch sichern
+              </Link>
+            </MagneticButton>
           </Reveal>
         </Container>
       </section>

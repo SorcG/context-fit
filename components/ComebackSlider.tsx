@@ -64,18 +64,18 @@ export default function ComebackSlider() {
       <div
         ref={trackRef}
         data-lenis-prevent
-        className="flex w-full snap-x snap-mandatory gap-3 overflow-x-auto rounded-2xl [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex w-full snap-x snap-mandatory gap-3 overflow-x-auto rounded-2xl [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-4 lg:snap-none lg:overflow-visible [&::-webkit-scrollbar]:hidden"
       >
         {slides.map((slide) => (
           <div
             key={slide.src}
-            className="relative aspect-square w-full shrink-0 snap-start overflow-hidden rounded-2xl border border-border shadow-lg shadow-black/30"
+            className="relative aspect-square w-full shrink-0 snap-start overflow-hidden rounded-2xl border border-border shadow-lg shadow-black/30 lg:w-auto lg:transition-transform lg:hover:scale-[1.03]"
           >
             <Image
               src={slide.src}
               alt={slide.alt}
               fill
-              sizes="(max-width: 480px) 100vw, 480px"
+              sizes="(min-width: 1024px) 25vw, (max-width: 480px) 100vw, 480px"
               className={`object-cover ${slide.position} [filter:grayscale(20%)_contrast(1.1)_brightness(0.95)]`}
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/50 via-transparent to-bg/10" />
@@ -92,7 +92,7 @@ export default function ComebackSlider() {
         ))}
       </div>
 
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-2 lg:hidden">
         {slides.map((slide, i) => (
           <button
             key={slide.src}

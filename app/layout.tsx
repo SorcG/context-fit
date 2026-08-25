@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Unbounded, DM_Sans } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import BottomTabNav from "@/components/BottomTabNav";
+import DesktopNav from "@/components/DesktopNav";
 import "./globals.css";
 
 const unbounded = Unbounded({
@@ -39,7 +40,8 @@ export default function RootLayout({
       lang="de"
       className={`${unbounded.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg text-text pb-24">
+      <body className="min-h-full flex flex-col bg-bg text-text pb-24 lg:pb-0">
+        <DesktopNav />
         <SmoothScroll>{children}</SmoothScroll>
         <BottomTabNav />
       </body>

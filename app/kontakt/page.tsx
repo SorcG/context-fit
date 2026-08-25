@@ -20,14 +20,14 @@ export default function KontaktPage() {
         alt="Bram, hoch konzentriert bei einer dynamischen Übung"
       />
 
-      <section className="py-12">
-        <Container className="flex flex-col gap-10">
-          <Reveal className="flex flex-col gap-4 text-base leading-relaxed text-text">
+      <section className="py-12 lg:py-24">
+        <Container variant="narrow" className="flex flex-col gap-10 lg:gap-14">
+          <Reveal className="flex flex-col gap-4 text-base leading-relaxed text-text lg:text-lg">
             <p>
               Vereinbare ein unverbindliches Erstgespräch und finde heraus,
               wie ein Plan aussieht, der zu deinem Kontext passt. Wähle
-              einfach das Thema deiner Anfrage und schreib mir ein paar Zeilen
-              – den Rest besprechen wir persönlich.
+              einfach das Thema deiner Anfrage und schreib mir ein paar Zeilen dazu,
+          den Rest besprechen wir persönlich.
             </p>
           </Reveal>
 

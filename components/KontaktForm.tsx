@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import Reveal from "@/components/Reveal";
+import MagneticButton from "@/components/MagneticButton";
 
 const topics = [
   "Online Coaching",
@@ -81,10 +82,12 @@ export default function KontaktForm() {
 
   if (submitted) {
     return (
-      <Reveal className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center">
+      <Reveal className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center lg:gap-6 lg:p-16">
         <SuccessIcon />
-        <h2 className="text-xl leading-tight">Danke, {name.split(" ")[0]}!</h2>
-        <p className="text-base leading-relaxed text-muted">
+        <h2 className="text-xl leading-tight lg:text-3xl">
+          Danke, {name.split(" ")[0]}!
+        </h2>
+        <p className="text-base leading-relaxed text-muted lg:max-w-md lg:text-lg">
           Deine Anfrage ist bereit. Bram meldet sich innerhalb von 24 Stunden
           persönlich bei dir zurück.
         </p>
@@ -119,10 +122,10 @@ export default function KontaktForm() {
               type="button"
               onClick={() => setTopic(t)}
               aria-pressed={topic === t}
-              className={`rounded-full border px-4 py-2.5 text-sm font-medium transition-all active:scale-95 ${
+              className={`rounded-full border px-4 py-2.5 text-sm font-medium transition-all active:scale-95 lg:px-5 lg:py-3 lg:text-base lg:hover:scale-105 ${
                 topic === t
                   ? "border-accent bg-accent text-text"
-                  : "border-border bg-surface text-muted"
+                  : "border-border bg-surface text-muted lg:hover:border-accent/60 lg:hover:text-text"
               }`}
             >
               {t}
@@ -132,19 +135,21 @@ export default function KontaktForm() {
       </Reveal>
 
       <Reveal delay={0.05} className="flex flex-col gap-4">
-        <FloatingField
-          label="Name"
-          required
-          value={name}
-          onChange={setName}
-        />
-        <FloatingField
-          label="E-Mail"
-          type="email"
-          required
-          value={email}
-          onChange={setEmail}
-        />
+        <div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
+          <FloatingField
+            label="Name"
+            required
+            value={name}
+            onChange={setName}
+          />
+          <FloatingField
+            label="E-Mail"
+            type="email"
+            required
+            value={email}
+            onChange={setEmail}
+          />
+        </div>
         <FloatingField
           label="Telefon (optional)"
           type="tel"
@@ -170,15 +175,17 @@ export default function KontaktForm() {
         </div>
       </Reveal>
 
-      <Reveal delay={0.1} className="flex flex-col gap-3">
-        <button
-          type="submit"
-          disabled={!topic}
-          className="flex h-[56px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 disabled:opacity-40 disabled:active:scale-100"
-        >
-          Anfrage senden
-        </button>
-        <p className="text-center text-sm text-muted">
+      <Reveal delay={0.1} className="flex flex-col gap-3 lg:items-start">
+        <MagneticButton>
+          <button
+            type="submit"
+            disabled={!topic}
+            className="flex h-[56px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 disabled:opacity-40 disabled:active:scale-100 lg:w-fit lg:px-16"
+          >
+            Anfrage senden
+          </button>
+        </MagneticButton>
+        <p className="text-center text-sm text-muted lg:text-left">
           Ich melde mich innerhalb von 24 Stunden persönlich bei dir.
         </p>
       </Reveal>

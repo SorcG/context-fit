@@ -12,11 +12,13 @@ export default function Reveal({
   className,
   delay = 0,
   y = 24,
+  scrub = false,
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   y?: number;
+  scrub?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -32,11 +34,18 @@ export default function Reveal({
           duration: 0.9,
           delay,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: ref.current,
-            start: "top 88%",
-            once: true,
-          },
+          scrollTrigger: scrub
+            ? {
+                trigger: ref.current,
+                start: "top 95%",
+                end: "top 55%",
+                scrub: true,
+              }
+            : {
+                trigger: ref.current,
+                start: "top 88%",
+                once: true,
+              },
         },
       );
     },
