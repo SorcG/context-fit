@@ -87,7 +87,7 @@ export default function UeberMichPage() {
             <ComebackSlider />
             <div className="flex flex-col gap-4 text-base leading-relaxed text-text lg:text-lg">
               <p>
-                Vor rund zwei Jahren musste ich mir etwas eingestehen.Ich war nicht
+                Vor rund zwei Jahren musste ich mir etwas eingestehen. Ich war nicht
                 in der Form, die ich dachte.Ich wog 104 kg, obwohl ich regelmäßig
                 trainierte. Ich hatte mir also etwas selbst vorgemacht.
               </p>
