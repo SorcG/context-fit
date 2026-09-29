@@ -4,7 +4,6 @@ import LeistungenTeaser from "@/components/sections/LeistungenTeaser";
 import UeberMichTeaser from "@/components/sections/UeberMichTeaser";
 import Zielgruppe from "@/components/sections/Zielgruppe";
 import Kontakt from "@/components/sections/Kontakt";
-import Footer from "@/components/Footer";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import RechnerCTA from "@/components/RechnerCTA";
@@ -25,7 +24,6 @@ export default function Home() {
       <UeberMichTeaser />
       <Zielgruppe />
       <Kontakt />
-      <Footer />
     </>
   );
 }

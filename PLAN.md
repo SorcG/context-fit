@@ -10,6 +10,8 @@ Stand: Design-System freigegeben, Startseite + drei vertiefende Unterseiten (`/l
 /praevention        → Verweis auf externe, zertifizierte Online-Präventionskurse (praevention.digital)
 /ueber-mich        → vollständige Bio + Qualifikationen kombiniert
 /kontakt           → Anfrageformular mit Themenauswahl (Erstgespräch)
+/impressum         → nur über den Footer erreichbar, sonst nirgends verlinkt
+/datenschutz       → nur über den Footer erreichbar, sonst nirgends verlinkt
 ```
 
 `Kontakt` ist jetzt eine eigene Route (`/kontakt`) mit Formular. Alle "Jetzt Erstgespräch sichern"-Schaltflächen (Hero, Kontakt-Sektion, `/leistungen`, `/ueber-mich`) sowie die Bottom-Tab-Bar verlinken dorthin.
@@ -22,6 +24,8 @@ Stand: Design-System freigegeben, Startseite + drei vertiefende Unterseiten (`/l
 - 5 Tabs sind bei 375px Breite ca. 65px pro Tab, bei 320px (iPhone SE) nahezu ohne seitlichen Puffer (Label "Leistungen"/"Prävention" füllt die Spalte fast komplett aus) — bewusst nicht verkleinert, siehe Konversationsnotiz
 
 `components/DesktopNav.tsx` — identische 4 Tabs (ohne Kontakt-Pill-Sonderfall, dafür eigener CTA-Button rechts) für Desktop.
+
+`components/Footer.tsx` rendert jetzt global (`app/layout.tsx`, nicht mehr nur auf der Startseite) — Grund: die Impressum/Datenschutz-Links müssen laut Impressumspflicht von jeder Seite aus erreichbar sein, nicht nur von `/`. Enthält zwei dezente, kleine Links ("Impressum" · "Datenschutz"), die einzigen Verweise auf diese beiden Seiten im gesamten Projekt (keine Nav-Tabs, keine sonstigen Links).
 
 Die frühere `StickyCTA.tsx` (Ein-/Ausblenden per IntersectionObserver) wurde entfernt, da die Tab-Bar dauerhaft sichtbar ist und deren Zweck übernimmt.
 
@@ -53,11 +57,15 @@ Seiten-Header mit `smile_with_curl.jpeg`, vollständiger Bio-Text, Comeback-Slid
 
 ## `/praevention`
 
-Seiten-Header mit `bram_handsup.jpeg` (wie `/kontakt`). Persönlicher Absatz, 4 Vorteils-Karten (2×2-Grid mobil, 4-spaltig Desktop, je mit Icon), 3 nummerierte Ablauf-Schritte (01–03, im gleichen Stil wie die Leistungs-Indizes auf `/leistungen`), externer CTA-Button zu `https://praevention.digital/kurse/ref/ContextFitPraevention/` mit Transparenz-Hinweis darunter. Kein API-Call, reiner Außenlink (selber Tab, kein `target="_blank"`, passend zur Formulierung "wirst weitergeleitet").
+Seiten-Header mit `bram_handsup.jpeg` (wie `/kontakt`). Persönlicher Absatz, 4 Vorteils-Karten (2×2-Grid auf allen Breakpoints — bei 4-spaltig Desktop brachen lange Wörter wie "Wissenschaftlich" mitten im Wort um, daher bewusst 2 Spalten mit mehr Breite pro Karte, je mit Icon), 3 nummerierte Ablauf-Schritte (01–03, im gleichen Stil wie die Leistungs-Indizes auf `/leistungen`), externer CTA-Button zu `https://praevention.digital/kurse/ref/ContextFitPraevention/` mit Transparenz-Hinweis darunter. Kein API-Call, reiner Außenlink (selber Tab, kein `target="_blank"`, passend zur Formulierung "wirst weitergeleitet").
 
 ## `/kontakt`
 
 Seiten-Header mit `bram_handsup.jpeg`. Formular (`KontaktForm.tsx`, Client-Komponente): Themenauswahl als Pill-Buttons (Online Coaching, Personal Training vor Ort, Grappling Training, Allgemeine Anfrage), Name/E-Mail/Telefon/Nachricht mit Floating-Labels, Erfolgs-Ansicht nach Absenden (nur lokaler State, siehe Offene Punkte).
+
+## `/impressum` und `/datenschutz`
+
+Reine Rechtstext-Seiten, kein `PageHeader` (kein Foto, bewusst zurückhaltend). Inhalt 1:1 aus den von eRecht24 generierten PDFs übernommen (Bram van Koppen, Pohlweg 76, 33098 Paderborn; Hoster: Vercel Inc.). Gerendert über `components/legal/LegalBlocks.tsx` (typisierte Block-Liste: h2/h3/h4/p/ul/address), damit die lange Datenschutzerklärung nicht als eine riesige JSX-Wand geschrieben werden musste. Einzige Verlinkung im gesamten Projekt: die zwei kleinen Footer-Links.
 
 ## Foto-Inventar — aktueller Verwendungsstatus
 
@@ -95,5 +103,5 @@ Ursprünglich war die Seite 100% mobile-first ohne jegliche Breakpoints. Es gibt
 ## Offene Punkte
 
 - **Kontaktformular** (`KontaktForm.tsx`) sendet aktuell noch nirgendwohin — Submit setzt nur lokalen React-State auf "erfolgreich". Backend/API-Route zum Weiterleiten der Anfrage an Brams E-Mail-Adresse fehlt noch.
-- Rechtliches (Impressum/Datenschutz), SEO-Metadaten (OG-Tags, Sitemap, robots.txt), Git-Setup: noch nicht Teil des Projekts — folgt, sobald die inhaltliche Aufbauphase abgeschlossen ist.
+- Rechtliches: Impressum/Datenschutz sind jetzt vorhanden (`/impressum`, `/datenschutz`). SEO-Metadaten (OG-Tags, Sitemap, robots.txt), Git-Setup weiterhin offen.
 - `app/design-system/page.tsx` ist weiterhin ein reiner Dev-Testpage und wird vor dem finalen Launch entfernt.
