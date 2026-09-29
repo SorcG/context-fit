@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,10 +13,14 @@ export default function SmoothScroll({
 }: {
   children: React.ReactNode;
 }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
   useEffect(() => {
     const lenis = new Lenis({
       autoRaf: false,
     });
+    lenisRef.current = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -28,8 +33,24 @@ export default function SmoothScroll({
     return () => {
       gsap.ticker.remove(update);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    // Lenis (and ScrollTrigger) measure document height once and don't
+    // reliably auto-detect it changing on Next.js client-side navigation
+    // (document.documentElement's own box stays viewport-sized regardless
+    // of content, so the ResizeObserver Lenis relies on never fires here).
+    // Without this, the scroll limit stays stuck at whatever the
+    // previous, often shorter, page measured — recalculate it explicitly
+    // once the new page has painted.
+    const timeout = setTimeout(() => {
+      lenisRef.current?.resize();
+      ScrollTrigger.refresh();
+    }, 0);
+    return () => clearTimeout(timeout);
+  }, [pathname]);
 
   return <>{children}</>;
 }

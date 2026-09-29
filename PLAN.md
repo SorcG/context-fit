@@ -27,6 +27,10 @@ Stand: Design-System freigegeben, Startseite + drei vertiefende Unterseiten (`/l
 
 `components/Footer.tsx` rendert jetzt global (`app/layout.tsx`, nicht mehr nur auf der Startseite) — Grund: die Impressum/Datenschutz-Links müssen laut Impressumspflicht von jeder Seite aus erreichbar sein, nicht nur von `/`. Enthält zwei dezente, kleine Links ("Impressum" · "Datenschutz"), die einzigen Verweise auf diese beiden Seiten im gesamten Projekt (keine Nav-Tabs, keine sonstigen Links).
 
+## Bekannter Lenis-Stolperstein (behoben)
+
+`components/SmoothScroll.tsx`: Lenis (`content: document.documentElement`, Default) misst die Scroll-Höhe einmalig und verlässt sich sonst auf einen `ResizeObserver` auf `document.documentElement` — dessen eigene Box bleibt aber viewport-groß, unabhängig vom Inhalt (`getComputedStyle(html).height` ≈ Viewport-Höhe, während `scrollHeight` den echten Inhalt zeigt). Bei einer Client-Side-Navigation (Next.js `<Link>`, kein Full-Reload) von einer kurzen zu einer langen Seite feuert dieser Observer daher **nicht**, und Lenis' interner `limit` (max. Scroll-Distanz) bleibt auf dem Wert der vorherigen, kürzeren Seite hängen — man kommt per Mausrad/Touch nicht weiter runter als das alte Seitenende, obwohl `scrollHeight` korrekt die neue, längere Seite zeigt. Am stärksten sichtbar auf den längsten Seiten (Startseite, `/datenschutz` mit ~10.500px). Fix: `SmoothScroll.tsx` ruft bei jedem Pfadwechsel (`usePathname()`) `lenis.resize()` sowie `ScrollTrigger.refresh()` explizit auf.
+
 Die frühere `StickyCTA.tsx` (Ein-/Ausblenden per IntersectionObserver) wurde entfernt, da die Tab-Bar dauerhaft sichtbar ist und deren Zweck übernimmt.
 
 ## Startseite (`app/page.tsx`)
