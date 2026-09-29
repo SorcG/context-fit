@@ -30,6 +30,26 @@ function ListIcon({ className }: { className?: string }) {
   );
 }
 
+function ShieldIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
+      <path
+        d="M10 2.5l6 2.2v4.3c0 4-2.6 6.9-6 8.5-3.4-1.6-6-4.5-6-8.5V4.7l6-2.2z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.3 10l1.8 1.8 3.6-3.6"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function UserIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
@@ -60,6 +80,7 @@ function ContactIcon({ className }: { className?: string }) {
 const navItems = [
   { href: "/", label: "Home", Icon: HomeIcon },
   { href: "/leistungen", label: "Leistungen", Icon: ListIcon },
+  { href: "/praevention", label: "Prävention", Icon: ShieldIcon },
   { href: "/ueber-mich", label: "Über mich", Icon: UserIcon },
 ] as const;
 

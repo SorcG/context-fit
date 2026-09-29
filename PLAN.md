@@ -7,6 +7,7 @@ Stand: Design-System freigegeben, Startseite + drei vertiefende Unterseiten (`/l
 ```
 /                  → Startseite: kompakte Übersicht, verlinkt in die Tiefe
 /leistungen        → alle 3 Leistungen ausführlich, mit Anker-IDs (#online-coaching, #personal-training, #grappling-training)
+/praevention        → Verweis auf externe, zertifizierte Online-Präventionskurse (praevention.digital)
 /ueber-mich        → vollständige Bio + Qualifikationen kombiniert
 /kontakt           → Anfrageformular mit Themenauswahl (Erstgespräch)
 ```
@@ -16,8 +17,11 @@ Stand: Design-System freigegeben, Startseite + drei vertiefende Unterseiten (`/l
 ## Navigation
 
 `components/BottomTabNav.tsx` — persistente Bottom-Tab-Bar auf allen Seiten (in `app/layout.tsx` eingebunden):
-- Home / Leistungen / Über mich als normale Tabs (aktiver Zustand über Pfad hervorgehoben)
+- Home / Leistungen / Prävention / Über mich als normale Tabs (aktiver Zustand über Pfad hervorgehoben)
 - Kontakt als visuell abgesetzter Accent-Pill-Eintrag, verlinkt auf `/kontakt`
+- 5 Tabs sind bei 375px Breite ca. 65px pro Tab, bei 320px (iPhone SE) nahezu ohne seitlichen Puffer (Label "Leistungen"/"Prävention" füllt die Spalte fast komplett aus) — bewusst nicht verkleinert, siehe Konversationsnotiz
+
+`components/DesktopNav.tsx` — identische 4 Tabs (ohne Kontakt-Pill-Sonderfall, dafür eigener CTA-Button rechts) für Desktop.
 
 Die frühere `StickyCTA.tsx` (Ein-/Ausblenden per IntersectionObserver) wurde entfernt, da die Tab-Bar dauerhaft sichtbar ist und deren Zweck übernimmt.
 
@@ -47,6 +51,10 @@ Seiten-Header (`PageHeader`) mit `kettlebell_sideshot.jpeg`. Je Leistung: Hauptf
 
 Seiten-Header mit `smile_with_curl.jpeg`, vollständiger Bio-Text, Comeback-Slider (`vorher1/2.jpeg`, `nachher1/2.jpeg`) mit Vorher/Nachher-Story, anschließend die komplette Qualifikationen-Liste (6 Einträge).
 
+## `/praevention`
+
+Seiten-Header mit `bram_handsup.jpeg` (wie `/kontakt`). Persönlicher Absatz, 4 Vorteils-Karten (2×2-Grid mobil, 4-spaltig Desktop, je mit Icon), 3 nummerierte Ablauf-Schritte (01–03, im gleichen Stil wie die Leistungs-Indizes auf `/leistungen`), externer CTA-Button zu `https://praevention.digital/kurse/ref/ContextFitPraevention/` mit Transparenz-Hinweis darunter. Kein API-Call, reiner Außenlink (selber Tab, kein `target="_blank"`, passend zur Formulierung "wirst weitergeleitet").
+
 ## `/kontakt`
 
 Seiten-Header mit `bram_handsup.jpeg`. Formular (`KontaktForm.tsx`, Client-Komponente): Themenauswahl als Pill-Buttons (Online Coaching, Personal Training vor Ort, Grappling Training, Allgemeine Anfrage), Name/E-Mail/Telefon/Nachricht mit Floating-Labels, Erfolgs-Ansicht nach Absenden (nur lokaler State, siehe Offene Punkte).
@@ -68,7 +76,7 @@ Seiten-Header mit `bram_handsup.jpeg`. Formular (`KontaktForm.tsx`, Client-Kompo
 | `squat_sideshot.jpeg` | Grappling Training, Zusatzfoto (`/leistungen`) |
 | `stretching.jpeg` | Grappling Training, Zusatzfoto (`/leistungen`) |
 | `vorher1.jpeg`, `vorher2.jpeg`, `nachher1.jpeg`, `nachher2.jpeg` | Comeback-Slider (`/ueber-mich`) |
-| `bram_handsup.jpeg` | Seiten-Header `/kontakt` |
+| `bram_handsup.jpeg` | Seiten-Header `/kontakt` und `/praevention` |
 
 **Noch ungenutzt (16 von 30):** `bram_kettlebell.jpeg`, `bram_curls.jpeg`, `bram_pushup.jpeg`, `pushup_position.jpeg`, `bram_curl_over_head.jpeg`, `bram_cabletower.jpeg`, `bram_press.jpeg`, `bram_lastpress.jpeg`, `bram_lastpull.jpeg`, `bram_pull.jpeg`, `bram_pulls.jpeg`, `legpress.jpeg`, `bram_butterfly.jpeg`, `sideshot_butterfly.jpeg`, `from_behind.jpeg`, `bram_sideshot.jpeg`, `bram_explain_fitness.png`.
 

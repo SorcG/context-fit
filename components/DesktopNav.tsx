@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/leistungen", label: "Leistungen" },
+  { href: "/praevention", label: "Prävention" },
   { href: "/ueber-mich", label: "Über mich" },
 ] as const;
 

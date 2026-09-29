@@ -23,12 +23,29 @@ export default function PageHeader({
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (textRef.current) {
+        if (reduceMotion) {
+          gsap.set(textRef.current, { opacity: 1, y: 0 });
+        } else {
+          gsap.fromTo(
+            textRef.current,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.1, ease: "power3.out" },
+          );
+        }
+      }
+
       const mm = gsap.matchMedia();
       mm.add("(min-width: 1024px)", () => {
-        if (!imageRef.current) return;
+        if (!imageRef.current || reduceMotion) return;
         gsap.to(imageRef.current, {
           yPercent: 8,
           ease: "none",
@@ -63,7 +80,10 @@ export default function PageHeader({
         <div className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-500 group-hover:opacity-100 lg:block [background:radial-gradient(circle_at_50%_50%,_var(--accent)_0%,_transparent_65%)] [background-size:150%_150%] [mix-blend-mode:overlay]" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-transparent lg:hidden" />
-      <div className="relative flex flex-col gap-2 px-5 pb-8 lg:static lg:order-1 lg:gap-3 lg:px-0 lg:pb-0">
+      <div
+        ref={textRef}
+        className="relative flex flex-col gap-2 px-5 pb-8 lg:static lg:order-1 lg:gap-3 lg:px-0 lg:pb-0"
+      >
         <p className="text-sm font-semibold tracking-wide text-accent lg:text-base">
           {eyebrow}
         </p>

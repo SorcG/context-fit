@@ -25,6 +25,10 @@ export default function Reveal({
   useGSAP(
     () => {
       if (!ref.current) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(ref.current, { opacity: 1, y: 0 });
+        return;
+      }
       gsap.fromTo(
         ref.current,
         { opacity: 0, y },
