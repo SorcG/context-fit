@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import PageHeader from "@/components/PageHeader";
 import ComebackSlider from "@/components/ComebackSlider";
+import ComebackCompare from "@/components/ComebackCompare";
 import MagneticButton from "@/components/MagneticButton";
 
 export const metadata: Metadata = {
@@ -85,6 +86,7 @@ export default function UeberMichPage() {
               Mein Comeback
             </h2>
             <ComebackSlider />
+            <ComebackCompare />
             <div className="flex flex-col gap-4 text-base leading-relaxed text-text lg:text-lg">
               <p>
                 Vor rund zwei Jahren musste ich mir etwas eingestehen. Ich war nicht

@@ -66,6 +66,10 @@ const navItems = [
 export default function BottomTabNav() {
   const pathname = usePathname();
 
+  // Der Rechner hat seine eigene sticky Zurück/Weiter-Leiste am unteren
+  // Bildschirmrand — zwei fixe Bottom-Bars gleichzeitig wären verwirrend.
+  if (pathname === "/rechner") return null;
+
   return (
     <nav
       className="fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-1.5 border-t border-border bg-surface px-3 pt-2 lg:hidden"

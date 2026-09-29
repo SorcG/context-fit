@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import PageHeader from "@/components/PageHeader";
 import MagneticButton from "@/components/MagneticButton";
+import RechnerCTA from "@/components/RechnerCTA";
 
 export const metadata: Metadata = {
   title: "Leistungen — Context Fit",
@@ -177,6 +178,10 @@ export default function LeistungenPage() {
               </article>
             </Reveal>
           ))}
+
+          <Reveal className="lg:col-span-3">
+            <RechnerCTA />
+          </Reveal>
 
           <Reveal className="lg:col-span-3 lg:flex lg:justify-center">
             <MagneticButton>
