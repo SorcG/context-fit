@@ -52,5 +52,17 @@ export default function SmoothScroll({
     return () => clearTimeout(timeout);
   }, [pathname]);
 
+  useEffect(() => {
+    // Covers in-page height changes that aren't route changes (e.g. an
+    // accordion expanding) — document.body's box tracks real content height,
+    // unlike document.documentElement which stays pinned to the viewport.
+    const observer = new ResizeObserver(() => {
+      lenisRef.current?.resize();
+      ScrollTrigger.refresh();
+    });
+    observer.observe(document.body);
+    return () => observer.disconnect();
+  }, []);
+
   return <>{children}</>;
 }

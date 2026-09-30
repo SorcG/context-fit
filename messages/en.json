@@ -62,7 +62,9 @@
     "bramGrapples": "Bram grappling with a training partner",
     "bramHandsup": "Bram, fully focused during a dynamic exercise",
     "vorher": "Bram before the transformation, view {n}",
-    "nachher": "Bram after the transformation, view {n}"
+    "nachher": "Bram after the transformation, view {n}",
+    "fettanteilMann": "Body fat reference photos for men at 5, 10, 15, 20, 25 and 30+ percent",
+    "fettanteilFrau": "Body fat reference photos for women at 5, 10, 15, 20, 25 and 30+ percent"
   },
   "Home": {
     "hero": {
@@ -213,6 +215,10 @@
       "einheitenProWoche": "Sessions per week",
       "minutenProEinheit": "Minutes per session",
       "ruhetageProWoche": "Rest days per week"
+    },
+    "koerperfettReferenz": {
+      "link": "Not sure? See reference photos",
+      "caption": "Estimate roughly where you stand — it doesn't need to be exact."
     },
     "zielBeschreibung": {
       "maintain": "Keep your weight, improve strength and shape.",

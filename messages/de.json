@@ -66,7 +66,9 @@
     "bramGrapples": "Bram im Grappling-Austausch mit einem Trainingspartner",
     "bramHandsup": "Bram, hoch konzentriert bei einer dynamischen Übung",
     "vorher": "Bram vor der Transformation, Ansicht {n}",
-    "nachher": "Bram nach der Transformation, Ansicht {n}"
+    "nachher": "Bram nach der Transformation, Ansicht {n}",
+    "fettanteilMann": "Körperfett-Referenzbilder für Männer bei 5, 10, 15, 20, 25 und 30+ Prozent",
+    "fettanteilFrau": "Körperfett-Referenzbilder für Frauen bei 5, 10, 15, 20, 25 und 30+ Prozent"
   },
   "Home": {
     "hero": {
@@ -257,6 +259,10 @@
       "einheitenProWoche": "Einheiten pro Woche",
       "minutenProEinheit": "Minuten pro Einheit",
       "ruhetageProWoche": "Ruhetage pro Woche"
+    },
+    "koerperfettReferenz": {
+      "link": "Unsicher? Referenzbilder ansehen",
+      "caption": "Schätze grob, wo du aktuell stehst — genau muss es nicht sein."
     },
     "zielBeschreibung": {
       "maintain": "Gewicht halten, Kraft und Form verbessern.",

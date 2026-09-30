@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import type { SchrittProps } from "./types";
 import { NumberField, ToggleCard } from "./RechnerFelder";
+import FettanteilReferenz from "./FettanteilReferenz";
 
 export default function SchrittBasis({ data, update }: SchrittProps) {
   const t = useTranslations("Rechner");
@@ -48,6 +49,7 @@ export default function SchrittBasis({ data, update }: SchrittProps) {
         <p className="text-xs text-muted">
           {t("warnungen.koerperfettUnrealistisch")}
         </p>
+        <FettanteilReferenz sex={data.sex} />
       </div>
     </div>
   );

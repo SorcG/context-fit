@@ -62,7 +62,9 @@
     "bramGrapples": "Bram aan het grapplen met een trainingspartner",
     "bramHandsup": "Bram, volledig gefocust tijdens een dynamische oefening",
     "vorher": "Bram vóór de transformatie, aanzicht {n}",
-    "nachher": "Bram na de transformatie, aanzicht {n}"
+    "nachher": "Bram na de transformatie, aanzicht {n}",
+    "fettanteilMann": "Vetpercentage-referentiefoto's voor mannen bij 5, 10, 15, 20, 25 en 30+ procent",
+    "fettanteilFrau": "Vetpercentage-referentiefoto's voor vrouwen bij 5, 10, 15, 20, 25 en 30+ procent"
   },
   "Home": {
     "hero": {
@@ -213,6 +215,10 @@
       "einheitenProWoche": "Trainingen per week",
       "minutenProEinheit": "Minuten per training",
       "ruhetageProWoche": "Rustdagen per week"
+    },
+    "koerperfettReferenz": {
+      "link": "Niet zeker? Bekijk referentiefoto's",
+      "caption": "Schat ruw in waar je nu staat — het hoeft niet exact te zijn."
     },
     "zielBeschreibung": {
       "maintain": "Gewicht behouden, kracht en vorm verbeteren.",
