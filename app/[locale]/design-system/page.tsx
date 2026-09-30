@@ -1,3 +1,6 @@
+import { setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
+
 const colors = [
   { name: "bg", label: "Background", hex: "#0D0D0F", textClass: "text-text" },
   { name: "surface", label: "Surface", hex: "#1C1C21", textClass: "text-text" },
@@ -16,7 +19,14 @@ const colorBgClass: Record<(typeof colors)[number]["name"], string> = {
   accent: "bg-accent",
 };
 
-export default function DesignSystemPage() {
+export default async function DesignSystemPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale as Locale);
+
   return (
     <main className="mx-auto flex w-full max-w-[430px] flex-col gap-10 px-5 py-10">
       <header className="flex flex-col gap-1">

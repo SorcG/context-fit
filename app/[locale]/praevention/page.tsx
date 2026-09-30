@@ -1,3 +1,5 @@
+import { setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -114,7 +116,14 @@ const ablauf = [
   },
 ] as const;
 
-export default function PraeventionPage() {
+export default async function PraeventionPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale as Locale);
+
   return (
     <>
       <PageHeader

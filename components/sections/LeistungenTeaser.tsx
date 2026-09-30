@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 
@@ -65,7 +65,7 @@ export default function LeistungenTeaser() {
           {services.map((s, i) => (
             <Reveal key={s.anchor} delay={0.1 + i * 0.05}>
               <Link
-                href={`/leistungen#${s.anchor}`}
+                href={{ pathname: "/leistungen", hash: s.anchor }}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-3 transition-transform active:scale-95 lg:flex-col lg:items-stretch lg:gap-0 lg:overflow-hidden lg:p-0 lg:transition-[transform,border-color] lg:hover:scale-[1.02] lg:hover:border-accent"
               >
                 <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-border lg:h-auto lg:w-full lg:aspect-[4/5] lg:shrink lg:rounded-none lg:border-0 lg:border-b">

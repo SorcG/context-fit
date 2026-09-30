@@ -1,3 +1,5 @@
+import { setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -10,7 +12,14 @@ export const metadata: Metadata = {
     "Vereinbare ein unverbindliches Erstgespräch mit Bram van Koppen, Personal Coach in Paderborn.",
 };
 
-export default function KontaktPage() {
+export default async function KontaktPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale as Locale);
+
   return (
     <>
       <PageHeader

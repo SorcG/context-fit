@@ -1,3 +1,5 @@
+import { setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import Rechner from "@/components/rechner/Rechner";
@@ -9,7 +11,14 @@ export const metadata: Metadata = {
     "Finde deine Kalorien- und Makro-Ziele in 60 Sekunden — abgestimmt auf dein Training, nicht nur deinen Alltag.",
 };
 
-export default function RechnerPage() {
+export default async function RechnerPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale as Locale);
+
   return (
     <section className="pb-12 pt-10 lg:pb-24 lg:pt-16">
       <Container variant="narrow" className="flex flex-col gap-8">

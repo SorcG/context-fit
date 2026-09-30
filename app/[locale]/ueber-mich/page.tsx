@@ -1,5 +1,7 @@
+import { setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import PageHeader from "@/components/PageHeader";
@@ -41,7 +43,14 @@ function CheckIcon() {
   );
 }
 
-export default function UeberMichPage() {
+export default async function UeberMichPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale as Locale);
+
   return (
     <>
       <PageHeader
