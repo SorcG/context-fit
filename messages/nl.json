@@ -1,0 +1,279 @@
+{
+  "Metadata": {
+    "default": {
+      "title": "Context Fit — Bram van Koppen | Personal coach in Paderborn",
+      "description": "Jouw partner op weg naar een gezonder, fitter leven. Online coaching, personal training en grapplingtraining met Bram van Koppen in Paderborn."
+    },
+    "leistungen": {
+      "title": "Diensten — Context Fit",
+      "description": "Online coaching, personal training op locatie en grapplingtraining met Bram van Koppen in Paderborn."
+    },
+    "ueberMich": {
+      "title": "Over mij — Context Fit",
+      "description": "Bram van Koppen: zwarte band in BJJ en Luta Livre, gediplomeerd fysiotherapeut (NL) en personal coach in Paderborn."
+    },
+    "kontakt": {
+      "title": "Contact — Context Fit",
+      "description": "Plan een vrijblijvend kennismakingsgesprek met Bram van Koppen, personal coach in Paderborn."
+    },
+    "rechner": {
+      "title": "Caloriecalculator — Context Fit",
+      "description": "Ontdek je calorie- en macrodoelen in 60 seconden — afgestemd op je training, niet alleen op je dagelijks leven."
+    },
+    "impressum": {
+      "title": "Colofon — Context Fit",
+      "description": "Colofon van Context Fit — Bram van Koppen, Paderborn."
+    },
+    "datenschutz": {
+      "title": "Privacy — Context Fit",
+      "description": "Privacyverklaring van Context Fit — Bram van Koppen, Paderborn."
+    }
+  },
+  "Nav": {
+    "home": "Home",
+    "leistungen": "Diensten",
+    "praevention": "Preventie",
+    "ueberMich": "Over mij",
+    "kontakt": "Contact",
+    "cta": "Plan je kennismakingsgesprek"
+  },
+  "Footer": {
+    "impressum": "Colofon",
+    "datenschutz": "Privacy"
+  },
+  "Language": {
+    "label": "Kies een taal"
+  },
+  "Alt": {
+    "bramSmile": "Bram van Koppen, personal coach in Paderborn",
+    "bramThinking": "Bram zit nadenkend in de sportschool",
+    "sideshot2": "Bram van opzij, staand in de sportschool",
+    "bramExplainFitness": "Bram in gesprek met een klant in de sportschool",
+    "bramExplainJj": "Bram legt een grapplingtechniek uit op de mat",
+    "smileWithCurl": "Bram van Koppen lacht naar de camera",
+    "bramKettlebellCloseup": "Bram geconcentreerd met een kettlebell",
+    "kettlebellSideshot": "Bram traint in de sportschool",
+    "bramOnline": "Bram in een videogesprek op een laptopscherm",
+    "bramFrontshot": "Bram staand, recht in de camera",
+    "stretching": "Bram doet een mobiliteitsoefening",
+    "bramPushup": "Bram doet een push-up",
+    "bramSplitsquats": "Bram doet split squats",
+    "bramStandsBjj": "Bram in gi, staand in de trainingsruimte",
+    "bramGrapples": "Bram aan het grapplen met een trainingspartner",
+    "bramHandsup": "Bram, volledig gefocust tijdens een dynamische oefening",
+    "vorher": "Bram vóór de transformatie, aanzicht {n}",
+    "nachher": "Bram na de transformatie, aanzicht {n}"
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "Personal coach · Paderborn",
+      "headline": "Jouw partner op weg naar een gezonder, fitter leven.",
+      "sub": "Ik begeleid je op weg naar een gezondere levensstijl."
+    },
+    "warum": {
+      "title": "Waarom Context Fit?",
+      "p1": "We willen allemaal fit worden, maar soms zit het leven in de weg en is het lastig om te weten waar je moet beginnen. Geen zorgen, daar zorg ik voor. Samen maken we een plan dat helemaal op jou is afgestemd, met een trainingsprogramma, voedingsadvies en aanpassingen in je levensstijl. Alles sluit aan op jouw persoonlijke situatie. Het plan draait om jouw context, vandaar ook de naam: Context Fit.",
+      "p2": "<b>Context Fit: de juiste plek voor drukbezette mensen en grapplingatleten.</b> Als zwarte band in BJJ en Luta Livre en fanatiek krachtsporter vind ik het extra belangrijk om andere grapplers te helpen hun best mogelijke grapplingvorm te bereiken."
+    },
+    "leistungenTeaser": {
+      "title": "Diensten",
+      "intro": "Drie manieren om je doel te bereiken. Online, op locatie of op de mat.",
+      "alle": "Bekijk alle diensten"
+    },
+    "ueberMichTeaser": {
+      "title": "Over mij",
+      "intro": "Mijn naam is Bram van Koppen en sport is al sinds mijn jeugd een vast onderdeel van mijn leven.",
+      "qualifikationen": "Zwarte band BJJ & Luta Livre · Gediplomeerd fysiotherapeut (NL) · Menno Henselmans Personal Trainer",
+      "mehr": "Meer over mij"
+    },
+    "zielgruppe": {
+      "statement": "Grapplers, drukke vaders en heel gewone mensen."
+    },
+    "kontakt": {
+      "title": "Klaar voor de volgende stap?",
+      "body": "Plan een vrijblijvend kennismakingsgesprek en ontdek hoe een plan eruitziet dat bij jouw context past.",
+      "standort": "Locatie: Paderborn"
+    }
+  },
+  "RechnerCTA": {
+    "title": "Ontdek je calorieën in 60 seconden",
+    "subtitle": "Gratis calculator — afgestemd op je training, niet alleen op je dagelijks leven."
+  },
+  "Services": {
+    "onlineCoaching": {
+      "title": "Online Coaching",
+      "tagline": "Altijd. Overal. Zonder grenzen.",
+      "body": "Je hoeft niet in dezelfde stad of zelfs in hetzelfde land te zijn om professionele coaching te krijgen.",
+      "features": {
+        "plaene": "Persoonlijke trainingsschema's",
+        "ernaehrung": "Voedingsadvies op maat",
+        "betreuung": "Doorlopende begeleiding & motivatie",
+        "lifestyle": "Lifestylecoaching"
+      }
+    },
+    "personalTraining": {
+      "title": "Personal Training op locatie",
+      "tagline": "Kracht met een doel.",
+      "body": "Met personal training op locatie krijg je niet alleen een trainingsschema. Je krijgt directe ondersteuning, motivatie en iemand die je echt aan je afspraken houdt.",
+      "closing": "Train slimmer. Train harder. Train met een doel."
+    },
+    "grapplingTraining": {
+      "title": "Grappling Training",
+      "tagline": "Haal alles uit jezelf op de mat",
+      "body": "Jarenlange ervaring in BJJ, MMA en strength & conditioning.",
+      "features": {
+        "gruppen": "Personal training & kleine groepen",
+        "gi": "Expertise in gi & no-gi"
+      }
+    }
+  },
+  "Leistungen": {
+    "eyebrow": "Diensten",
+    "title": "Drie wegen naar je doel"
+  },
+  "UeberMich": {
+    "eyebrow": "Over mij",
+    "bio": {
+      "p1": "Mijn naam is Bram van Koppen en sport is al sinds mijn jeugd een vast onderdeel van mijn leven. Ik begon met karate en ontdekte later Brazilian Jiu-Jitsu, dat tot vandaag mijn grote passie is gebleven. Na verloop van tijd besefte ik dat ik sterker moest worden om mijn volledige potentieel te benutten. Zo kreeg ook krachttraining een vaste plek in mijn leven. Van olympisch gewichtheffen en powerlifting tot andere disciplines: ik heb veel wegen verkend om me als atleet en trainer verder te ontwikkelen.",
+      "p2": "Naast mijn werk als coach ben ik ook opgeleid fysiotherapeut. Daardoor kan ik betere prestaties combineren met blessurepreventie en revalidatie.",
+      "p3": "Ik ben de trotse vader van twee kinderen. Juist daardoor heb ik geleerd hoe belangrijk effectieve en realistische trainingsmethoden zijn. Gezin, werk en training combineren is een uitdaging, en precies daarom vind ik het belangrijk om fitness praktisch en duurzaam in het dagelijks leven van mijn cliënten in te passen."
+    },
+    "comeback": {
+      "title": "Mijn comeback",
+      "p1": "Zo'n twee jaar geleden moest ik mezelf iets toegeven. Ik was lang niet zo in vorm als ik dacht. Ik woog 104 kg, terwijl ik regelmatig trainde. Ik had mezelf dus iets wijsgemaakt.",
+      "p2": "De eerste stap was <hl>radicale eerlijkheid</hl>. Geen smoesjes. Ik ontdekte drie dingen: ik had mijn calorie-inname flink onderschat. Ondanks de trainingen op de mat bewoog ik in het dagelijks leven te weinig, en ik sliep te kort. Met twee kleine kinderen geen makkelijke opgave, maar ik had het mezelf ook te makkelijk gemaakt.",
+      "p3": "Dus heb ik het veranderd: meer bewegen op een dag, calorieën bijhouden, maaltijden voorbereiden, consequent een gestructureerd trainingsschema volgen en het allerbelangrijkste: <hl>elke dag volhouden</hl>.",
+      "p4": "Het resultaat: van 104 kg naar 88 kg. Meer energie en meer zelfvertrouwen.",
+      "p5": "Simpel is niet hetzelfde als makkelijk. <hl>Consistentie</hl> was de echte succesfactor. Ik weet hoe moeilijk het is om gezin, werk en je eigen gezondheid te combineren. Juist daarom help ik je de weg te vinden die bij jouw leven past."
+    },
+    "qualifikationen": {
+      "title": "Kwalificaties",
+      "henselmans": "Menno Henselmans Personal Trainer-certificering",
+      "knkfFitness": "KNKF Fitness Instructor",
+      "knkfWeightlifting": "KNKF Weightlifting Instructor",
+      "bjj": "Zwarte band in Brazilian Jiu-Jitsu",
+      "lutaLivre": "Zwarte band in Luta Livre",
+      "physio": "Gediplomeerd fysiotherapeut (NL), manueel therapeut, PNF-therapeut"
+    }
+  },
+  "Comeback": {
+    "vorher": "Voor",
+    "nachher": "Na",
+    "ansicht": "Aanzicht {n}",
+    "slideAria": "Toon {kind, select, after {na} other {voor}}foto {n}",
+    "compareAria": "Voor-en-navergelijking, aanzicht {n}: je ziet nu de {pinned, select, true {na} other {voor}}foto. Klik om te wisselen."
+  },
+  "Kontakt": {
+    "eyebrow": "Contact",
+    "title": "Laten we beginnen.",
+    "intro": "Plan een vrijblijvend kennismakingsgesprek en ontdek hoe een plan eruitziet dat bij jouw context past. Kies het onderwerp van je aanvraag en schrijf me een paar regels, de rest bespreken we persoonlijk."
+  },
+  "KontaktForm": {
+    "topicLabel": "Waar gaat het over?",
+    "topics": {
+      "onlineCoaching": "Online Coaching",
+      "personalTraining": "Personal Training op locatie",
+      "grapplingTraining": "Grappling Training",
+      "allgemein": "Algemene vraag"
+    },
+    "name": "Naam",
+    "email": "E-mail",
+    "phone": "Telefoon (optioneel)",
+    "message": "Je bericht",
+    "submit": "Aanvraag versturen",
+    "responseTime": "Ik neem binnen 24 uur persoonlijk contact met je op.",
+    "successTitle": "Bedankt, {name}!",
+    "successBody": "Je aanvraag staat klaar. Bram neemt binnen 24 uur persoonlijk contact met je op.",
+    "reset": "Nieuwe aanvraag"
+  },
+  "Rechner": {
+    "eyebrow": "Gratis tool",
+    "seitentitel": "Caloriecalculator",
+    "intro": "Je werk en je stappen zijn één ding. Training komt daar nog bovenop. Twijfel je over je PAL? Kies het lagere niveau.",
+    "felder": {
+      "geschlecht": "Geslacht",
+      "geschlechtOptionen": {
+        "male": "Man",
+        "female": "Vrouw"
+      },
+      "gewicht": "Gewicht (kg)",
+      "koerperfett": "Vetpercentage (%)",
+      "alltagsaktivitaet": "Dagelijkse activiteit (PAL)",
+      "ziel": "Doel",
+      "zielOptionen": {
+        "maintain": "Behouden",
+        "deficit": "Tekort",
+        "bulk": "Opbouw"
+      },
+      "trainingsart": "Soort training",
+      "trainingsartOptionen": {
+        "resistance": "Krachttraining",
+        "martial_arts": "Vechtsport (BJJ, kickboksen)"
+      },
+      "einheitenProWoche": "Trainingen per week",
+      "minutenProEinheit": "Minuten per training",
+      "ruhetageProWoche": "Rustdagen per week"
+    },
+    "zielBeschreibung": {
+      "maintain": "Gewicht behouden, kracht en vorm verbeteren.",
+      "deficit": "Vet verliezen, zoveel mogelijk spiermassa behouden.",
+      "bulk": "Spieren opbouwen met een gecontroleerd overschot."
+    },
+    "palHelper": {
+      "sedentary": "Kantoorbaan, weinig stappen. Het grootste deel van de dag zitten.",
+      "lightly_active": "Wat wandelen, licht staand werk. Geen fysieke baan.",
+      "active": "Veel op de been. Veel stappen, niet „ik train 6×”.",
+      "very_active": "Fysieke baan of heel veel stappen. Nog steeds zonder sportschool of mat."
+    },
+    "palDauerhinweis": "PAL gaat alleen over je dagelijks leven. Kies niet „very active” omdat je traint. Trainingsminuten komen er apart bij. Twijfel je? Kies één niveau lager.",
+    "output": {
+      "ruhetag": "Rustdag",
+      "trainingstag": "Trainingsdag",
+      "grundumsatz": "Ruststofwisseling (BMR)",
+      "magermasse": "Vetvrije massa",
+      "training": "Training",
+      "protein": "Eiwit",
+      "fett": "Vet",
+      "kohlenhydrate": "Koolhydraten",
+      "kcalProTag": "kcal/dag"
+    },
+    "warnungen": {
+      "negativeKohlenhydrate": "Het tekort is zwaar op rustdagen. Eiwit en vet nemen bijna alles in beslag. Óf bijna geen koolhydraten op je rustdag — óf het tekort is te groot.",
+      "koerperfettUnrealistisch": "Katch-McArdle heeft een vetpercentage nodig. 25% invullen „omdat het wel goed klinkt” gooit je BMR in de war.",
+      "tageMismatch": "Trainingen en rustdagen moeten samen 7 zijn — nu is het {total}."
+    },
+    "footer": "Een schatting, geen medisch advies. Goed meten is beter dan gokken.",
+    "navigation": {
+      "zurueck": "Terug",
+      "weiter": "Verder",
+      "ergebnisAnzeigen": "Resultaat tonen"
+    },
+    "schritte": {
+      "basis": "Basis",
+      "alltag": "Dagelijks leven",
+      "training": "Training",
+      "ziel": "Doel"
+    },
+    "ergebnis": {
+      "soKommenWirDarauf": "Zo komen we erop",
+      "nochmalBerechnen": "Opnieuw berekenen",
+      "zumErstgespraech": "Naar het kennismakingsgesprek",
+      "trainingsKcalZeile": "+ {kcal} kcal uit training"
+    },
+    "aria": {
+      "verringern": "{label} verlagen",
+      "erhoehen": "{label} verhogen"
+    }
+  },
+  "Legal": {
+    "eyebrow": "Juridisch",
+    "impressumTitle": "Colofon",
+    "datenschutzTitle": "Privacyverklaring",
+    "germanOnly": "Deze juridische tekst is alleen in het Duits beschikbaar. De Duitse versie is juridisch bindend."
+  },
+  "NotFound": {
+    "title": "Deze pagina bestaat niet.",
+    "body": "Misschien is het adres veranderd. Op de homepage vind je alles wat belangrijk is.",
+    "home": "Naar de homepage"
+  }
+}

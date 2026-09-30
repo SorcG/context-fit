@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { DE, GB, NL } from "country-flag-icons/react/3x2";
 import { useRouter } from "next/navigation";
 import { getPathname, usePathname } from "@/i18n/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import { LOCALE_COOKIE_MAX_AGE, routing, type Locale } from "@/i18n/routing";
 
 // Sprachnamen immer in der jeweils eigenen Sprache.
 const languages: Record<
@@ -37,9 +37,12 @@ function useSwitchLocale() {
     const target = pathname === "/praevention" && next !== "de" ? "/" : pathname;
     // Anker (z. B. #grappling-training) beim Wechsel mitnehmen.
     const hash = target === pathname ? window.location.hash : "";
+    // Wahl merken, damit "/" beim nächsten Besuch direkt in dieser Sprache
+    // landet (next-intl setzt das Cookie nur über seinen eigenen Router).
+    document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=${LOCALE_COOKIE_MAX_AGE}; samesite=lax`;
     startTransition(() => {
       router.replace(getPathname({ href: target, locale: next }) + hash, {
-        scroll: false,
+        scroll: target !== pathname,
       });
     });
   };

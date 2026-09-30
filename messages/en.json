@@ -1,0 +1,279 @@
+{
+  "Metadata": {
+    "default": {
+      "title": "Context Fit — Bram van Koppen | Personal Coach in Paderborn",
+      "description": "Your partner on the way to a healthier, fitter life. Online coaching, personal training and grappling training with Bram van Koppen in Paderborn, Germany."
+    },
+    "leistungen": {
+      "title": "Services — Context Fit",
+      "description": "Online coaching, in-person personal training and grappling training with Bram van Koppen in Paderborn."
+    },
+    "ueberMich": {
+      "title": "About — Context Fit",
+      "description": "Bram van Koppen: black belt in BJJ and Luta Livre, qualified physiotherapist (NL) and personal coach in Paderborn."
+    },
+    "kontakt": {
+      "title": "Contact — Context Fit",
+      "description": "Book a free, no-obligation intro call with Bram van Koppen, personal coach in Paderborn."
+    },
+    "rechner": {
+      "title": "Calorie Calculator — Context Fit",
+      "description": "Find your calorie and macro targets in 60 seconds — based on your training, not just your daily routine."
+    },
+    "impressum": {
+      "title": "Legal Notice — Context Fit",
+      "description": "Legal notice for Context Fit — Bram van Koppen, Paderborn."
+    },
+    "datenschutz": {
+      "title": "Privacy — Context Fit",
+      "description": "Privacy policy for Context Fit — Bram van Koppen, Paderborn."
+    }
+  },
+  "Nav": {
+    "home": "Home",
+    "leistungen": "Services",
+    "praevention": "Prevention",
+    "ueberMich": "About",
+    "kontakt": "Contact",
+    "cta": "Book your intro call"
+  },
+  "Footer": {
+    "impressum": "Legal notice",
+    "datenschutz": "Privacy"
+  },
+  "Language": {
+    "label": "Choose language"
+  },
+  "Alt": {
+    "bramSmile": "Bram van Koppen, personal coach in Paderborn",
+    "bramThinking": "Bram sitting in the gym, deep in thought",
+    "sideshot2": "Bram in profile, standing in the gym",
+    "bramExplainFitness": "Bram in a coaching conversation with a client at the gym",
+    "bramExplainJj": "Bram explaining a grappling technique on the mat",
+    "smileWithCurl": "Bram van Koppen smiling at the camera",
+    "bramKettlebellCloseup": "Bram, focused, with a kettlebell",
+    "kettlebellSideshot": "Bram training at the gym",
+    "bramOnline": "Bram on a video call, shown on a laptop screen",
+    "bramFrontshot": "Bram standing, facing the camera",
+    "stretching": "Bram doing a mobility exercise",
+    "bramPushup": "Bram doing a push-up",
+    "bramSplitsquats": "Bram doing split squats",
+    "bramStandsBjj": "Bram in a gi, standing in the training room",
+    "bramGrapples": "Bram grappling with a training partner",
+    "bramHandsup": "Bram, fully focused during a dynamic exercise",
+    "vorher": "Bram before the transformation, view {n}",
+    "nachher": "Bram after the transformation, view {n}"
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "Personal Coach · Paderborn",
+      "headline": "Your partner on the way to a healthier, fitter life.",
+      "sub": "I'll guide you towards a healthier lifestyle."
+    },
+    "warum": {
+      "title": "Why Context Fit?",
+      "p1": "We all want to get fit, but sometimes life gets in the way and it's hard to know where to start. Don't worry, I'll take care of that. Together we build a plan made just for you, including a training program, nutrition guidance and changes to your lifestyle. Everything is designed to fit your individual situation. The plan is built around your context, hence the name: Context Fit.",
+      "p2": "<b>Context Fit: the right place for busy people and grappling athletes.</b> As a black belt in BJJ and Luta Livre and a dedicated strength athlete, I especially care about helping other grapplers get into their best possible grappling shape."
+    },
+    "leistungenTeaser": {
+      "title": "Services",
+      "intro": "Three ways to reach your goal. Online, in person or on the mat.",
+      "alle": "View all services"
+    },
+    "ueberMichTeaser": {
+      "title": "About me",
+      "intro": "My name is Bram van Koppen, and sport has been a fixed part of my life since I was young.",
+      "qualifikationen": "Black belt BJJ & Luta Livre · Qualified physiotherapist (NL) · Menno Henselmans Personal Trainer",
+      "mehr": "More about me"
+    },
+    "zielgruppe": {
+      "statement": "Grapplers, busy dads and completely normal people."
+    },
+    "kontakt": {
+      "title": "Ready for the next step?",
+      "body": "Book a free, no-obligation intro call and find out what a plan that fits your context looks like.",
+      "standort": "Location: Paderborn"
+    }
+  },
+  "RechnerCTA": {
+    "title": "Find your calories in 60 seconds",
+    "subtitle": "Free calculator — based on your training, not just your daily routine."
+  },
+  "Services": {
+    "onlineCoaching": {
+      "title": "Online Coaching",
+      "tagline": "Anytime. Anywhere. No limits.",
+      "body": "You don't have to be in the same city, or even the same country, to get professional coaching.",
+      "features": {
+        "plaene": "Individual training plans",
+        "ernaehrung": "Personalized nutrition guidance",
+        "betreuung": "Ongoing support & motivation",
+        "lifestyle": "Lifestyle coaching"
+      }
+    },
+    "personalTraining": {
+      "title": "In-Person Personal Training",
+      "tagline": "Strength with purpose.",
+      "body": "With in-person personal training, you get more than a training plan. You get direct support, motivation and someone who actually holds you accountable.",
+      "closing": "Train smarter. Train harder. Train with purpose."
+    },
+    "grapplingTraining": {
+      "title": "Grappling Training",
+      "tagline": "Reach your full potential on the mat",
+      "body": "Years of experience in BJJ, MMA and strength & conditioning.",
+      "features": {
+        "gruppen": "Personal training & small groups",
+        "gi": "Gi & no-gi expertise"
+      }
+    }
+  },
+  "Leistungen": {
+    "eyebrow": "Services",
+    "title": "Three ways to your goal"
+  },
+  "UeberMich": {
+    "eyebrow": "About me",
+    "bio": {
+      "p1": "My name is Bram van Koppen, and sport has been a fixed part of my life since I was young. I started out in karate and later discovered Brazilian Jiu-Jitsu, which is still my biggest passion today. Over time I realized I had to get stronger to reach my full potential. That's how strength training found its place in my routine. From Olympic weightlifting to powerlifting and other disciplines, I've explored a lot of paths to develop as an athlete and as a coach.",
+      "p2": "Alongside my work as a coach, I'm also a qualified physiotherapist. That lets me combine better performance with injury prevention and rehabilitation.",
+      "p3": "I'm the proud father of two children. That's exactly what taught me how important effective, realistic training methods are. Balancing family, work and training is a challenge, and that's why I focus on making fitness a practical, sustainable part of my clients' everyday lives."
+    },
+    "comeback": {
+      "title": "My comeback",
+      "p1": "About two years ago, I had to admit something to myself. I wasn't in the shape I thought I was. I weighed 104 kg, even though I trained regularly. I had been fooling myself.",
+      "p2": "The first step was <hl>radical honesty</hl>. No excuses. I found three things: I had massively underestimated my calorie intake. Despite training on the mat, I was too inactive in everyday life, and I wasn't getting enough sleep. Not easy with two small children, but I had also been making it too easy on myself.",
+      "p3": "So I changed it: more movement during the day, tracking calories, preparing meals, following a structured training plan consistently and, most importantly: <hl>sticking with it every single day</hl>.",
+      "p4": "The result: from 104 kg down to 88 kg. More energy and more self-confidence.",
+      "p5": "Simple doesn't mean easy. <hl>Consistency</hl> was what really made the difference. I know how hard it is to balance family, work and your own health. That's exactly why I help you find the approach that fits your life."
+    },
+    "qualifikationen": {
+      "title": "Qualifications",
+      "henselmans": "Menno Henselmans Personal Trainer Certification",
+      "knkfFitness": "KNKF Fitness Instructor",
+      "knkfWeightlifting": "KNKF Weightlifting Instructor",
+      "bjj": "Black belt in Brazilian Jiu-Jitsu",
+      "lutaLivre": "Black belt in Luta Livre",
+      "physio": "Qualified physiotherapist (NL), manual therapist, PNF therapist"
+    }
+  },
+  "Comeback": {
+    "vorher": "Before",
+    "nachher": "After",
+    "ansicht": "View {n}",
+    "slideAria": "Show {kind, select, after {after} other {before}} photo {n}",
+    "compareAria": "Before/after comparison, view {n}: currently showing {pinned, select, true {after} other {before}}. Click to switch."
+  },
+  "Kontakt": {
+    "eyebrow": "Contact",
+    "title": "Let's get started.",
+    "intro": "Book a free, no-obligation intro call and find out what a plan that fits your context looks like. Just pick the topic of your enquiry and write me a few lines. We'll go through the rest in person."
+  },
+  "KontaktForm": {
+    "topicLabel": "What's it about?",
+    "topics": {
+      "onlineCoaching": "Online Coaching",
+      "personalTraining": "In-Person Personal Training",
+      "grapplingTraining": "Grappling Training",
+      "allgemein": "General enquiry"
+    },
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Your message",
+    "submit": "Send enquiry",
+    "responseTime": "I'll get back to you personally within 24 hours.",
+    "successTitle": "Thanks, {name}!",
+    "successBody": "Your enquiry is all set. Bram will get back to you personally within 24 hours.",
+    "reset": "Send another enquiry"
+  },
+  "Rechner": {
+    "eyebrow": "Free tool",
+    "seitentitel": "Calorie calculator",
+    "intro": "Your job and your steps are one thing. Training comes on top. Not sure about your PAL? Pick the lower level.",
+    "felder": {
+      "geschlecht": "Sex",
+      "geschlechtOptionen": {
+        "male": "Male",
+        "female": "Female"
+      },
+      "gewicht": "Weight (kg)",
+      "koerperfett": "Body fat (%)",
+      "alltagsaktivitaet": "Daily activity (PAL)",
+      "ziel": "Goal",
+      "zielOptionen": {
+        "maintain": "Maintain",
+        "deficit": "Cut",
+        "bulk": "Bulk"
+      },
+      "trainingsart": "Type of training",
+      "trainingsartOptionen": {
+        "resistance": "Strength training",
+        "martial_arts": "Martial arts (BJJ, kickboxing)"
+      },
+      "einheitenProWoche": "Sessions per week",
+      "minutenProEinheit": "Minutes per session",
+      "ruhetageProWoche": "Rest days per week"
+    },
+    "zielBeschreibung": {
+      "maintain": "Keep your weight, improve strength and shape.",
+      "deficit": "Lose fat, keep as much muscle as possible.",
+      "bulk": "Build muscle with a controlled surplus."
+    },
+    "palHelper": {
+      "sedentary": "Office job, few steps. Sitting for most of the day.",
+      "lightly_active": "Some walking, light work on your feet. No physical job.",
+      "active": "On your feet a lot. Lots of steps, not “I train 6×”.",
+      "very_active": "Physical job or a very high step count. Still without the gym or the mat."
+    },
+    "palDauerhinweis": "PAL is only about your daily life. Don't pick “very active” because you train. Training minutes are added on top. Not sure? Go one level lower.",
+    "output": {
+      "ruhetag": "Rest day",
+      "trainingstag": "Training day",
+      "grundumsatz": "Basal metabolic rate (BMR)",
+      "magermasse": "Lean mass",
+      "training": "Training",
+      "protein": "Protein",
+      "fett": "Fat",
+      "kohlenhydrate": "Carbs",
+      "kcalProTag": "kcal/day"
+    },
+    "warnungen": {
+      "negativeKohlenhydrate": "The deficit is tough on rest days. Protein and fat take up almost everything. Either almost no carbs on rest days — or the deficit is too big.",
+      "koerperfettUnrealistisch": "Katch-McArdle needs a body fat number. Entering 25% “because it sounds about right” throws off your BMR.",
+      "tageMismatch": "Sessions and rest days should add up to 7 — right now it's {total}."
+    },
+    "footer": "An estimate, not medical advice. A proper measurement beats guessing.",
+    "navigation": {
+      "zurueck": "Back",
+      "weiter": "Next",
+      "ergebnisAnzeigen": "Show result"
+    },
+    "schritte": {
+      "basis": "Basics",
+      "alltag": "Daily life",
+      "training": "Training",
+      "ziel": "Goal"
+    },
+    "ergebnis": {
+      "soKommenWirDarauf": "How we got there",
+      "nochmalBerechnen": "Calculate again",
+      "zumErstgespraech": "Book an intro call",
+      "trainingsKcalZeile": "+ {kcal} kcal from training"
+    },
+    "aria": {
+      "verringern": "Decrease {label}",
+      "erhoehen": "Increase {label}"
+    }
+  },
+  "Legal": {
+    "eyebrow": "Legal",
+    "impressumTitle": "Legal notice",
+    "datenschutzTitle": "Privacy policy",
+    "germanOnly": "This legal text is only available in German. The German version is legally binding."
+  },
+  "NotFound": {
+    "title": "This page doesn't exist.",
+    "body": "The address may have changed. You'll find everything important on the home page.",
+    "home": "Go to the home page"
+  }
+}

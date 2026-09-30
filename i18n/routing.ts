@@ -1,21 +1,32 @@
 import { defineRouting } from "next-intl/routing";
 
+export const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
+
 export const routing = defineRouting({
-  locales: ["de"],
+  locales: ["de", "en", "nl"],
   defaultLocale: "de",
   // Eine manuelle Sprachwahl soll länger halten als nur die Browser-Session.
-  localeCookie: { maxAge: 60 * 60 * 24 * 365 },
+  localeCookie: { maxAge: LOCALE_COOKIE_MAX_AGE },
   // Ordnernamen unter app/[locale]/ bleiben deutsch, die öffentlichen URLs
   // sind je Sprache übersetzt.
   pathnames: {
     "/": "/",
-    "/leistungen": { de: "/leistungen" },
-    "/ueber-mich": { de: "/ueber-mich" },
-    "/kontakt": { de: "/kontakt" },
-    "/rechner": { de: "/rechner" },
-    "/praevention": { de: "/praevention" },
-    "/impressum": { de: "/impressum" },
-    "/datenschutz": { de: "/datenschutz" },
+    "/leistungen": { de: "/leistungen", en: "/services", nl: "/diensten" },
+    "/ueber-mich": { de: "/ueber-mich", en: "/about", nl: "/over-mij" },
+    "/kontakt": { de: "/kontakt", en: "/contact", nl: "/contact" },
+    "/rechner": {
+      de: "/rechner",
+      en: "/calorie-calculator",
+      nl: "/caloriecalculator",
+    },
+    // Existiert nur auf Deutsch (Krankenkassen-Erstattung), EN/NL → 404.
+    "/praevention": {
+      de: "/praevention",
+      en: "/prevention",
+      nl: "/preventie",
+    },
+    "/impressum": { de: "/impressum", en: "/legal-notice", nl: "/colofon" },
+    "/datenschutz": { de: "/datenschutz", en: "/privacy", nl: "/privacy" },
     "/design-system": "/design-system",
   },
 });

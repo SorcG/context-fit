@@ -6,8 +6,35 @@ Stand: Design-System freigegeben, Startseite + drei vertiefende Unterseiten (`/l
 
 # Mehrsprachigkeit (DE / EN / NL) — Umbauplan
 
-> **Status: Entwurf, wartet auf Freigabe.** Es wurde noch kein Code geändert.
-> Der Rest dieser Datei (ab „Sitemap") beschreibt den aktuellen, einsprachigen Stand.
+> **Status: Phase 1–3 umgesetzt** (Branch `feature/i18n`). Phase 4 (Sitemap, `openGraph.locale`) steht noch aus.
+> Die Pfad-Angaben ab „Sitemap" beziehen sich auf die deutschen URLs (`/de/...`); EN/NL siehe unten.
+
+### Getroffene Entscheidungen (Freigabe vom 30.09.2026)
+
+1. **Rechtstexte** bleiben in allen Sprachen Deutsch (`lang="de"` am Textblock), auf EN/NL steht ein Hinweis darüber (`components/legal/LegalHeader.tsx`).
+2. **Übersetzte URLs direkt**:
+
+| intern (Ordner) | de | en | nl |
+|---|---|---|---|
+| `/leistungen` | `/de/leistungen` | `/en/services` | `/nl/diensten` |
+| `/ueber-mich` | `/de/ueber-mich` | `/en/about` | `/nl/over-mij` |
+| `/kontakt` | `/de/kontakt` | `/en/contact` | `/nl/contact` |
+| `/rechner` | `/de/rechner` | `/en/calorie-calculator` | `/nl/caloriecalculator` |
+| `/praevention` | `/de/praevention` | — (404) | — (404) |
+| `/impressum` | `/de/impressum` | `/en/legal-notice` | `/nl/colofon` |
+| `/datenschutz` | `/de/datenschutz` | `/en/privacy` | `/nl/privacy` |
+
+3. **Prävention nur auf Deutsch**: Tab in BottomTabNav/DesktopNav auf EN/NL ausgeblendet, Seite liefert dort 404, Sprachwechsel von `/de/praevention` führt auf die Startseite der Zielsprache, hreflang-Link-Header für diese Seite wird im `proxy.ts` entfernt.
+4. **PAL-Stufen-Namen** bleiben Englisch (`lib/rechner-anzeige.ts`), die Hilfetexte darunter sind übersetzt (`Rechner.palHelper`).
+5. **Impressum**: Kontaktsprachen um Niederländisch ergänzt.
+6. **Bestandskorrekturen**: „dachte. Ich", Eyebrow „Prävention" statt „PRÄVENTION".
+7. **Sprachumschalter mit Flaggen** (SVGs aus dem npm-Paket `country-flag-icons`, EN = britische Flagge) + Kürzel. Mobil als Lasche auf der Tab-Bar, Desktop und Footer als Inline-Variante (`components/LanguageSwitcher.tsx`). Die Wahl wird ein Jahr im Cookie `NEXT_LOCALE` gespeichert.
+
+### Hinweise für die Weiterarbeit
+
+- **Neue Texte** immer zuerst in `messages/de.json`, dann in `en.json`/`nl.json`; `npm run check:i18n` meldet fehlende Keys. Fehlt ein Key trotzdem, erscheint live der deutsche Text (Fallback in `i18n/request.ts`).
+- **Interne Links** immer über `Link`/`usePathname` aus `@/i18n/navigation` und mit dem internen (deutschen) Pfad, z. B. `href="/leistungen"` — das Präfix und die übersetzte URL setzt next-intl.
+- **`@swc/core` ist per `overrides` auf 1.16.2 gepinnt.** next-intl lädt `@swc/core` beim Start von `next.config.ts`; Version 1.16.12 (erschienen am 29.09.2026) verweigert auf diesem Rechner den Start, weil sie ihren nativen Cache unter `AppData\Local` wegen dort gesetzter Fremd-Berechtigungen ablehnt. Pin wieder entfernen, sobald eine neuere Version das behebt.
 
 ## 1. Technische Eckdaten
 

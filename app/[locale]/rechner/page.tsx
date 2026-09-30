@@ -28,7 +28,7 @@ export default async function RechnerPage({
           <p className="text-sm font-semibold tracking-wide text-accent lg:text-base">
             {t("eyebrow")}
           </p>
-          <h1 className="text-3xl leading-[1.1] text-text lg:text-5xl">
+          <h1 className="text-3xl leading-[1.1] text-text hyphens-auto break-words lg:text-5xl">
             {t("seitentitel")}
           </h1>
           <p className="text-base leading-relaxed text-text lg:text-lg">

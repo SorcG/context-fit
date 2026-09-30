@@ -29,7 +29,8 @@ export type LegalBlock =
 
 export function LegalContent({ blocks }: { blocks: LegalBlock[] }) {
   return (
-    <div className="flex flex-col gap-4">
+    // Rechtstexte sind in allen Sprachen die deutsche Fassung.
+    <div lang="de" className="flex flex-col gap-4 hyphens-auto break-words">
       {blocks.map((block, i) => {
         switch (block.type) {
           case "h2":
