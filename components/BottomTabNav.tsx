@@ -2,7 +2,6 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { LanguageTab } from "@/components/LanguageSwitcher";
 
 function HomeIcon({ className }: { className?: string }) {
   return (
@@ -99,7 +98,6 @@ export default function BottomTabNav() {
       className="fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-1.5 border-t border-border bg-surface px-3 pt-2 lg:hidden"
       style={{ paddingBottom: "max(10px, env(safe-area-inset-bottom))" }}
     >
-      <LanguageTab />
       {navItems.map(({ href, key, Icon }) => {
         // Prävention (Krankenkassen-Erstattung) ist nur für Deutschland relevant.
         if (key === "praevention" && locale !== "de") return null;

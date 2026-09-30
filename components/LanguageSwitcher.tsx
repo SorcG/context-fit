@@ -51,116 +51,20 @@ function useSwitchLocale() {
 }
 
 /**
- * Kleine Lasche auf der Oberkante der mobilen Tab-Bar, öffnet ein
- * Popover nach oben.
- */
-export function LanguageTab() {
-  const locale = useLocale();
-  const t = useTranslations("Language");
-  const { switchTo, isPending } = useSwitchLocale();
-  const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onPointer = (e: PointerEvent) => {
-      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("pointerdown", onPointer);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("pointerdown", onPointer);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  if (routing.locales.length < 2) return null;
-
-  return (
-    <div ref={rootRef} className="absolute -top-[26px] right-3">
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        aria-haspopup="menu"
-        aria-label={t("label")}
-        className={`relative flex h-[26px] items-center gap-1.5 rounded-t-lg border border-b-0 border-border bg-surface px-2.5 text-[11px] font-semibold uppercase text-muted transition-opacity after:absolute after:-inset-x-1 after:-inset-y-2 after:content-[''] ${
-          isPending ? "opacity-60" : ""
-        }`}
-      >
-        <Flag locale={locale} className="h-2.5 w-[15px]" />
-        {locale}
-        <svg
-          viewBox="0 0 10 10"
-          className={`h-2 w-2 transition-transform ${open ? "rotate-180" : ""}`}
-          aria-hidden
-        >
-          <path
-            d="M2 6.5L5 3.5l3 3"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-
-      {open && (
-        <div
-          role="menu"
-          className="absolute bottom-[calc(100%+8px)] right-0 flex min-w-[168px] flex-col overflow-hidden rounded-xl border border-border bg-surface py-1 shadow-lg shadow-black/40"
-        >
-          {routing.locales.map((l) => {
-            const active = l === locale;
-            return (
-              <button
-                key={l}
-                type="button"
-                role="menuitemradio"
-                aria-checked={active}
-                onClick={() => {
-                  setOpen(false);
-                  if (!active) switchTo(l);
-                }}
-                className={`flex min-h-[44px] items-center gap-3 px-4 text-left text-sm transition-colors active:bg-border/60 ${
-                  active ? "text-accent" : "text-text"
-                }`}
-              >
-                <Flag locale={l} className="h-3 w-[18px]" />
-                <span className="w-6 text-xs font-semibold uppercase text-muted">
-                  {l}
-                </span>
-                <span className="flex-1">{languages[l].name}</span>
-                {active && (
-                  <span
-                    className="h-1.5 w-1.5 rounded-full bg-accent"
-                    aria-hidden
-                  />
-                )}
-              </button>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
-
-/**
  * Kompaktes Dropdown für DesktopNav und Footer: zeigt nur die aktuelle
  * Flagge, die übrigen Sprachen fahren beim Hovern (bzw. Klick/Tab) heraus.
  * placement "down" = nach unten (Navigation), "up" = nach oben (Footer).
+ * overlay = Variante über Fotos (mobil oben rechts): Pill-Hintergrund,
+ * Menü rechtsbündig.
  */
 export function LanguageMenu({
   placement = "down",
   openOnHover = true,
+  overlay = false,
 }: {
   placement?: "down" | "up";
   openOnHover?: boolean;
+  overlay?: boolean;
 }) {
   const locale = useLocale();
   const t = useTranslations("Language");
@@ -202,7 +106,11 @@ export function LanguageMenu({
         aria-expanded={open}
         aria-haspopup="menu"
         aria-label={t("label")}
-        className="flex min-h-[32px] items-center gap-1.5 rounded-full px-2 text-xs font-semibold uppercase text-muted transition-colors hover:text-text"
+        className={`flex items-center gap-1.5 rounded-full text-xs font-semibold uppercase transition-colors ${
+          overlay
+            ? "min-h-[40px] bg-bg/70 px-3 text-text backdrop-blur"
+            : "min-h-[32px] px-2 text-muted hover:text-text"
+        }`}
       >
         <Flag locale={locale} className="h-3 w-[18px]" />
         {locale}
@@ -227,7 +135,9 @@ export function LanguageMenu({
       {/* pt/pb statt Abstand, damit die Maus beim Herunterfahren nicht ins Leere gerät */}
       <div
         role="menu"
-        className={`absolute left-1/2 z-50 -translate-x-1/2 ${
+        className={`absolute z-50 ${
+          overlay ? "right-0" : "left-1/2 -translate-x-1/2"
+        } ${
           down ? "top-full pt-1" : "bottom-full pb-1"
         } ${open ? "" : "pointer-events-none"}`}
       >

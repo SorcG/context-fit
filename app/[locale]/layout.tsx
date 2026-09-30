@@ -8,6 +8,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import BottomTabNav from "@/components/BottomTabNav";
 import DesktopNav from "@/components/DesktopNav";
 import Footer from "@/components/Footer";
+import { LanguageMenu } from "@/components/LanguageSwitcher";
 import "../globals.css";
 
 const unbounded = Unbounded({
@@ -63,9 +64,13 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${unbounded.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg text-text pb-24 lg:pb-0">
+      <body className="min-h-full flex flex-col relative bg-bg text-text pb-24 lg:pb-0">
         <NextIntlClientProvider>
           <DesktopNav />
+          {/* Mobil oben rechts über dem Hero; am Desktop sitzt der Umschalter in der Nav. */}
+          <div className="absolute right-4 top-4 z-40 lg:hidden">
+            <LanguageMenu openOnHover={false} overlay />
+          </div>
           <SmoothScroll>{children}</SmoothScroll>
           <Footer />
           <BottomTabNav />
