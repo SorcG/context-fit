@@ -91,6 +91,30 @@
     "zielgruppe": {
       "statement": "Grapplers, drukke vaders en heel gewone mensen."
     },
+    "testimonials": {
+      "eyebrow": "Stemmen uit de training",
+      "title": "Dit zeggen mijn atleten.",
+      "items": {
+        "luca": {
+          "name": "Luca",
+          "role": "Vechtsporter",
+          "quote": "Ik was totaal niet fit, maar wilde ambitieus aan vechtsport doen. Bram heeft me stap voor stap opgebouwd — inmiddels heb ik in wedstrijden geen conditieproblemen meer. Je merkt het bij hem: passie ontmoet jarenlange expertise."
+        },
+        "justin": {
+          "name": "Justin",
+          "role": "Grappling-atleet",
+          "quote": "Ik wilde mijn ontwikkeling in grappling zo snel mogelijk versnellen. Bram liet me zien dat het vaak om details draait — details die alleen iemand met echte expertise herkent. Hij gaat volledig individueel op je in, geen standaardprogramma."
+        },
+        "eryk": {
+          "name": "Eryk",
+          "role": "Thaibokser, aankomend MMA-atleet",
+          "quote": "Ik kom uit het thaiboksen en wilde voor mijn MMA-carrière mijn ground game opbouwen. Sinds ik met Bram train, zijn mijn skills merkbaar verbeterd — al na korte tijd."
+        }
+      },
+      "aria": {
+        "gotoSlide": "Naar testimonial {n}"
+      }
+    },
     "kontakt": {
       "title": "Klaar voor de volgende stap?",
       "body": "Plan een vrijblijvend kennismakingsgesprek en ontdek hoe een plan eruitziet dat bij jouw context past.",

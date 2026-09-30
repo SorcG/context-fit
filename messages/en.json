@@ -91,6 +91,30 @@
     "zielgruppe": {
       "statement": "Grapplers, busy dads and completely normal people."
     },
+    "testimonials": {
+      "eyebrow": "Voices from training",
+      "title": "What my athletes say.",
+      "items": {
+        "luca": {
+          "name": "Luca",
+          "role": "Martial artist",
+          "quote": "I wasn't fit at all, but wanted to do martial arts ambitiously. Bram built me up step by step — by now I have no conditioning problems left in competition. You can tell with him: passion meets years of expertise."
+        },
+        "justin": {
+          "name": "Justin",
+          "role": "Grappling athlete",
+          "quote": "I wanted to push my development in grappling as fast as possible. Bram showed me that it often comes down to details — details only someone with real expertise can spot. He works with you completely individually, no standard program."
+        },
+        "eryk": {
+          "name": "Eryk",
+          "role": "Thai boxer, aspiring MMA athlete",
+          "quote": "I come from Thai boxing and wanted to build my ground game for my MMA career. Since training with Bram, my skills have noticeably improved — after only a short time."
+        }
+      },
+      "aria": {
+        "gotoSlide": "Go to testimonial {n}"
+      }
+    },
     "kontakt": {
       "title": "Ready for the next step?",
       "body": "Book a free, no-obligation intro call and find out what a plan that fits your context looks like.",

@@ -21,8 +21,8 @@ export default function UeberMichTeaser() {
         >
           <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border lg:aspect-[4/5]">
             <Image
-              src="/images/smile_with_curl.jpeg"
-              alt={tAlt("smileWithCurl")}
+              src="/images/sideshot_2.jpeg"
+              alt={tAlt("sideshot2")}
               fill
               sizes="(min-width: 1024px) 40vw, (max-width: 480px) 100vw, 480px"
               className="object-cover object-top"

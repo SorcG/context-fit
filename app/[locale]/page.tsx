@@ -5,6 +5,7 @@ import WarumContextFit from "@/components/sections/WarumContextFit";
 import LeistungenTeaser from "@/components/sections/LeistungenTeaser";
 import UeberMichTeaser from "@/components/sections/UeberMichTeaser";
 import Zielgruppe from "@/components/sections/Zielgruppe";
+import Testimonials from "@/components/sections/Testimonials";
 import Kontakt from "@/components/sections/Kontakt";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -32,6 +33,7 @@ export default async function Home({
       <LeistungenTeaser />
       <UeberMichTeaser />
       <Zielgruppe />
+      <Testimonials />
       <Kontakt />
     </>
   );

@@ -95,6 +95,30 @@
     "zielgruppe": {
       "statement": "Grappler, vielbeschäftigte Väter und ganz normale Menschen."
     },
+    "testimonials": {
+      "eyebrow": "Stimmen aus dem Training",
+      "title": "Das sagen meine Athleten.",
+      "items": {
+        "luca": {
+          "name": "Luca",
+          "role": "Kampfsportler",
+          "quote": "Ich war absolut nicht fit, wollte aber ambitioniert Kampfsport betreiben. Bram hat mich Stück für Stück aufgebaut — mittlerweile habe ich im Wettkampf keine konditionellen Probleme mehr. Man merkt bei ihm: Leidenschaft trifft auf jahrelange Expertise."
+        },
+        "justin": {
+          "name": "Justin",
+          "role": "Grappling-Athlet",
+          "quote": "Ich wollte meine Entwicklung im Grappling möglichst schnell vorantreiben. Bram hat mir gezeigt, dass es oft auf Details ankommt — Details, die nur jemand mit echter Expertise erkennt. Er geht absolut individuell auf einen ein, kein Standardprogramm."
+        },
+        "eryk": {
+          "name": "Eryk",
+          "role": "Thaiboxer, angehender MMA-Athlet",
+          "quote": "Ich komme aus dem Thaiboxen und wollte für meine MMA-Karriere mein Ground Game aufbauen. Seit ich mit Bram trainiere, haben sich meine Skills spürbar verbessert — nach erst kurzer Zeit."
+        }
+      },
+      "aria": {
+        "gotoSlide": "Zu Testimonial {n} wechseln"
+      }
+    },
     "kontakt": {
       "title": "Bereit für den nächsten Schritt?",
       "body": "Vereinbare ein unverbindliches Erstgespräch und finde heraus, wie ein Plan aussieht, der zu deinem Kontext passt.",
