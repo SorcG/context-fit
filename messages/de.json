@@ -256,9 +256,11 @@
         "resistance": "Krafttraining",
         "martial_arts": "Kampfsport (BJJ, Kickboxen)"
       },
-      "einheitenProWoche": "Einheiten pro Woche",
-      "minutenProEinheit": "Minuten pro Einheit",
-      "ruhetageProWoche": "Ruhetage pro Woche"
+      "ruhetageProWoche": "Ruhetage pro Woche",
+      "einheitenProWocheKraft": "Sessions pro Woche (Krafttraining)",
+      "minutenProEinheitKraft": "Minuten pro Einheit (Krafttraining)",
+      "einheitenProWocheKampfsport": "Sessions pro Woche (Kampfsport)",
+      "minutenProEinheitKampfsport": "Minuten pro Einheit (Kampfsport)"
     },
     "koerperfettReferenz": {
       "link": "Unsicher? Referenzbilder ansehen",
@@ -308,7 +310,9 @@
       "soKommenWirDarauf": "So kommen wir darauf",
       "nochmalBerechnen": "Nochmal berechnen",
       "zumErstgespraech": "Zum Erstgespräch",
-      "trainingsKcalZeile": "+ {kcal} kcal aus dem Training"
+      "trainingsKcalRuhetag": "0 kcal (Ruhetag)",
+      "trainingsKcalEinzel": "+ {kcal} kcal aus {art}",
+      "trainingsKcalKombiniert": "+ {kcalA} kcal aus {artA} + {kcalB} kcal aus {artB} = {gesamt} kcal gesamt"
     },
     "aria": {
       "verringern": "{label} verringern",

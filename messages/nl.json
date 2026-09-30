@@ -212,9 +212,11 @@
         "resistance": "Krachttraining",
         "martial_arts": "Vechtsport (BJJ, kickboksen)"
       },
-      "einheitenProWoche": "Trainingen per week",
-      "minutenProEinheit": "Minuten per training",
-      "ruhetageProWoche": "Rustdagen per week"
+      "ruhetageProWoche": "Rustdagen per week",
+      "einheitenProWocheKraft": "Trainingen per week (krachttraining)",
+      "minutenProEinheitKraft": "Minuten per training (krachttraining)",
+      "einheitenProWocheKampfsport": "Trainingen per week (vechtsport)",
+      "minutenProEinheitKampfsport": "Minuten per training (vechtsport)"
     },
     "koerperfettReferenz": {
       "link": "Niet zeker? Bekijk referentiefoto's",
@@ -264,7 +266,9 @@
       "soKommenWirDarauf": "Zo komen we erop",
       "nochmalBerechnen": "Opnieuw berekenen",
       "zumErstgespraech": "Naar het kennismakingsgesprek",
-      "trainingsKcalZeile": "+ {kcal} kcal uit training"
+      "trainingsKcalRuhetag": "0 kcal (rustdag)",
+      "trainingsKcalEinzel": "+ {kcal} kcal uit {art}",
+      "trainingsKcalKombiniert": "+ {kcalA} kcal uit {artA} + {kcalB} kcal uit {artB} = {gesamt} kcal totaal"
     },
     "aria": {
       "verringern": "{label} verlagen",

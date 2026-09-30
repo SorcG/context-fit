@@ -17,14 +17,18 @@ const KCAL_PER_KG_MIN: Record<TrainingType, number> = {
   martial_arts: 0.2,
 };
 
+export interface TrainingSession {
+  type: TrainingType;
+  minutes: number;
+}
+
 export interface CalcInput {
   sex: Sex;
   weightKg: number;
   bodyFatPct: number;
   palLevel: PalLevel;
   goal: Goal;
-  trainingType: TrainingType;
-  minutes: number;
+  sessions: TrainingSession[];
 }
 
 export interface MacroResult {
@@ -52,13 +56,15 @@ export function calc({
   bodyFatPct,
   palLevel,
   goal,
-  trainingType,
-  minutes,
+  sessions,
 }: CalcInput): CalcResult {
   const ffm = weightKg * (1 - bodyFatPct / 100);
   const bmr = 370 + 21.6 * ffm;
   const pal = PAL[sex][palLevel];
-  const trainEE = KCAL_PER_KG_MIN[trainingType] * weightKg * minutes;
+  const trainEE = sessions.reduce(
+    (sum, s) => sum + KCAL_PER_KG_MIN[s.type] * weightKg * s.minutes,
+    0,
+  );
 
   const deeRest = bmr * pal * TEF;
   const deeTrain = (bmr * pal + trainEE) * TEF;
@@ -91,6 +97,10 @@ export function calc({
     rest: macros(targetRest),
     train: macros(targetTrain),
   };
+}
+
+export function sessionKcal(session: TrainingSession, weightKg: number): number {
+  return KCAL_PER_KG_MIN[session.type] * weightKg * session.minutes;
 }
 
 /** Rounding is display-only — never feed a rounded value back into calc(). */

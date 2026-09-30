@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useTranslations } from "next-intl";
-import { calc } from "@/lib/rechner-logik";
+import { calc, sessionKcal, type TrainingSession } from "@/lib/rechner-logik";
 import type { RechnerDaten } from "./types";
 import SchrittBasis from "./SchrittBasis";
 import SchrittAlltag from "./SchrittAlltag";
@@ -20,10 +20,13 @@ const initialData: RechnerDaten = {
   bodyFatPct: "",
   palLevel: null,
   goal: null,
-  trainingType: null,
-  sessionsPerWeek: "3",
-  minutesPerSession: "60",
-  restDays: "4",
+  resistanceActive: false,
+  resistanceSessionsPerWeek: "3",
+  resistanceMinutesPerSession: "60",
+  martialArtsActive: false,
+  martialArtsSessionsPerWeek: "3",
+  martialArtsMinutesPerSession: "60",
+  restDays: "7",
 };
 
 function isStepValid(step: number, data: RechnerDaten): boolean {
@@ -44,16 +47,30 @@ function isStepValid(step: number, data: RechnerDaten): boolean {
     case 2:
       return data.palLevel !== null;
     case 3: {
-      if (data.trainingType === null) return false;
-      const sessions = parseFloat(data.sessionsPerWeek);
-      if (Number.isNaN(sessions) || sessions < 0 || sessions > 14) {
-        return false;
-      }
-      if (sessions > 0) {
-        const minutes = parseFloat(data.minutesPerSession);
-        if (Number.isNaN(minutes) || minutes < 10 || minutes > 240) {
+      const validTraining = (sessionsStr: string, minutesStr: string) => {
+        const sessions = parseFloat(sessionsStr);
+        if (Number.isNaN(sessions) || sessions < 0 || sessions > 14) {
           return false;
         }
+        if (sessions > 0) {
+          const minutes = parseFloat(minutesStr);
+          if (Number.isNaN(minutes) || minutes < 10 || minutes > 240) {
+            return false;
+          }
+        }
+        return true;
+      };
+      if (
+        data.resistanceActive &&
+        !validTraining(data.resistanceSessionsPerWeek, data.resistanceMinutesPerSession)
+      ) {
+        return false;
+      }
+      if (
+        data.martialArtsActive &&
+        !validTraining(data.martialArtsSessionsPerWeek, data.martialArtsMinutesPerSession)
+      ) {
+        return false;
       }
       const rest = parseFloat(data.restDays);
       return !Number.isNaN(rest) && rest >= 0;
@@ -126,19 +143,39 @@ export default function Rechner() {
     setStep(1);
   };
 
+  const weightKg = parseFloat(data.weightKg);
+
+  const sessions: TrainingSession[] = [];
+  if (data.resistanceActive && parseInt(data.resistanceSessionsPerWeek, 10) > 0) {
+    sessions.push({
+      type: "resistance",
+      minutes: parseFloat(data.resistanceMinutesPerSession),
+    });
+  }
+  if (
+    data.martialArtsActive &&
+    parseInt(data.martialArtsSessionsPerWeek, 10) > 0
+  ) {
+    sessions.push({
+      type: "martial_arts",
+      minutes: parseFloat(data.martialArtsMinutesPerSession),
+    });
+  }
+
+  const trainingBreakdown = sessions.map((s) => ({
+    type: s.type,
+    kcal: sessionKcal(s, weightKg),
+  }));
+
   const result =
-    isResult && data.sex && data.palLevel && data.goal && data.trainingType
+    isResult && data.sex && data.palLevel && data.goal
       ? calc({
           sex: data.sex,
-          weightKg: parseFloat(data.weightKg),
+          weightKg,
           bodyFatPct: parseFloat(data.bodyFatPct),
           palLevel: data.palLevel,
           goal: data.goal,
-          trainingType: data.trainingType,
-          minutes:
-            parseInt(data.sessionsPerWeek, 10) > 0
-              ? parseFloat(data.minutesPerSession)
-              : 0,
+          sessions,
         })
       : null;
 
@@ -171,7 +208,7 @@ export default function Rechner() {
         {isResult && result && data.goal && data.palLevel && data.sex && (
           <RechnerErgebnis
             result={result}
-            sessionsPerWeek={parseInt(data.sessionsPerWeek, 10) || 0}
+            trainingBreakdown={trainingBreakdown}
             goal={data.goal}
             palLevel={data.palLevel}
             sex={data.sex}

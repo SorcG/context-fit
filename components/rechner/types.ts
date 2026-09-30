@@ -1,4 +1,4 @@
-import type { Goal, PalLevel, Sex, TrainingType } from "@/lib/rechner-logik";
+import type { Goal, PalLevel, Sex } from "@/lib/rechner-logik";
 
 export interface RechnerDaten {
   sex: Sex | null;
@@ -6,9 +6,12 @@ export interface RechnerDaten {
   bodyFatPct: string;
   palLevel: PalLevel | null;
   goal: Goal | null;
-  trainingType: TrainingType | null;
-  sessionsPerWeek: string;
-  minutesPerSession: string;
+  resistanceActive: boolean;
+  resistanceSessionsPerWeek: string;
+  resistanceMinutesPerSession: string;
+  martialArtsActive: boolean;
+  martialArtsSessionsPerWeek: string;
+  martialArtsMinutesPerSession: string;
   restDays: string;
 }
 

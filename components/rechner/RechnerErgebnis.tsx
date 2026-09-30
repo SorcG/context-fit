@@ -13,7 +13,13 @@ import {
   type Goal,
   type PalLevel,
   type Sex,
+  type TrainingType,
 } from "@/lib/rechner-logik";
+
+interface TrainingBreakdownEntry {
+  type: TrainingType;
+  kcal: number;
+}
 
 function MacroCard({
   titel,
@@ -97,15 +103,39 @@ function MacroCard({
   );
 }
 
+function trainingsKcalZeile(
+  t: ReturnType<typeof useTranslations<"Rechner">>,
+  breakdown: TrainingBreakdownEntry[],
+): string {
+  if (breakdown.length === 0) {
+    return t("ergebnis.trainingsKcalRuhetag");
+  }
+  if (breakdown.length === 1) {
+    const [entry] = breakdown;
+    return t("ergebnis.trainingsKcalEinzel", {
+      kcal: String(Math.round(entry.kcal)),
+      art: t(`felder.trainingsartOptionen.${entry.type}`),
+    });
+  }
+  const [a, b] = breakdown;
+  return t("ergebnis.trainingsKcalKombiniert", {
+    kcalA: String(Math.round(a.kcal)),
+    artA: t(`felder.trainingsartOptionen.${a.type}`),
+    kcalB: String(Math.round(b.kcal)),
+    artB: t(`felder.trainingsartOptionen.${b.type}`),
+    gesamt: String(Math.round(a.kcal + b.kcal)),
+  });
+}
+
 export default function RechnerErgebnis({
   result,
-  sessionsPerWeek,
+  trainingBreakdown,
   goal,
   palLevel,
   onReset,
 }: {
   result: CalcResult;
-  sessionsPerWeek: number;
+  trainingBreakdown: TrainingBreakdownEntry[];
   goal: Goal;
   palLevel: PalLevel;
   sex: Sex;
@@ -114,7 +144,7 @@ export default function RechnerErgebnis({
   const t = useTranslations("Rechner");
   const goalLabel = t(`felder.zielOptionen.${goal}`);
   const palInfo = palAnzeige[palLevel];
-  const hasTraining = sessionsPerWeek > 0;
+  const hasTraining = result.trainEE > 0;
 
   return (
     <div className="flex flex-col gap-8">
@@ -157,21 +187,17 @@ export default function RechnerErgebnis({
           carbClamped={result.rest.carbClamped}
           delay={0}
         />
-        {hasTraining && (
-          <MacroCard
-            titel={t("output.trainingstag")}
-            goalLabel={goalLabel}
-            kcal={result.train.kcal}
-            proteinG={result.train.proteinG}
-            fatG={result.train.fatG}
-            carbG={result.train.carbG}
-            carbClamped={result.train.carbClamped}
-            zusatzZeile={t("ergebnis.trainingsKcalZeile", {
-              kcal: String(Math.round(result.trainEE)),
-            })}
-            delay={0.1}
-          />
-        )}
+        <MacroCard
+          titel={t("output.trainingstag")}
+          goalLabel={goalLabel}
+          kcal={result.train.kcal}
+          proteinG={result.train.proteinG}
+          fatG={result.train.fatG}
+          carbG={result.train.carbG}
+          carbClamped={result.train.carbClamped}
+          zusatzZeile={trainingsKcalZeile(t, trainingBreakdown)}
+          delay={0.1}
+        />
       </div>
 
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center">

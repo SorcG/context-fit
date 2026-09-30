@@ -212,9 +212,11 @@
         "resistance": "Strength training",
         "martial_arts": "Martial arts (BJJ, kickboxing)"
       },
-      "einheitenProWoche": "Sessions per week",
-      "minutenProEinheit": "Minutes per session",
-      "ruhetageProWoche": "Rest days per week"
+      "ruhetageProWoche": "Rest days per week",
+      "einheitenProWocheKraft": "Sessions per week (strength training)",
+      "minutenProEinheitKraft": "Minutes per session (strength training)",
+      "einheitenProWocheKampfsport": "Sessions per week (martial arts)",
+      "minutenProEinheitKampfsport": "Minutes per session (martial arts)"
     },
     "koerperfettReferenz": {
       "link": "Not sure? See reference photos",
@@ -264,7 +266,9 @@
       "soKommenWirDarauf": "How we got there",
       "nochmalBerechnen": "Calculate again",
       "zumErstgespraech": "Book an intro call",
-      "trainingsKcalZeile": "+ {kcal} kcal from training"
+      "trainingsKcalRuhetag": "0 kcal (rest day)",
+      "trainingsKcalEinzel": "+ {kcal} kcal from {art}",
+      "trainingsKcalKombiniert": "+ {kcalA} kcal from {artA} + {kcalB} kcal from {artB} = {gesamt} kcal total"
     },
     "aria": {
       "verringern": "Decrease {label}",

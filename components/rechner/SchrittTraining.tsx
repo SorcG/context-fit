@@ -9,19 +9,52 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
   const t = useTranslations("Rechner");
   const restTouchedRef = useRef(false);
 
-  const sessions = parseInt(data.sessionsPerWeek, 10) || 0;
-  const minutes = parseInt(data.minutesPerSession, 10) || 60;
+  const resistanceActive = data.resistanceActive;
+  const martialArtsActive = data.martialArtsActive;
+  const resistanceSessions = parseInt(data.resistanceSessionsPerWeek, 10) || 0;
+  const resistanceMinutes = parseInt(data.resistanceMinutesPerSession, 10) || 60;
+  const martialArtsSessions = parseInt(data.martialArtsSessionsPerWeek, 10) || 0;
+  const martialArtsMinutes = parseInt(data.martialArtsMinutesPerSession, 10) || 60;
   const restDays = parseInt(data.restDays, 10) || 0;
 
-  const handleSessionsChange = (v: number) => {
-    if (restTouchedRef.current) {
-      update({ sessionsPerWeek: String(v) });
-    } else {
-      update({
-        sessionsPerWeek: String(v),
-        restDays: String(Math.max(0, 7 - v)),
-      });
-    }
+  const totalSessions =
+    (resistanceActive ? resistanceSessions : 0) +
+    (martialArtsActive ? martialArtsSessions : 0);
+
+  const autoRestDays = (nextTotalSessions: number) =>
+    restTouchedRef.current
+      ? {}
+      : { restDays: String(Math.max(0, 7 - nextTotalSessions)) };
+
+  const handleResistanceToggle = () => {
+    const next = !resistanceActive;
+    const nextTotal =
+      (next ? resistanceSessions : 0) +
+      (martialArtsActive ? martialArtsSessions : 0);
+    update({ resistanceActive: next, ...autoRestDays(nextTotal) });
+  };
+
+  const handleMartialArtsToggle = () => {
+    const next = !martialArtsActive;
+    const nextTotal =
+      (resistanceActive ? resistanceSessions : 0) + (next ? martialArtsSessions : 0);
+    update({ martialArtsActive: next, ...autoRestDays(nextTotal) });
+  };
+
+  const handleResistanceSessionsChange = (v: number) => {
+    const nextTotal = v + (martialArtsActive ? martialArtsSessions : 0);
+    update({
+      resistanceSessionsPerWeek: String(v),
+      ...autoRestDays(nextTotal),
+    });
+  };
+
+  const handleMartialArtsSessionsChange = (v: number) => {
+    const nextTotal = (resistanceActive ? resistanceSessions : 0) + v;
+    update({
+      martialArtsSessionsPerWeek: String(v),
+      ...autoRestDays(nextTotal),
+    });
   };
 
   const handleRestChange = (v: number) => {
@@ -29,7 +62,7 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
     update({ restDays: String(v) });
   };
 
-  const mismatch = sessions + restDays !== 7;
+  const mismatch = totalSessions + restDays !== 7;
 
   return (
     <div className="flex flex-col gap-6">
@@ -39,35 +72,64 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
         </span>
         <div className="grid grid-cols-2 gap-3">
           <ToggleCard
-            selected={data.trainingType === "resistance"}
-            onClick={() => update({ trainingType: "resistance" })}
+            selected={resistanceActive}
+            onClick={handleResistanceToggle}
             title={t("felder.trainingsartOptionen.resistance")}
           />
           <ToggleCard
-            selected={data.trainingType === "martial_arts"}
-            onClick={() => update({ trainingType: "martial_arts" })}
+            selected={martialArtsActive}
+            onClick={handleMartialArtsToggle}
             title={t("felder.trainingsartOptionen.martial_arts")}
           />
         </div>
       </div>
 
-      <Stepper
-        label={t("felder.einheitenProWoche")}
-        value={sessions}
-        onChange={handleSessionsChange}
-        min={0}
-        max={14}
-      />
+      {resistanceActive && (
+        <div className="flex flex-col gap-6">
+          <Stepper
+            label={t("felder.einheitenProWocheKraft")}
+            value={resistanceSessions}
+            onChange={handleResistanceSessionsChange}
+            min={0}
+            max={14}
+          />
+          {resistanceSessions > 0 && (
+            <Stepper
+              label={t("felder.minutenProEinheitKraft")}
+              value={resistanceMinutes}
+              onChange={(v) =>
+                update({ resistanceMinutesPerSession: String(v) })
+              }
+              min={10}
+              max={240}
+              step={5}
+            />
+          )}
+        </div>
+      )}
 
-      {sessions > 0 && (
-        <Stepper
-          label={t("felder.minutenProEinheit")}
-          value={minutes}
-          onChange={(v) => update({ minutesPerSession: String(v) })}
-          min={10}
-          max={240}
-          step={5}
-        />
+      {martialArtsActive && (
+        <div className="flex flex-col gap-6">
+          <Stepper
+            label={t("felder.einheitenProWocheKampfsport")}
+            value={martialArtsSessions}
+            onChange={handleMartialArtsSessionsChange}
+            min={0}
+            max={14}
+          />
+          {martialArtsSessions > 0 && (
+            <Stepper
+              label={t("felder.minutenProEinheitKampfsport")}
+              value={martialArtsMinutes}
+              onChange={(v) =>
+                update({ martialArtsMinutesPerSession: String(v) })
+              }
+              min={10}
+              max={240}
+              step={5}
+            />
+          )}
+        </div>
       )}
 
       <Stepper
@@ -80,7 +142,7 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
 
       {mismatch && (
         <p className="text-sm text-accent">
-          {t("warnungen.tageMismatch", { total: sessions + restDays })}
+          {t("warnungen.tageMismatch", { total: totalSessions + restDays })}
         </p>
       )}
     </div>
