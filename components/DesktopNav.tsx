@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { LanguageInline } from "@/components/LanguageSwitcher";
+import { LanguageMenu } from "@/components/LanguageSwitcher";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -68,7 +68,7 @@ export default function DesktopNav() {
       </div>
 
       <div className="flex items-center gap-6">
-        <LanguageInline />
+        <LanguageMenu />
         <Link
           href="/kontakt"
           className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-text transition-transform hover:scale-105 active:scale-95"

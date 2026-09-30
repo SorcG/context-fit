@@ -151,43 +151,114 @@ export function LanguageTab() {
 }
 
 /**
- * Inline-Variante für DesktopNav und Footer: Flagge + Kürzel nebeneinander.
+ * Kompaktes Dropdown für DesktopNav und Footer: zeigt nur die aktuelle
+ * Flagge, die übrigen Sprachen fahren beim Hovern (bzw. Klick/Tab) heraus.
+ * placement "down" = nach unten (Navigation), "up" = nach oben (Footer).
  */
-export function LanguageInline({ className = "" }: { className?: string }) {
+export function LanguageMenu({
+  placement = "down",
+  openOnHover = true,
+}: {
+  placement?: "down" | "up";
+  openOnHover?: boolean;
+}) {
   const locale = useLocale();
   const t = useTranslations("Language");
   const { switchTo } = useSwitchLocale();
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   if (routing.locales.length < 2) return null;
 
+  const others = routing.locales.filter((l) => l !== locale);
+  const down = placement === "down";
+
   return (
     <div
-      role="group"
-      aria-label={t("label")}
-      className={`flex items-center gap-1 ${className}`}
+      ref={rootRef}
+      className="relative"
+      onMouseEnter={openOnHover ? () => setOpen(true) : undefined}
+      onMouseLeave={openOnHover ? () => setOpen(false) : undefined}
     >
-      {routing.locales.map((l) => {
-        const active = l === locale;
-        return (
-          <button
-            key={l}
-            type="button"
-            lang={l}
-            aria-pressed={active}
-            aria-label={languages[l].name}
-            onClick={() => !active && switchTo(l)}
-            className={`flex min-h-[32px] items-center gap-1.5 rounded-full px-2 text-xs font-semibold uppercase transition-colors ${
-              active ? "text-accent" : "text-muted hover:text-text"
-            }`}
-          >
-            <Flag
-              locale={l}
-              className={`h-2.5 w-[15px] transition-opacity ${active ? "" : "opacity-60"}`}
-            />
-            {l}
-          </button>
-        );
-      })}
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        aria-label={t("label")}
+        className="flex min-h-[32px] items-center gap-1.5 rounded-full px-2 text-xs font-semibold uppercase text-muted transition-colors hover:text-text"
+      >
+        <Flag locale={locale} className="h-3 w-[18px]" />
+        {locale}
+        <svg
+          viewBox="0 0 10 10"
+          className={`h-2 w-2 transition-transform duration-200 ${
+            open === down ? "rotate-180" : ""
+          }`}
+          aria-hidden
+        >
+          <path
+            d="M2 3.5L5 6.5l3-3"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {/* pt/pb statt Abstand, damit die Maus beim Herunterfahren nicht ins Leere gerät */}
+      <div
+        role="menu"
+        className={`absolute left-1/2 z-50 -translate-x-1/2 ${
+          down ? "top-full pt-1" : "bottom-full pb-1"
+        } ${open ? "" : "pointer-events-none"}`}
+      >
+        <div className="flex flex-col items-stretch gap-1">
+          {others.map((l, i) => (
+            <button
+              key={l}
+              type="button"
+              role="menuitem"
+              lang={l}
+              aria-label={languages[l].name}
+              tabIndex={open ? 0 : -1}
+              onClick={() => {
+                setOpen(false);
+                switchTo(l);
+              }}
+              style={{ transitionDelay: open ? `${i * 60}ms` : "0ms" }}
+              className={`flex min-h-[32px] items-center gap-1.5 rounded-full border border-border bg-surface px-2.5 text-xs font-semibold uppercase text-text shadow-lg shadow-black/40 transition-[opacity,transform,color] duration-200 hover:text-accent ${
+                open
+                  ? "translate-y-0 opacity-100"
+                  : down
+                    ? "-translate-y-3 opacity-0"
+                    : "translate-y-3 opacity-0"
+              }`}
+            >
+              <Flag locale={l} className="h-3 w-[18px]" />
+              {l}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

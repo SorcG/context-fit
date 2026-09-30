@@ -28,7 +28,8 @@ Stand: Design-System freigegeben, Startseite + drei vertiefende Unterseiten (`/l
 4. **PAL-Stufen-Namen** bleiben Englisch (`lib/rechner-anzeige.ts`), die Hilfetexte darunter sind übersetzt (`Rechner.palHelper`).
 5. **Impressum**: Kontaktsprachen um Niederländisch ergänzt.
 6. **Bestandskorrekturen**: „dachte. Ich", Eyebrow „Prävention" statt „PRÄVENTION".
-7. **Sprachumschalter mit Flaggen** (SVGs aus dem npm-Paket `country-flag-icons`, EN = britische Flagge) + Kürzel. Mobil als Lasche auf der Tab-Bar, Desktop und Footer als Inline-Variante (`components/LanguageSwitcher.tsx`). Die Wahl wird ein Jahr im Cookie `NEXT_LOCALE` gespeichert.
+7. **Sprachumschalter mit Flaggen** (SVGs aus `country-flag-icons`, EN = britische Flagge). Es ist immer nur die aktuelle Flagge sichtbar: Desktop-Nav klappt die anderen beim Hover nach unten aus, Footer und die Lasche auf der mobilen Tab-Bar per Klick (`components/LanguageSwitcher.tsx`). Die Wahl wird ein Jahr im Cookie `NEXT_LOCALE` gespeichert.
+8. **Startsprache immer Deutsch**: `localeDetection: false` — `/` leitet unabhängig von Browsersprache und Cookie auf `/de`. EN/NL nur über Umschalter oder direkte Links (`/en`, `/nl`).
 
 ### Hinweise für die Weiterarbeit
 

@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { LanguageInline } from "@/components/LanguageSwitcher";
+import { LanguageMenu } from "@/components/LanguageSwitcher";
 
 export default function Footer() {
   const t = useTranslations("Footer");
@@ -26,7 +26,7 @@ export default function Footer() {
           </Link>
         </div>
         {/* Auch hier, weil die Tab-Bar auf /rechner ausgeblendet ist. */}
-        <LanguageInline />
+        <LanguageMenu placement="up" openOnHover={false} />
       </div>
     </footer>
   );

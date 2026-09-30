@@ -5,6 +5,9 @@ export const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 export const routing = defineRouting({
   locales: ["de", "en", "nl"],
   defaultLocale: "de",
+  // Immer Deutsch als Startsprache — keine Erkennung per Browsersprache.
+  // Andere Sprachen nur über den Umschalter bzw. direkte /en, /nl-Links.
+  localeDetection: false,
   // Eine manuelle Sprachwahl soll länger halten als nur die Browser-Session.
   localeCookie: { maxAge: LOCALE_COOKIE_MAX_AGE },
   // Ordnernamen unter app/[locale]/ bleiben deutsch, die öffentlichen URLs
