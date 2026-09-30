@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { scrollToTop } from "@/lib/lenis-instance";
 
 function HomeIcon({ className }: { className?: string }) {
   return (
@@ -106,6 +107,12 @@ export default function BottomTabNav() {
           <Link
             key={href}
             href={href}
+            onClick={(e) => {
+              if (active) {
+                e.preventDefault();
+                scrollToTop();
+              }
+            }}
             className={`flex min-h-[48px] flex-1 flex-col items-center justify-center gap-1 rounded-xl transition-transform active:scale-95 ${
               active ? "text-accent" : "text-muted"
             }`}
@@ -117,6 +124,12 @@ export default function BottomTabNav() {
       })}
       <Link
         href="/kontakt"
+        onClick={(e) => {
+          if (pathname === "/kontakt") {
+            e.preventDefault();
+            scrollToTop();
+          }
+        }}
         className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-1 rounded-xl bg-accent text-text transition-transform active:scale-95"
       >
         <ContactIcon className="h-5 w-5" />

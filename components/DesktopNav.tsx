@@ -7,6 +7,7 @@ import { LanguageMenu } from "@/components/LanguageSwitcher";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scrollToTop } from "@/lib/lenis-instance";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,6 +58,12 @@ export default function DesktopNav() {
             <Link
               key={href}
               href={href}
+              onClick={(e) => {
+                if (active) {
+                  e.preventDefault();
+                  scrollToTop();
+                }
+              }}
               className={`text-sm font-medium transition-colors hover:text-text ${
                 active ? "text-accent" : "text-muted"
               }`}
@@ -71,6 +78,12 @@ export default function DesktopNav() {
         <LanguageMenu />
         <Link
           href="/kontakt"
+          onClick={(e) => {
+            if (pathname === "/kontakt") {
+              e.preventDefault();
+              scrollToTop();
+            }
+          }}
           className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-text transition-transform hover:scale-105 active:scale-95"
         >
           {t("cta")}

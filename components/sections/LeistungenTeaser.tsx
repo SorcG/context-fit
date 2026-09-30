@@ -8,10 +8,10 @@ const services = [
   {
     anchor: "online-coaching",
     key: "onlineCoaching",
-    image: "/images/sideshot_2.jpeg",
+    image: "/images/bram_online.png",
     alt: "sideshot2",
     imagePosition: "object-top",
-    grayscale: false,
+    grayscale: true,
   },
   {
     anchor: "personal-training",
@@ -74,7 +74,7 @@ export default function LeistungenTeaser() {
                     src={s.image}
                     alt={tAlt(s.alt)}
                     fill
-                    sizes="(min-width: 1024px) 33vw, 80px"
+                    sizes="(min-width: 1024px) 75vw, 200px"
                     className={`object-cover ${s.imagePosition} ${
                       s.grayscale ? "grayscale" : ""
                     }`}
