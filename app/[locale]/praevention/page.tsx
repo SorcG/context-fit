@@ -1,16 +1,19 @@
-import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/i18n/metadata";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import PageHeader from "@/components/PageHeader";
 import MagneticButton from "@/components/MagneticButton";
 
-export const metadata: Metadata = {
-  title: "Prävention — Context Fit",
-  description:
-    "Zertifizierte Online-Präventionskurse, von Bram van Koppen empfohlen — von zu Hause aus, von der Krankenkasse bis zu 100% erstattet.",
-};
+export function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  return pageMetadata(params, "praevention");
+}
 
 function ClockIcon({ className }: { className?: string }) {
   return (
@@ -76,44 +79,16 @@ function CoinIcon({ className }: { className?: string }) {
 }
 
 const vorteile = [
-  {
-    title: "100% flexibel",
-    body: "Trainiere wann und wo du willst. Ganz ohne Anfahrt oder feste Termine.",
-    Icon: ClockIcon,
-  },
-  {
-    title: "Von zu Hause",
-    body: "Absolviere die Einheiten in deiner gewohnten Umgebung, in deinem Tempo.",
-    Icon: HomeMiniIcon,
-  },
-  {
-    title: "Wissenschaftlich fundiert",
-    body: "Effizientes Training für Gesundheit, Kraft und Beweglichkeit.",
-    Icon: ChartIcon,
-  },
-  {
-    title: "Kasse übernimmt bis zu 100%",
-    body: "Du investierst in deine Gesundheit — deine Krankenkasse beteiligt sich massiv.",
-    Icon: CoinIcon,
-  },
+  { key: "flexibel", Icon: ClockIcon },
+  { key: "zuhause", Icon: HomeMiniIcon },
+  { key: "wissenschaft", Icon: ChartIcon },
+  { key: "kasse", Icon: CoinIcon },
 ] as const;
 
 const ablauf = [
-  {
-    index: "01",
-    title: "Kurs auswählen & starten",
-    body: "Melde dich für deinen Online-Präventionskurs an und starte direkt von zu Hause aus, in deinem eigenen Tempo.",
-  },
-  {
-    index: "02",
-    title: "Kurs abschließen",
-    body: "Absolviere die Einheiten und erhalte am Ende dein offizielles Teilnahmezertifikat.",
-  },
-  {
-    index: "03",
-    title: "Geld zurückerhalten",
-    body: "Reiche das Zertifikat bei deiner Krankenkasse ein und erhalte einen Großteil oder die gesamte Kursgebühr zurück.",
-  },
+  { index: "01", key: "starten" },
+  { index: "02", key: "abschliessen" },
+  { index: "03", key: "erstattung" },
 ] as const;
 
 export default async function PraeventionPage({
@@ -122,35 +97,32 @@ export default async function PraeventionPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  // Die Kurse werden nur von deutschen Krankenkassen erstattet — auf EN/NL
+  // gibt es diese Seite nicht (Tab ist dort ebenfalls ausgeblendet).
+  if (locale !== "de") notFound();
   setRequestLocale(locale as Locale);
+  const t = await getTranslations("Praevention");
+  const tAlt = await getTranslations("Alt");
 
   return (
     <>
       <PageHeader
-        eyebrow="PRÄVENTION"
-        title="Von der Kasse bezahlt. Von mir empfohlen."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
         image="/images/bram_handsup.jpeg"
-        alt="Bram, hoch konzentriert bei einer dynamischen Übung"
+        alt={tAlt("bramHandsup")}
       />
 
       <section className="py-12 lg:py-24">
         <Container variant="narrow" className="flex flex-col gap-12 lg:gap-20">
           <Reveal className="text-base leading-relaxed text-text lg:text-lg">
-            <p>
-              Nicht jeder kann oder will sich Personal Training leisten, und
-              nicht jeder hat Lust auf ein volles Fitnessstudio. Für alle, die
-              trotzdem etwas für ihre Gesundheit tun wollen, empfehle ich
-              diese zertifizierten Online-Präventionskurse. Flexibel von zu
-              Hause und deine Krankenkasse übernimmt bis zu 100% der Kosten.
-              Kein Verkaufsgespräch, keine Verpflichtung — einfach ein guter
-              Einstieg.
-            </p>
+            <p>{t("intro")}</p>
           </Reveal>
 
           <div className="grid grid-cols-2 gap-4 lg:gap-6">
             {vorteile.map((v, i) => (
               <Reveal
-                key={v.title}
+                key={v.key}
                 delay={i * 0.08}
                 className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5"
               >
@@ -158,10 +130,10 @@ export default async function PraeventionPage({
                   <v.Icon className="h-5 w-5" />
                 </span>
                 <h3 className="text-base font-semibold text-text">
-                  {v.title}
+                  {t(`vorteile.${v.key}.title`)}
                 </h3>
                 <p className="text-sm leading-relaxed text-muted">
-                  {v.body}
+                  {t(`vorteile.${v.key}.body`)}
                 </p>
               </Reveal>
             ))}
@@ -169,7 +141,7 @@ export default async function PraeventionPage({
 
           <div className="flex flex-col gap-5">
             <h2 className="text-2xl leading-tight lg:text-3xl">
-              So läuft&apos;s ab
+              {t("ablaufTitle")}
             </h2>
             <div className="flex flex-col gap-4 lg:grid lg:grid-cols-3 lg:gap-6">
               {ablauf.map((step, i) => (
@@ -182,10 +154,10 @@ export default async function PraeventionPage({
                     {step.index}
                   </p>
                   <h3 className="text-base font-semibold text-text">
-                    {step.title}
+                    {t(`ablauf.${step.key}.title`)}
                   </h3>
                   <p className="text-sm leading-relaxed text-muted">
-                    {step.body}
+                    {t(`ablauf.${step.key}.body`)}
                   </p>
                 </Reveal>
               ))}
@@ -198,13 +170,11 @@ export default async function PraeventionPage({
                 href="https://praevention.digital/kurse/ref/ContextFitPraevention/"
                 className="flex h-[56px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 lg:w-fit lg:px-14"
               >
-                Kurse ansehen
+                {t("cta")}
               </a>
             </MagneticButton>
             <p className="text-xs text-muted">
-              Du wirst zu praevention.digital weitergeleitet — einem
-              unabhängigen, zertifizierten Kursanbieter. Die Anmeldung und
-              Abwicklung läuft komplett dort.
+              {t("hinweis")}
             </p>
           </Reveal>
         </Container>

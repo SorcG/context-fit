@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import gsap from "gsap";
-import { rechnerTexteDe as texte } from "@/lib/rechner-texte-de";
+import { useTranslations } from "next-intl";
 import { calc } from "@/lib/rechner-logik";
 import type { RechnerDaten } from "./types";
 import SchrittBasis from "./SchrittBasis";
@@ -12,6 +12,7 @@ import SchrittZiel from "./SchrittZiel";
 import RechnerErgebnis from "./RechnerErgebnis";
 
 const TOTAL_STEPS = 4;
+const stepNames = ["basis", "alltag", "training", "ziel"] as const;
 
 const initialData: RechnerDaten = {
   sex: null,
@@ -65,6 +66,7 @@ function isStepValid(step: number, data: RechnerDaten): boolean {
 }
 
 export default function Rechner() {
+  const t = useTranslations("Rechner");
   const [step, setStep] = useState(1);
   const [data, setData] = useState<RechnerDaten>(initialData);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -156,14 +158,7 @@ export default function Rechner() {
           </div>
           <p className="text-xs text-muted">
             {step}/{TOTAL_STEPS} —{" "}
-            {
-              [
-                texte.schritte.basis,
-                texte.schritte.alltag,
-                texte.schritte.training,
-                texte.schritte.ziel,
-              ][step - 1]
-            }
+            {t(`schritte.${stepNames[step - 1]}`)}
           </p>
         </div>
       )}
@@ -197,7 +192,7 @@ export default function Rechner() {
               disabled={step === 1}
               className="px-2 text-base font-medium text-muted transition-opacity disabled:opacity-0"
             >
-              {texte.navigation.zurueck}
+              {t("navigation.zurueck")}
             </button>
             <button
               type="button"
@@ -206,8 +201,8 @@ export default function Rechner() {
               className="flex h-[52px] min-w-[160px] items-center justify-center rounded-full bg-accent px-8 text-base font-semibold text-text transition-transform active:scale-95 disabled:cursor-not-allowed disabled:bg-border disabled:text-muted disabled:active:scale-100"
             >
               {step === TOTAL_STEPS
-                ? texte.navigation.ergebnisAnzeigen
-                : texte.navigation.weiter}
+                ? t("navigation.ergebnisAnzeigen")
+                : t("navigation.weiter")}
             </button>
           </div>
         </div>

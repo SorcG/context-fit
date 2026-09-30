@@ -1,14 +1,18 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 
 export default function WarumContextFit() {
+  const t = useTranslations("Home.warum");
+  const tAlt = useTranslations("Alt");
+
   return (
     <section className="py-16 lg:py-28">
       <Container className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-16">
         <Reveal className="lg:col-start-2 lg:row-start-1">
           <h2 className="text-2xl leading-tight lg:text-4xl">
-            Warum Context Fit?
+            {t("title")}
           </h2>
         </Reveal>
 
@@ -19,7 +23,7 @@ export default function WarumContextFit() {
           <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border lg:aspect-[4/5]">
             <Image
               src="/images/bram_thinking.jpeg"
-              alt="Bram, nachdenklich im Studio sitzend"
+              alt={tAlt("bramThinking")}
               fill
               sizes="(min-width: 1024px) 40vw, (max-width: 480px) 100vw, 480px"
               className="object-cover object-top"
@@ -31,24 +35,13 @@ export default function WarumContextFit() {
           delay={0.15}
           className="flex flex-col gap-4 text-base leading-relaxed text-text lg:col-start-2 lg:row-start-2 lg:text-lg"
         >
+          <p>{t("p1")}</p>
           <p>
-            Wir alle wollen fit werden, doch manchmal stellt uns das Leben
-            Hindernisse in den Weg und es ist schwer zu wissen, wo man
-            anfangen soll. Keine Sorge, ich kümmere mich darum. Wir erstellen
-            einen maßgeschneiderten Plan nur für dich, einschließlich eines
-            Trainingsprogramms, Ernährungsberatung und Anpassungen im
-            Lebensstil. Alles wird so gestaltet, dass es zu deiner individuellen
-            Situation passt. Der Plan orientiert sich an deinem Kontext,
-            daher auch der Name: Context Fit.
-          </p>
-          <p>
-            <span className="font-semibold text-text">
-              Context Fit: der richtige Ort für vielbeschäftigte Personen und
-              Grappling-Athleten.
-            </span>{" "}
-            Als Schwarzgurt in BJJ und Luta Livre sowie begeisterter
-            Kraftsportler liegt mir besonders am Herzen, anderen Grapplern zu
-            helfen, ihre bestmögliche Grappling-Form zu erreichen.
+            {t.rich("p2", {
+              b: (chunks) => (
+                <span className="font-semibold text-text">{chunks}</span>
+              ),
+            })}
           </p>
         </Reveal>
       </Container>

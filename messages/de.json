@@ -3,7 +3,317 @@
     "default": {
       "title": "Context Fit — Bram van Koppen | Personal Coach Paderborn",
       "description": "Dein Partner auf dem Weg zu einem gesünderen, fitteren Leben. Online Coaching, Personal Training und Grappling Training mit Bram van Koppen in Paderborn."
+    },
+    "leistungen": {
+      "title": "Leistungen — Context Fit",
+      "description": "Online Coaching, Personal Training vor Ort und Grappling Training mit Bram van Koppen in Paderborn."
+    },
+    "ueberMich": {
+      "title": "Über mich — Context Fit",
+      "description": "Bram van Koppen: Schwarzgurt in BJJ und Luta Livre, Dipl. Physiotherapeut (NL) und Personal Coach in Paderborn."
+    },
+    "praevention": {
+      "title": "Prävention — Context Fit",
+      "description": "Zertifizierte Online-Präventionskurse, von Bram van Koppen empfohlen — von zu Hause aus, von der Krankenkasse bis zu 100% erstattet."
+    },
+    "kontakt": {
+      "title": "Kontakt — Context Fit",
+      "description": "Vereinbare ein unverbindliches Erstgespräch mit Bram van Koppen, Personal Coach in Paderborn."
+    },
+    "rechner": {
+      "title": "Kalorienrechner — Context Fit",
+      "description": "Finde deine Kalorien- und Makro-Ziele in 60 Sekunden — abgestimmt auf dein Training, nicht nur deinen Alltag."
+    },
+    "impressum": {
+      "title": "Impressum — Context Fit",
+      "description": "Impressum von Context Fit — Bram van Koppen, Paderborn."
+    },
+    "datenschutz": {
+      "title": "Datenschutz — Context Fit",
+      "description": "Datenschutzerklärung von Context Fit — Bram van Koppen, Paderborn."
     }
+  },
+  "Nav": {
+    "home": "Home",
+    "leistungen": "Leistungen",
+    "praevention": "Prävention",
+    "ueberMich": "Über mich",
+    "kontakt": "Kontakt",
+    "cta": "Jetzt Erstgespräch sichern"
+  },
+  "Footer": {
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz"
+  },
+  "Language": {
+    "label": "Sprache wählen"
+  },
+  "Alt": {
+    "bramSmile": "Bram van Koppen, Personal Coach in Paderborn",
+    "bramThinking": "Bram, nachdenklich im Studio sitzend",
+    "sideshot2": "Bram im Profil, stehend im Fitnessstudio",
+    "bramExplainFitness": "Bram im Coaching-Gespräch mit einem Klienten im Fitnessstudio",
+    "bramExplainJj": "Bram erklärt eine Grappling-Technik auf der Matte",
+    "smileWithCurl": "Bram van Koppen lächelt in die Kamera",
+    "bramKettlebellCloseup": "Bram konzentriert mit Kettlebell",
+    "kettlebellSideshot": "Bram beim Training im Fitnessstudio",
+    "bramOnline": "Bram im Videocall auf einem Laptop-Bildschirm",
+    "bramFrontshot": "Bram, frontal stehend",
+    "stretching": "Bram bei einer Mobility-Übung",
+    "bramPushup": "Bram bei einer Liegestütz-Übung",
+    "bramSplitsquats": "Bram beim Ausfallschritt",
+    "bramStandsBjj": "Bram im Gi, stehend im Trainingsraum",
+    "bramGrapples": "Bram im Grappling-Austausch mit einem Trainingspartner",
+    "bramHandsup": "Bram, hoch konzentriert bei einer dynamischen Übung",
+    "vorher": "Bram vor der Transformation, Ansicht {n}",
+    "nachher": "Bram nach der Transformation, Ansicht {n}"
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "Personal Coach · Paderborn",
+      "headline": "Dein Partner auf dem Weg zu einem gesünderen, fitteren Leben.",
+      "sub": "Ich begleite dich auf dem Weg zu einem gesünderen Lebensstil."
+    },
+    "warum": {
+      "title": "Warum Context Fit?",
+      "p1": "Wir alle wollen fit werden, doch manchmal stellt uns das Leben Hindernisse in den Weg und es ist schwer zu wissen, wo man anfangen soll. Keine Sorge, ich kümmere mich darum. Wir erstellen einen maßgeschneiderten Plan nur für dich, einschließlich eines Trainingsprogramms, Ernährungsberatung und Anpassungen im Lebensstil. Alles wird so gestaltet, dass es zu deiner individuellen Situation passt. Der Plan orientiert sich an deinem Kontext, daher auch der Name: Context Fit.",
+      "p2": "<b>Context Fit: der richtige Ort für vielbeschäftigte Personen und Grappling-Athleten.</b> Als Schwarzgurt in BJJ und Luta Livre sowie begeisterter Kraftsportler liegt mir besonders am Herzen, anderen Grapplern zu helfen, ihre bestmögliche Grappling-Form zu erreichen."
+    },
+    "leistungenTeaser": {
+      "title": "Leistungen",
+      "intro": "Drei Wege, dein Ziel zu erreichen. Entweder online, vor Ort oder auf der Matte.",
+      "alle": "Alle Leistungen ansehen"
+    },
+    "ueberMichTeaser": {
+      "title": "Über mich",
+      "intro": "Mein Name ist Bram van Koppen und Sport ist bereits seit meiner Jugend ein fester Bestandteil meines Lebens.",
+      "qualifikationen": "Schwarzgurt BJJ & Luta Livre · Dipl. Physiotherapeut (NL) · Menno Henselmans Personal Trainer",
+      "mehr": "Mehr über mich erfahren"
+    },
+    "zielgruppe": {
+      "statement": "Grappler, vielbeschäftigte Väter und ganz normale Menschen."
+    },
+    "kontakt": {
+      "title": "Bereit für den nächsten Schritt?",
+      "body": "Vereinbare ein unverbindliches Erstgespräch und finde heraus, wie ein Plan aussieht, der zu deinem Kontext passt.",
+      "standort": "Standort: Paderborn"
+    }
+  },
+  "RechnerCTA": {
+    "title": "Finde deine Kalorien in 60 Sekunden",
+    "subtitle": "Kostenloser Rechner — abgestimmt auf dein Training, nicht nur deinen Alltag."
+  },
+  "Services": {
+    "onlineCoaching": {
+      "title": "Online Coaching",
+      "tagline": "Jederzeit. Überall. Ohne Grenzen.",
+      "body": "Du musst nicht in derselben Stadt oder sogar im selben Land sein, um professionelles Coaching zu erhalten.",
+      "features": {
+        "plaene": "Individuelle Trainingspläne",
+        "ernaehrung": "Personalisierte Ernährungsberatung",
+        "betreuung": "Kontinuierliche Betreuung & Motivation",
+        "lifestyle": "Lifestyle-Coaching"
+      }
+    },
+    "personalTraining": {
+      "title": "Personal Training vor Ort",
+      "tagline": "Kraft mit Ziel.",
+      "body": "Mit Personal Training vor Ort bekommst du nicht nur einen Trainingsplan. Du erhältst direkte Unterstützung, Motivation und jemanden, der dich wirklich zur Verantwortung zieht.",
+      "closing": "Trainiere smarter. Trainiere härter. Trainiere mit Ziel."
+    },
+    "grapplingTraining": {
+      "title": "Grappling Training",
+      "tagline": "Entfalte dein volles Potenzial auf der Matte",
+      "body": "Jahrelange Erfahrung in BJJ, MMA und Strength & Conditioning.",
+      "features": {
+        "gruppen": "Personal Training & Kleingruppen",
+        "gi": "Gi & No-Gi Expertise"
+      }
+    }
+  },
+  "Leistungen": {
+    "eyebrow": "Leistungen",
+    "title": "Drei Wege zu deinem Ziel"
+  },
+  "UeberMich": {
+    "eyebrow": "Über mich",
+    "bio": {
+      "p1": "Mein Name ist Bram van Koppen und Sport ist bereits seit meiner Jugend ein fester Bestandteil meines Lebens. Meine ersten Schritte machte ich im Karate, später entdeckte ich Brazilian Jiu-Jitsu, das bis heute meine große Leidenschaft geblieben ist. Mit der Zeit wurde mir klar, dass ich stärker werden musste, um mein volles Potenzial auszuschöpfen. So fand auch das Krafttraining seinen Platz in meinem Alltag. Von Olympischem Gewichtheben über Powerlifting bis hin zu weiteren Disziplinen habe ich viele Wege erkundet, um mich als Athlet und Trainer weiterzuentwickeln.",
+      "p2": "Neben meiner Arbeit als Coach bin ich auch ausgebildeter Physiotherapeut. Das ermöglicht es mir, Leistungssteigerung mit Verletzungsprävention und Rehabilitation zu verbinden.",
+      "p3": "Ich bin stolzer Vater von zwei Kindern. Gerade dadurch habe ich gelernt, wie wichtig effektive und realistische Trainingsmethoden sind. Familie, Beruf und Training unter einen Hut zu bringen, ist eine Herausforderung und genau deswegen lege ich Wert darauf, Fitness praktisch und nachhaltig in den Alltag meiner Klienten zu integrieren."
+    },
+    "comeback": {
+      "title": "Mein Comeback",
+      "p1": "Vor rund zwei Jahren musste ich mir etwas eingestehen. Ich war nicht in der Form, die ich dachte. Ich wog 104 kg, obwohl ich regelmäßig trainierte. Ich hatte mir also etwas selbst vorgemacht.",
+      "p2": "Der erste Schritt war <hl>radikale Ehrlichkeit</hl>. Keine Ausreden. Ich fand drei Dinge heraus: Ich hatte meine Kalorienzufuhr massiv unterschätzt. Trotz Training auf der Matte war ich im Alltag zu inaktiv und mein Schlaf war zu kurz. Mit zwei kleinen Kindern keine leichte Aufgabe, aber ich hatte es mir zusätzlich zu leicht gemacht.",
+      "p3": "Also habe ich es verändert: mehr Bewegung im Alltag, Kalorien getrackt, Mahlzeiten vorbereitet, einen strukturierten Trainingsplan konsequent verfolgt und das Wichtigste: <hl>jeden Tag dranbleiben</hl>.",
+      "p4": "Das Ergebnis: von 104 kg auf 88 kg. Mehr Energie und mehr Selbstvertrauen.",
+      "p5": "Einfach heißt nicht leicht. <hl>Konsequenz</hl> war der eigentliche Erfolgsfaktor. Ich weiß, wie schwer es ist, Familie, Beruf und die eigene Gesundheit unter einen Hut zu bringen. Genau aus diesem Grund helfe ich dir, den Weg zu finden, der zu deinem Leben passt."
+    },
+    "qualifikationen": {
+      "title": "Qualifikationen",
+      "henselmans": "Menno Henselmans Personal Trainer Zertifizierung",
+      "knkfFitness": "KNKF Fitness Instructor",
+      "knkfWeightlifting": "KNKF Weightlifting Instructor",
+      "bjj": "Schwarzgurt in Brazilian Jiu-Jitsu",
+      "lutaLivre": "Schwarzgurt in Luta Livre",
+      "physio": "Dipl. Physiotherapeut (NL), Manualtherapeut, PNF-Therapeut"
+    }
+  },
+  "Comeback": {
+    "vorher": "Vorher",
+    "nachher": "Nachher",
+    "ansicht": "Ansicht {n}",
+    "slideAria": "{kind, select, after {Nachher} other {Vorher}}-Bild {n} anzeigen",
+    "compareAria": "Vorher/Nachher-Vergleich, Ansicht {n}: aktuell {pinned, select, true {Nachher} other {Vorher}} zu sehen. Klicken zum Umschalten."
+  },
+  "Praevention": {
+    "eyebrow": "Prävention",
+    "title": "Von der Kasse bezahlt. Von mir empfohlen.",
+    "intro": "Nicht jeder kann oder will sich Personal Training leisten, und nicht jeder hat Lust auf ein volles Fitnessstudio. Für alle, die trotzdem etwas für ihre Gesundheit tun wollen, empfehle ich diese zertifizierten Online-Präventionskurse. Flexibel von zu Hause und deine Krankenkasse übernimmt bis zu 100% der Kosten. Kein Verkaufsgespräch, keine Verpflichtung — einfach ein guter Einstieg.",
+    "vorteile": {
+      "flexibel": {
+        "title": "100% flexibel",
+        "body": "Trainiere wann und wo du willst. Ganz ohne Anfahrt oder feste Termine."
+      },
+      "zuhause": {
+        "title": "Von zu Hause",
+        "body": "Absolviere die Einheiten in deiner gewohnten Umgebung, in deinem Tempo."
+      },
+      "wissenschaft": {
+        "title": "Wissenschaftlich fundiert",
+        "body": "Effizientes Training für Gesundheit, Kraft und Beweglichkeit."
+      },
+      "kasse": {
+        "title": "Kasse übernimmt bis zu 100%",
+        "body": "Du investierst in deine Gesundheit — deine Krankenkasse beteiligt sich massiv."
+      }
+    },
+    "ablaufTitle": "So läuft's ab",
+    "ablauf": {
+      "starten": {
+        "title": "Kurs auswählen & starten",
+        "body": "Melde dich für deinen Online-Präventionskurs an und starte direkt von zu Hause aus, in deinem eigenen Tempo."
+      },
+      "abschliessen": {
+        "title": "Kurs abschließen",
+        "body": "Absolviere die Einheiten und erhalte am Ende dein offizielles Teilnahmezertifikat."
+      },
+      "erstattung": {
+        "title": "Geld zurückerhalten",
+        "body": "Reiche das Zertifikat bei deiner Krankenkasse ein und erhalte einen Großteil oder die gesamte Kursgebühr zurück."
+      }
+    },
+    "cta": "Kurse ansehen",
+    "hinweis": "Du wirst zu praevention.digital weitergeleitet — einem unabhängigen, zertifizierten Kursanbieter. Die Anmeldung und Abwicklung läuft komplett dort."
+  },
+  "Kontakt": {
+    "eyebrow": "Kontakt",
+    "title": "Lass uns starten.",
+    "intro": "Vereinbare ein unverbindliches Erstgespräch und finde heraus, wie ein Plan aussieht, der zu deinem Kontext passt. Wähle einfach das Thema deiner Anfrage und schreib mir ein paar Zeilen dazu, den Rest besprechen wir persönlich."
+  },
+  "KontaktForm": {
+    "topicLabel": "Worum geht es?",
+    "topics": {
+      "onlineCoaching": "Online Coaching",
+      "personalTraining": "Personal Training vor Ort",
+      "grapplingTraining": "Grappling Training",
+      "allgemein": "Allgemeine Anfrage"
+    },
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon (optional)",
+    "message": "Deine Nachricht",
+    "submit": "Anfrage senden",
+    "responseTime": "Ich melde mich innerhalb von 24 Stunden persönlich bei dir.",
+    "successTitle": "Danke, {name}!",
+    "successBody": "Deine Anfrage ist bereit. Bram meldet sich innerhalb von 24 Stunden persönlich bei dir zurück.",
+    "reset": "Neue Anfrage stellen"
+  },
+  "Rechner": {
+    "eyebrow": "Kostenloses Tool",
+    "seitentitel": "Kalorienrechner",
+    "intro": "Job und Schritte sind das eine. Training kommt extra drauf. Unsicher beim PAL? Nimm die niedrigere Stufe.",
+    "felder": {
+      "geschlecht": "Geschlecht",
+      "geschlechtOptionen": {
+        "male": "Mann",
+        "female": "Frau"
+      },
+      "gewicht": "Gewicht (kg)",
+      "koerperfett": "Körperfett (%)",
+      "alltagsaktivitaet": "Alltagsaktivität (PAL)",
+      "ziel": "Ziel",
+      "zielOptionen": {
+        "maintain": "Erhalten",
+        "deficit": "Defizit",
+        "bulk": "Aufbau"
+      },
+      "trainingsart": "Trainingsart",
+      "trainingsartOptionen": {
+        "resistance": "Krafttraining",
+        "martial_arts": "Kampfsport (BJJ, Kickboxen)"
+      },
+      "einheitenProWoche": "Einheiten pro Woche",
+      "minutenProEinheit": "Minuten pro Einheit",
+      "ruhetageProWoche": "Ruhetage pro Woche"
+    },
+    "zielBeschreibung": {
+      "maintain": "Gewicht halten, Kraft und Form verbessern.",
+      "deficit": "Fett verlieren, Muskeln so gut wie möglich erhalten.",
+      "bulk": "Muskeln aufbauen, kontrollierter Überschuss."
+    },
+    "palHelper": {
+      "sedentary": "Bürojob, wenig Schritte. Den Großteil des Tages sitzen.",
+      "lightly_active": "Etwas Laufen, leichte Steharbeit. Kein körperlicher Job.",
+      "active": "Viel auf den Beinen. Viele Schritte, nicht „ich trainiere 6×“.",
+      "very_active": "Körperlicher Job oder sehr viele Schritte. Immer noch ohne Gym / Matte."
+    },
+    "palDauerhinweis": "PAL ist nur der Alltag. Nicht „very active“ wählen, weil du trainierst. Trainingsminuten kommen extra drauf. Unsicher? Eine Stufe niedriger.",
+    "output": {
+      "ruhetag": "Ruhetag",
+      "trainingstag": "Trainingstag",
+      "grundumsatz": "Grundumsatz (BMR)",
+      "magermasse": "Magermasse",
+      "training": "Training",
+      "protein": "Protein",
+      "fett": "Fett",
+      "kohlenhydrate": "Kohlenhydrate",
+      "kcalProTag": "kcal/Tag"
+    },
+    "warnungen": {
+      "negativeKohlenhydrate": "Das Defizit ist an Ruhetagen hart. Protein und Fett fressen fast alles. Entweder fast keine Carbs am Ruhetag — oder das Defizit ist zu groß.",
+      "koerperfettUnrealistisch": "Katch-McArdle braucht eine Körperfettzahl. 25% eintragen „weil's gut klingt“ haut den BMR durcheinander.",
+      "tageMismatch": "Einheiten und Ruhetage sollten zusammen 7 ergeben — aktuell sind es {total}."
+    },
+    "footer": "Schätzung, keine medizinische Beratung. Eine ordentliche Messung schlägt Raten.",
+    "navigation": {
+      "zurueck": "Zurück",
+      "weiter": "Weiter",
+      "ergebnisAnzeigen": "Ergebnis anzeigen"
+    },
+    "schritte": {
+      "basis": "Basis",
+      "alltag": "Alltag",
+      "training": "Training",
+      "ziel": "Ziel"
+    },
+    "ergebnis": {
+      "soKommenWirDarauf": "So kommen wir darauf",
+      "nochmalBerechnen": "Nochmal berechnen",
+      "zumErstgespraech": "Zum Erstgespräch",
+      "trainingsKcalZeile": "+ {kcal} kcal aus dem Training"
+    },
+    "aria": {
+      "verringern": "{label} verringern",
+      "erhoehen": "{label} erhöhen"
+    }
+  },
+  "Legal": {
+    "eyebrow": "Rechtliches",
+    "impressumTitle": "Impressum",
+    "datenschutzTitle": "Datenschutzerklärung",
+    "germanOnly": "Dieser Rechtstext liegt ausschließlich auf Deutsch vor."
   },
   "NotFound": {
     "title": "Diese Seite gibt es nicht.",

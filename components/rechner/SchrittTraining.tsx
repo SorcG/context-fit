@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { rechnerTexteDe as texte } from "@/lib/rechner-texte-de";
+import { useTranslations } from "next-intl";
 import type { SchrittProps } from "./types";
 import { Stepper, ToggleCard } from "./RechnerFelder";
 
 export default function SchrittTraining({ data, update }: SchrittProps) {
+  const t = useTranslations("Rechner");
   const restTouchedRef = useRef(false);
 
   const sessions = parseInt(data.sessionsPerWeek, 10) || 0;
@@ -34,24 +35,24 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <span className="text-sm font-medium text-muted">
-          {texte.felder.trainingsart}
+          {t("felder.trainingsart")}
         </span>
         <div className="grid grid-cols-2 gap-3">
           <ToggleCard
             selected={data.trainingType === "resistance"}
             onClick={() => update({ trainingType: "resistance" })}
-            title={texte.felder.trainingsartOptionen.resistance}
+            title={t("felder.trainingsartOptionen.resistance")}
           />
           <ToggleCard
             selected={data.trainingType === "martial_arts"}
             onClick={() => update({ trainingType: "martial_arts" })}
-            title={texte.felder.trainingsartOptionen.martial_arts}
+            title={t("felder.trainingsartOptionen.martial_arts")}
           />
         </div>
       </div>
 
       <Stepper
-        label={texte.felder.einheitenProWoche}
+        label={t("felder.einheitenProWoche")}
         value={sessions}
         onChange={handleSessionsChange}
         min={0}
@@ -60,7 +61,7 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
 
       {sessions > 0 && (
         <Stepper
-          label={texte.felder.minutenProEinheit}
+          label={t("felder.minutenProEinheit")}
           value={minutes}
           onChange={(v) => update({ minutesPerSession: String(v) })}
           min={10}
@@ -70,7 +71,7 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
       )}
 
       <Stepper
-        label={texte.felder.ruhetageProWoche}
+        label={t("felder.ruhetageProWoche")}
         value={restDays}
         onChange={handleRestChange}
         min={0}
@@ -79,7 +80,7 @@ export default function SchrittTraining({ data, update }: SchrittProps) {
 
       {mismatch && (
         <p className="text-sm text-accent">
-          {texte.warnungen.tageMismatch(sessions + restDays)}
+          {t("warnungen.tageMismatch", { total: sessions + restDays })}
         </p>
       )}
     </div>

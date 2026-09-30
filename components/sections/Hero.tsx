@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,6 +13,9 @@ import MagneticButton from "@/components/MagneticButton";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Hero() {
+  const t = useTranslations("Home.hero");
+  const tNav = useTranslations("Nav");
+  const tAlt = useTranslations("Alt");
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -95,7 +99,7 @@ export default function Hero() {
         <Image
           ref={imageRef}
           src="/images/bram_smile.jpeg"
-          alt="Bram van Koppen, Personal Coach in Paderborn"
+          alt={tAlt("bramSmile")}
           fill
           priority
           sizes="(min-width: 1024px) 50vw, 100vw"
@@ -110,19 +114,19 @@ export default function Hero() {
           data-hero-eyebrow
           className="text-sm font-semibold tracking-wide text-accent lg:text-base"
         >
-          Personal Coach · Paderborn
+          {t("eyebrow")}
         </p>
         <h1
           data-hero-headline
           className="text-[2.1rem] leading-[1.08] text-text lg:text-6xl lg:leading-[1.05]"
         >
-          Dein Partner auf dem Weg zu einem gesünderen, fitteren Leben.
+          {t("headline")}
         </h1>
         <p
           data-hero-sub
           className="text-base leading-relaxed text-muted lg:max-w-md lg:text-lg"
         >
-          Ich begleite dich auf dem Weg zu einem gesünderen Lebensstil.
+          {t("sub")}
         </p>
         <div data-hero-cta className="mt-2 lg:mt-4">
           <MagneticButton>
@@ -130,7 +134,7 @@ export default function Hero() {
               href="/kontakt"
               className="flex h-[52px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 lg:w-fit lg:px-10 lg:transition-[transform,box-shadow] lg:hover:shadow-[0_0_32px_-4px_var(--accent)]"
             >
-              Jetzt Erstgespräch sichern
+              {tNav("cta")}
             </Link>
           </MagneticButton>
         </div>

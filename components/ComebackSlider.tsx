@@ -2,35 +2,38 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const slides = [
   {
     src: "/images/vorher1.jpeg",
-    alt: "Bram vor der Transformation, Ansicht 1",
-    label: "Vorher",
+    kind: "before",
+    view: 1,
     position: "object-[center_49%]",
   },
   {
     src: "/images/vorher2.jpeg",
-    alt: "Bram vor der Transformation, Ansicht 2",
-    label: "Vorher",
+    kind: "before",
+    view: 2,
     position: "object-[center_92%]",
   },
   {
     src: "/images/nachher1.jpeg",
-    alt: "Bram nach der Transformation, Ansicht 1",
-    label: "Nachher",
+    kind: "after",
+    view: 1,
     position: "object-top",
   },
   {
     src: "/images/nachher2.jpeg",
-    alt: "Bram nach der Transformation, Ansicht 2",
-    label: "Nachher",
+    kind: "after",
+    view: 2,
     position: "object-[center_53%]",
   },
-];
+] as const;
 
 export default function ComebackSlider() {
+  const t = useTranslations("Comeback");
+  const tAlt = useTranslations("Alt");
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
@@ -73,7 +76,9 @@ export default function ComebackSlider() {
           >
             <Image
               src={slide.src}
-              alt={slide.alt}
+              alt={tAlt(slide.kind === "after" ? "nachher" : "vorher", {
+                n: slide.view,
+              })}
               fill
               sizes="(max-width: 480px) 100vw, 480px"
               className={`object-cover ${slide.position} [filter:grayscale(20%)_contrast(1.1)_brightness(0.95)]`}
@@ -81,12 +86,12 @@ export default function ComebackSlider() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/50 via-transparent to-bg/10" />
             <span
               className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
-                slide.label === "Nachher"
+                slide.kind === "after"
                   ? "bg-accent text-text"
                   : "bg-bg/70 text-muted backdrop-blur"
               }`}
             >
-              {slide.label}
+              {t(slide.kind === "after" ? "nachher" : "vorher")}
             </span>
           </div>
         ))}
@@ -97,7 +102,7 @@ export default function ComebackSlider() {
           <button
             key={slide.src}
             type="button"
-            aria-label={`${slide.label}-Bild ${(i % 2) + 1} anzeigen`}
+            aria-label={t("slideAria", { kind: slide.kind, n: slide.view })}
             onClick={() => scrollToIndex(i)}
             className={`h-2 rounded-full transition-all ${
               i === active ? "w-6 bg-accent" : "w-2 bg-border"

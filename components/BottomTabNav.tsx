@@ -1,7 +1,8 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
-import { usePathname } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
+import { LanguageTab } from "@/components/LanguageSwitcher";
 
 function HomeIcon({ className }: { className?: string }) {
   return (
@@ -78,14 +79,16 @@ function ContactIcon({ className }: { className?: string }) {
 }
 
 const navItems = [
-  { href: "/", label: "Home", Icon: HomeIcon },
-  { href: "/leistungen", label: "Leistungen", Icon: ListIcon },
-  { href: "/praevention", label: "Prävention", Icon: ShieldIcon },
-  { href: "/ueber-mich", label: "Über mich", Icon: UserIcon },
+  { href: "/", key: "home", Icon: HomeIcon },
+  { href: "/leistungen", key: "leistungen", Icon: ListIcon },
+  { href: "/praevention", key: "praevention", Icon: ShieldIcon },
+  { href: "/ueber-mich", key: "ueberMich", Icon: UserIcon },
 ] as const;
 
 export default function BottomTabNav() {
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations("Nav");
 
   // Der Rechner hat seine eigene sticky Zurück/Weiter-Leiste am unteren
   // Bildschirmrand — zwei fixe Bottom-Bars gleichzeitig wären verwirrend.
@@ -96,7 +99,10 @@ export default function BottomTabNav() {
       className="fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-1.5 border-t border-border bg-surface px-3 pt-2 lg:hidden"
       style={{ paddingBottom: "max(10px, env(safe-area-inset-bottom))" }}
     >
-      {navItems.map(({ href, label, Icon }) => {
+      <LanguageTab />
+      {navItems.map(({ href, key, Icon }) => {
+        // Prävention (Krankenkassen-Erstattung) ist nur für Deutschland relevant.
+        if (key === "praevention" && locale !== "de") return null;
         const active = pathname === href;
         return (
           <Link
@@ -107,7 +113,7 @@ export default function BottomTabNav() {
             }`}
           >
             <Icon className="h-5 w-5" />
-            <span className="text-[11px] font-medium">{label}</span>
+            <span className="text-[11px] font-medium">{t(key)}</span>
           </Link>
         );
       })}
@@ -116,7 +122,7 @@ export default function BottomTabNav() {
         className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-1 rounded-xl bg-accent text-text transition-transform active:scale-95"
       >
         <ContactIcon className="h-5 w-5" />
-        <span className="text-[11px] font-semibold">Kontakt</span>
+        <span className="text-[11px] font-semibold">{t("kontakt")}</span>
       </Link>
     </nav>
   );

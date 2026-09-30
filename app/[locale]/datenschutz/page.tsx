@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/i18n/metadata";
+import LegalHeader from "@/components/legal/LegalHeader";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import {
@@ -9,10 +10,13 @@ import {
   type LegalBlock,
 } from "@/components/legal/LegalBlocks";
 
-export const metadata: Metadata = {
-  title: "Datenschutz — Context Fit",
-  description: "Datenschutzerklärung von Context Fit — Bram van Koppen, Paderborn.",
-};
+export function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  return pageMetadata(params, "datenschutz");
+}
 
 const blocks: LegalBlock[] = [
   { type: "h2", text: "1. Datenschutz auf einen Blick" },
@@ -446,14 +450,7 @@ export default async function DatenschutzPage({
   return (
     <section className="py-12 lg:py-24">
       <Container variant="narrow" className="flex flex-col gap-8">
-        <Reveal className="flex flex-col gap-3">
-          <p className="text-sm font-semibold tracking-wide text-accent lg:text-base">
-            Rechtliches
-          </p>
-          <h1 className="text-3xl leading-[1.1] text-text lg:text-5xl">
-            Datenschutzerklärung
-          </h1>
-        </Reveal>
+        <LegalHeader title="datenschutzTitle" />
 
         <Reveal delay={0.05}>
           <LegalContent blocks={blocks} />

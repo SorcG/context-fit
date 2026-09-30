@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 import { Link } from "@/i18n/navigation";
 import gsap from "gsap";
 import MagneticButton from "@/components/MagneticButton";
-import { rechnerTexteDe as texte } from "@/lib/rechner-texte-de";
+import { useTranslations } from "next-intl";
+import { palAnzeige } from "@/lib/rechner-anzeige";
 import {
   roundGram,
   roundKcal,
@@ -35,6 +36,7 @@ function MacroCard({
   zusatzZeile?: string;
   delay: number;
 }) {
+  const t = useTranslations("Rechner");
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -65,21 +67,21 @@ function MacroCard({
       <p className="font-display text-4xl font-extrabold text-text">
         {roundKcal(kcal)}{" "}
         <span className="text-lg font-medium text-muted">
-          {texte.output.kcal}/{texte.output.tag}
+          {t("output.kcalProTag")}
         </span>
       </p>
 
       <div className="flex flex-col gap-2 border-t border-border pt-4">
         <div className="flex justify-between text-sm">
-          <span className="text-muted">{texte.output.protein}</span>
+          <span className="text-muted">{t("output.protein")}</span>
           <span className="text-text">{roundGram(proteinG)} g</span>
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-muted">{texte.output.fett}</span>
+          <span className="text-muted">{t("output.fett")}</span>
           <span className="text-text">{roundGram(fatG)} g</span>
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-muted">{texte.output.kohlenhydrate}</span>
+          <span className="text-muted">{t("output.kohlenhydrate")}</span>
           <span className="text-text">{roundGram(carbG)} g</span>
         </div>
       </div>
@@ -88,7 +90,7 @@ function MacroCard({
 
       {carbClamped && (
         <p className="rounded-xl border border-accent/40 bg-accent/10 p-3 text-sm text-text">
-          {texte.warnungen.negativeKohlenhydrate}
+          {t("warnungen.negativeKohlenhydrate")}
         </p>
       )}
     </div>
@@ -109,21 +111,22 @@ export default function RechnerErgebnis({
   sex: Sex;
   onReset: () => void;
 }) {
-  const goalLabel = texte.felder.zielOptionen[goal];
-  const palInfo = texte.pal[palLevel];
+  const t = useTranslations("Rechner");
+  const goalLabel = t(`felder.zielOptionen.${goal}`);
+  const palInfo = palAnzeige[palLevel];
   const hasTraining = sessionsPerWeek > 0;
 
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-1.5 rounded-xl border border-border bg-surface/50 p-4 text-sm text-muted">
         <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-          {texte.ergebnis.soKommenWirDarauf}
+          {t("ergebnis.soKommenWirDarauf")}
         </p>
         <p>
-          {texte.output.grundumsatz}:{" "}
+          {t("output.grundumsatz")}:{" "}
           <span className="text-text">{Math.round(result.bmr)} kcal</span>
           {" · "}
-          {texte.output.magermasse}:{" "}
+          {t("output.magermasse")}:{" "}
           <span className="text-text">{result.ffm.toFixed(1)} kg</span>
         </p>
         <p>
@@ -134,7 +137,7 @@ export default function RechnerErgebnis({
           {hasTraining && (
             <>
               {" · "}
-              {texte.output.training}:{" "}
+              {t("output.training")}:{" "}
               <span className="text-text">
                 +{Math.round(result.trainEE)} kcal
               </span>
@@ -145,7 +148,7 @@ export default function RechnerErgebnis({
 
       <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
         <MacroCard
-          titel={texte.output.ruhetag}
+          titel={t("output.ruhetag")}
           goalLabel={goalLabel}
           kcal={result.rest.kcal}
           proteinG={result.rest.proteinG}
@@ -156,16 +159,16 @@ export default function RechnerErgebnis({
         />
         {hasTraining && (
           <MacroCard
-            titel={texte.output.trainingstag}
+            titel={t("output.trainingstag")}
             goalLabel={goalLabel}
             kcal={result.train.kcal}
             proteinG={result.train.proteinG}
             fatG={result.train.fatG}
             carbG={result.train.carbG}
             carbClamped={result.train.carbClamped}
-            zusatzZeile={texte.ergebnis.trainingsKcalZeile(
-              Math.round(result.trainEE),
-            )}
+            zusatzZeile={t("ergebnis.trainingsKcalZeile", {
+              kcal: String(Math.round(result.trainEE)),
+            })}
             delay={0.1}
           />
         )}
@@ -177,19 +180,19 @@ export default function RechnerErgebnis({
           onClick={onReset}
           className="flex h-[52px] w-full items-center justify-center rounded-full border border-border px-6 text-base font-medium text-text transition-transform active:scale-95 lg:w-fit"
         >
-          {texte.ergebnis.nochmalBerechnen}
+          {t("ergebnis.nochmalBerechnen")}
         </button>
         <MagneticButton>
           <Link
             href="/kontakt"
             className="flex h-[52px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 lg:w-fit lg:px-10"
           >
-            {texte.ergebnis.zumErstgespraech}
+            {t("ergebnis.zumErstgespraech")}
           </Link>
         </MagneticButton>
       </div>
 
-      <p className="text-xs text-muted">{texte.footer}</p>
+      <p className="text-xs text-muted">{t("footer")}</p>
     </div>
   );
 }

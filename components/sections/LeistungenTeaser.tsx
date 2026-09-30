@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -6,34 +7,35 @@ import Reveal from "@/components/Reveal";
 const services = [
   {
     anchor: "online-coaching",
-    title: "Online Coaching",
-    tagline: "Jederzeit. Überall. Ohne Grenzen.",
+    key: "onlineCoaching",
     image: "/images/sideshot_2.jpeg",
-    alt: "Bram im Profil, stehend im Fitnessstudio",
+    alt: "sideshot2",
     imagePosition: "object-top",
     grayscale: false,
   },
   {
     anchor: "personal-training",
-    title: "Personal Training vor Ort",
-    tagline: "Kraft mit Ziel.",
+    key: "personalTraining",
     image: "/images/bram_explain_fitness.png",
-    alt: "Bram im Coaching-Gespräch mit einem Klienten im Fitnessstudio",
+    alt: "bramExplainFitness",
     imagePosition: "object-[center_20%]",
     grayscale: true,
   },
   {
     anchor: "grappling-training",
-    title: "Grappling Training",
-    tagline: "Entfalte dein volles Potenzial auf der Matte",
+    key: "grapplingTraining",
     image: "/images/bram_explain_jj.png",
-    alt: "Bram erklärt eine Grappling-Technik auf der Matte",
+    alt: "bramExplainJj",
     imagePosition: "object-[center_22%]",
     grayscale: true,
   },
 ] as const;
 
 export default function LeistungenTeaser() {
+  const t = useTranslations("Home.leistungenTeaser");
+  const tServices = useTranslations("Services");
+  const tAlt = useTranslations("Alt");
+
   return (
     <section className="py-16 lg:py-28">
       <Container variant="wide" className="flex flex-col gap-6 lg:gap-10">
@@ -41,13 +43,12 @@ export default function LeistungenTeaser() {
           <div className="flex flex-col gap-3 lg:gap-4">
             <Reveal>
               <h2 className="text-2xl leading-tight lg:text-4xl">
-                Leistungen
+                {t("title")}
               </h2>
             </Reveal>
             <Reveal delay={0.05}>
               <p className="text-base leading-relaxed text-text lg:max-w-md lg:text-lg">
-                Drei Wege, dein Ziel zu erreichen. Entweder online, vor Ort
-                oder auf der Matte.
+                {t("intro")}
               </p>
             </Reveal>
           </div>
@@ -56,7 +57,7 @@ export default function LeistungenTeaser() {
               href="/leistungen"
               className="flex h-[52px] w-fit items-center justify-center rounded-full border border-border px-8 text-base font-medium text-text transition-transform hover:scale-105 hover:border-accent hover:text-accent active:scale-95"
             >
-              Alle Leistungen ansehen
+              {t("alle")}
             </Link>
           </Reveal>
         </div>
@@ -71,7 +72,7 @@ export default function LeistungenTeaser() {
                 <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-border lg:h-auto lg:w-full lg:aspect-[4/5] lg:shrink lg:rounded-none lg:border-0 lg:border-b">
                   <Image
                     src={s.image}
-                    alt={s.alt}
+                    alt={tAlt(s.alt)}
                     fill
                     sizes="(min-width: 1024px) 33vw, 80px"
                     className={`object-cover ${s.imagePosition} ${
@@ -81,10 +82,10 @@ export default function LeistungenTeaser() {
                 </div>
                 <div className="flex flex-col gap-0.5 lg:gap-1.5 lg:p-5">
                   <h3 className="text-base font-semibold text-text lg:text-lg">
-                    {s.title}
+                    {tServices(`${s.key}.title`)}
                   </h3>
                   <p className="text-sm text-accent lg:text-base">
-                    {s.tagline}
+                    {tServices(`${s.key}.tagline`)}
                   </p>
                 </div>
               </Link>
@@ -97,7 +98,7 @@ export default function LeistungenTeaser() {
             href="/leistungen"
             className="flex h-[52px] w-full items-center justify-center rounded-full border border-border px-6 text-base font-medium text-text transition-transform active:scale-95"
           >
-            Alle Leistungen ansehen
+            {t("alle")}
           </Link>
         </Reveal>
       </Container>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,6 +11,8 @@ import Reveal from "@/components/Reveal";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Zielgruppe() {
+  const t = useTranslations("Home.zielgruppe");
+  const tAlt = useTranslations("Alt");
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -43,7 +46,7 @@ export default function Zielgruppe() {
         <Image
           ref={imageRef}
           src="/images/bram_kettlebell_closeup.jpeg"
-          alt="Bram konzentriert mit Kettlebell"
+          alt={tAlt("bramKettlebellCloseup")}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
           className="object-cover object-top lg:scale-110"
@@ -53,7 +56,7 @@ export default function Zielgruppe() {
       <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-transparent lg:hidden" />
       <Reveal className="relative px-5 pb-14 lg:static lg:px-0 lg:pb-0">
         <p className="font-display text-2xl font-extrabold leading-[1.15] text-text lg:text-4xl">
-          Grappler, vielbeschäftigte Väter und ganz normale Menschen.
+          {t("statement")}
         </p>
       </Reveal>
     </section>

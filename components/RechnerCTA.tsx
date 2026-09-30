@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 function CalculatorIcon({ className }: { className?: string }) {
@@ -35,6 +36,8 @@ function CalculatorIcon({ className }: { className?: string }) {
 }
 
 export default function RechnerCTA() {
+  const t = useTranslations("RechnerCTA");
+
   return (
     <Link
       href="/rechner"
@@ -45,11 +48,10 @@ export default function RechnerCTA() {
       </span>
       <span className="flex flex-1 flex-col gap-1">
         <span className="text-lg font-semibold text-text lg:text-xl">
-          Finde deine Kalorien in 60 Sekunden
+          {t("title")}
         </span>
         <span className="text-sm text-muted lg:text-base">
-          Kostenloser Rechner — abgestimmt auf dein Training, nicht nur
-          deinen Alltag.
+          {t("subtitle")}
         </span>
       </span>
       <span

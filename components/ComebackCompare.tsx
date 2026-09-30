@@ -2,16 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 
 interface ComparePhoto {
   src: string;
-  alt: string;
   position: string;
 }
 
 interface ComparePair {
-  pose: string;
+  view: number;
   before: ComparePhoto;
   after: ComparePhoto;
   statBefore: string;
@@ -20,30 +20,26 @@ interface ComparePair {
 
 const pairs: ComparePair[] = [
   {
-    pose: "Ansicht 1",
+    view: 1,
     before: {
       src: "/images/vorher1.jpeg",
-      alt: "Bram vor der Transformation, Ansicht 1",
       position: "object-[center_49%]",
     },
     after: {
       src: "/images/nachher1.jpeg",
-      alt: "Bram nach der Transformation, Ansicht 1",
       position: "object-top",
     },
     statBefore: "104 kg",
     statAfter: "88 kg",
   },
   {
-    pose: "Ansicht 2",
+    view: 2,
     before: {
       src: "/images/vorher2.jpeg",
-      alt: "Bram vor der Transformation, Ansicht 2",
       position: "object-[center_92%]",
     },
     after: {
       src: "/images/nachher2.jpeg",
-      alt: "Bram nach der Transformation, Ansicht 2",
       position: "object-[center_53%]",
     },
     statBefore: "104 kg",
@@ -54,6 +50,8 @@ const pairs: ComparePair[] = [
 const FILTER = "[filter:grayscale(20%)_contrast(1.1)_brightness(0.95)]";
 
 function CompareCard({ pair }: { pair: ComparePair }) {
+  const t = useTranslations("Comeback");
+  const tAlt = useTranslations("Alt");
   const cardRef = useRef<HTMLDivElement>(null);
   const beforeImgRef = useRef<HTMLImageElement>(null);
   const afterImgRef = useRef<HTMLImageElement>(null);
@@ -130,15 +128,16 @@ function CompareCard({ pair }: { pair: ComparePair }) {
       role="button"
       tabIndex={0}
       aria-pressed={pinned}
-      aria-label={`Vorher/Nachher-Vergleich, ${pair.pose}: aktuell ${
-        pinned ? "Nachher" : "Vorher"
-      } zu sehen. Klicken zum Umschalten.`}
+      aria-label={t("compareAria", {
+        n: pair.view,
+        pinned: String(pinned),
+      })}
       className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-3xl border border-border shadow-lg shadow-black/30 outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <Image
         ref={beforeImgRef}
         src={pair.before.src}
-        alt={pair.before.alt}
+        alt={tAlt("vorher", { n: pair.view })}
         fill
         sizes="(min-width: 1024px) 320px, 100vw"
         className={`z-10 object-cover ${pair.before.position} ${FILTER}`}
@@ -146,7 +145,7 @@ function CompareCard({ pair }: { pair: ComparePair }) {
       <Image
         ref={afterImgRef}
         src={pair.after.src}
-        alt={pair.after.alt}
+        alt={tAlt("nachher", { n: pair.view })}
         fill
         sizes="(min-width: 1024px) 320px, 100vw"
         className={`pointer-events-none z-0 object-cover opacity-0 ${pair.after.position} ${FILTER}`}
@@ -157,13 +156,13 @@ function CompareCard({ pair }: { pair: ComparePair }) {
 
       <div className="absolute left-4 top-4 z-30">
         <span className="block rounded-full bg-bg/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted backdrop-blur">
-          Vorher
+          {t("vorher")}
         </span>
         <span
           ref={pillAfterRef}
           className="absolute inset-0 block rounded-full bg-accent px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-text opacity-0"
         >
-          Nachher
+          {t("nachher")}
         </span>
       </div>
 
@@ -187,12 +186,16 @@ function CompareCard({ pair }: { pair: ComparePair }) {
 }
 
 export default function ComebackCompare() {
+  const t = useTranslations("Comeback");
+
   return (
     <div className="hidden lg:grid lg:grid-cols-2 lg:gap-6">
       {pairs.map((pair) => (
-        <div key={pair.pose} className="flex flex-col gap-2">
+        <div key={pair.view} className="flex flex-col gap-2">
           <CompareCard pair={pair} />
-          <p className="text-center text-sm text-muted">{pair.pose}</p>
+          <p className="text-center text-sm text-muted">
+            {t("ansicht", { n: pair.view })}
+          </p>
         </div>
       ))}
     </div>

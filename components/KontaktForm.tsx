@@ -1,15 +1,20 @@
 "use client";
 
 import { useId, useState } from "react";
+import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
 
+// Sprachneutrale Keys — das spätere Backend bekommt immer denselben Wert,
+// egal in welcher Sprache das Formular ausgefüllt wurde.
 const topics = [
-  "Online Coaching",
-  "Personal Training vor Ort",
-  "Grappling Training",
-  "Allgemeine Anfrage",
-];
+  "onlineCoaching",
+  "personalTraining",
+  "grapplingTraining",
+  "allgemein",
+] as const;
+
+type Topic = (typeof topics)[number];
 
 function SuccessIcon() {
   return (
@@ -68,7 +73,8 @@ function FloatingField({
 }
 
 export default function KontaktForm() {
-  const [topic, setTopic] = useState<string | null>(null);
+  const t = useTranslations("KontaktForm");
+  const [topic, setTopic] = useState<Topic | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -85,11 +91,10 @@ export default function KontaktForm() {
       <Reveal className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center lg:gap-6 lg:p-16">
         <SuccessIcon />
         <h2 className="text-xl leading-tight lg:text-3xl">
-          Danke, {name.split(" ")[0]}!
+          {t("successTitle", { name: name.split(" ")[0] })}
         </h2>
         <p className="text-base leading-relaxed text-muted lg:max-w-md lg:text-lg">
-          Deine Anfrage ist bereit. Bram meldet sich innerhalb von 24 Stunden
-          persönlich bei dir zurück.
+          {t("successBody")}
         </p>
         <button
           type="button"
@@ -103,7 +108,7 @@ export default function KontaktForm() {
           }}
           className="text-sm font-semibold text-accent underline underline-offset-4"
         >
-          Neue Anfrage stellen
+          {t("reset")}
         </button>
       </Reveal>
     );
@@ -113,22 +118,22 @@ export default function KontaktForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-8">
       <Reveal className="flex flex-col gap-3">
         <span className="text-sm font-medium text-muted">
-          Worum geht es? <span className="text-accent">*</span>
+          {t("topicLabel")} <span className="text-accent">*</span>
         </span>
         <div className="flex flex-wrap gap-2">
-          {topics.map((t) => (
+          {topics.map((key) => (
             <button
-              key={t}
+              key={key}
               type="button"
-              onClick={() => setTopic(t)}
-              aria-pressed={topic === t}
+              onClick={() => setTopic(key)}
+              aria-pressed={topic === key}
               className={`rounded-full border px-4 py-2.5 text-sm font-medium transition-all active:scale-95 lg:px-5 lg:py-3 lg:text-base lg:hover:scale-105 ${
-                topic === t
+                topic === key
                   ? "border-accent bg-accent text-text"
                   : "border-border bg-surface text-muted lg:hover:border-accent/60 lg:hover:text-text"
               }`}
             >
-              {t}
+              {t(`topics.${key}`)}
             </button>
           ))}
         </div>
@@ -137,13 +142,13 @@ export default function KontaktForm() {
       <Reveal delay={0.05} className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
           <FloatingField
-            label="Name"
+            label={t("name")}
             required
             value={name}
             onChange={setName}
           />
           <FloatingField
-            label="E-Mail"
+            label={t("email")}
             type="email"
             required
             value={email}
@@ -151,7 +156,7 @@ export default function KontaktForm() {
           />
         </div>
         <FloatingField
-          label="Telefon (optional)"
+          label={t("phone")}
           type="tel"
           value={phone}
           onChange={setPhone}
@@ -170,7 +175,7 @@ export default function KontaktForm() {
             htmlFor="message"
             className="pointer-events-none absolute left-4 top-2 text-xs text-muted transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-muted peer-focus:top-2 peer-focus:text-xs peer-focus:text-accent"
           >
-            Deine Nachricht <span className="text-accent">*</span>
+            {t("message")} <span className="text-accent">*</span>
           </label>
         </div>
       </Reveal>
@@ -182,11 +187,11 @@ export default function KontaktForm() {
             disabled={!topic}
             className="flex h-[56px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 disabled:opacity-40 disabled:active:scale-100 lg:w-fit lg:px-16"
           >
-            Anfrage senden
+            {t("submit")}
           </button>
         </MagneticButton>
         <p className="text-center text-sm text-muted lg:text-left">
-          Ich melde mich innerhalb von 24 Stunden persönlich bei dir.
+          {t("responseTime")}
         </p>
       </Reveal>
     </form>

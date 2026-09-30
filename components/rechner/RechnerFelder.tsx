@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 export function NumberField({
   label,
   value,
@@ -86,6 +88,7 @@ export function Stepper({
   step?: number;
   suffix?: string;
 }) {
+  const t = useTranslations("Rechner.aria");
   const dec = () => onChange(Math.max(min, value - step));
   const inc = () => onChange(Math.min(max, value + step));
 
@@ -97,7 +100,7 @@ export function Stepper({
           type="button"
           onClick={dec}
           disabled={value <= min}
-          aria-label={`${label} verringern`}
+          aria-label={t("verringern", { label })}
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-xl text-text transition-transform active:scale-90 disabled:opacity-30"
         >
           −
@@ -114,7 +117,7 @@ export function Stepper({
           type="button"
           onClick={inc}
           disabled={value >= max}
-          aria-label={`${label} erhöhen`}
+          aria-label={t("erhoehen", { label })}
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-xl text-text transition-transform active:scale-90 disabled:opacity-30"
         >
           +

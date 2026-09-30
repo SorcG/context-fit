@@ -1,7 +1,7 @@
-import { setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/i18n/routing";
 import Image from "next/image";
-import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
+import { pageMetadata } from "@/i18n/metadata";
 import { Link } from "@/i18n/navigation";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -9,39 +9,36 @@ import PageHeader from "@/components/PageHeader";
 import MagneticButton from "@/components/MagneticButton";
 import RechnerCTA from "@/components/RechnerCTA";
 
-export const metadata: Metadata = {
-  title: "Leistungen — Context Fit",
-  description:
-    "Online Coaching, Personal Training vor Ort und Grappling Training mit Bram van Koppen in Paderborn.",
-};
+export function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  return pageMetadata(params, "leistungen");
+}
 
+// Nur Struktur und Bilder — alle Texte kommen aus messages/*.json
+// (Services.<key>, Alt.<alt>). Die Anker-IDs bleiben in allen Sprachen gleich.
 const services = [
   {
     id: "online-coaching",
+    key: "onlineCoaching",
     index: "01",
-    title: "Online Coaching",
-    tagline: "Jederzeit. Überall. Ohne Grenzen.",
-    body: "Du musst nicht in derselben Stadt oder sogar im selben Land sein, um professionelles Coaching zu erhalten.",
-    features: [
-      "Individuelle Trainingspläne",
-      "Personalisierte Ernährungsberatung",
-      "Kontinuierliche Betreuung & Motivation",
-      "Lifestyle-Coaching",
-    ],
+    closing: false,
     image: "/images/bram_online.png",
-    alt: "Bram im Videocall auf einem Laptop-Bildschirm",
+    alt: "bramOnline",
     grayscale: true,
     imagePosition: "object-center",
     extraImages: [
       {
         src: "/images/bram_frontshot.jpeg",
-        alt: "Bram, frontal stehend",
+        alt: "bramFrontshot",
         grayscale: false,
         imagePosition: "object-top",
       },
       {
         src: "/images/stretching.jpeg",
-        alt: "Bram bei einer Mobility-Übung",
+        alt: "stretching",
         grayscale: false,
         imagePosition: "object-top",
       },
@@ -49,25 +46,23 @@ const services = [
   },
   {
     id: "personal-training",
+    key: "personalTraining",
     index: "02",
-    title: "Personal Training vor Ort",
-    tagline: "Kraft mit Ziel.",
-    body: "Mit Personal Training vor Ort bekommst du nicht nur einen Trainingsplan. Du erhältst direkte Unterstützung, Motivation und jemanden, der dich wirklich zur Verantwortung zieht.",
-    closing: "Trainiere smarter. Trainiere härter. Trainiere mit Ziel.",
+    closing: true,
     image: "/images/bram_explain_fitness.png",
-    alt: "Bram im Coaching-Gespräch mit einem Klienten im Fitnessstudio",
+    alt: "bramExplainFitness",
     grayscale: true,
     imagePosition: "object-[center_20%]",
     extraImages: [
       {
         src: "/images/bram_pushup.jpeg",
-        alt: "Bram bei einer Liegestütz-Übung",
+        alt: "bramPushup",
         grayscale: false,
         imagePosition: "object-[20%_top]",
       },
       {
         src: "/images/bram_splitsquats.jpeg",
-        alt: "Bram beim Ausfallschritt",
+        alt: "bramSplitsquats",
         grayscale: false,
         imagePosition: "object-top",
       },
@@ -75,25 +70,23 @@ const services = [
   },
   {
     id: "grappling-training",
+    key: "grapplingTraining",
     index: "03",
-    title: "Grappling Training",
-    tagline: "Entfalte dein volles Potenzial auf der Matte",
-    body: "Jahrelange Erfahrung in BJJ, MMA und Strength & Conditioning.",
-    features: ["Personal Training & Kleingruppen", "Gi & No-Gi Expertise"],
+    closing: false,
     image: "/images/bram_explain_jj.png",
-    alt: "Bram erklärt eine Grappling-Technik auf der Matte",
+    alt: "bramExplainJj",
     grayscale: true,
     imagePosition: "object-[center_22%]",
     extraImages: [
       {
         src: "/images/bram_stands_bjj.jpeg",
-        alt: "Bram im Gi, stehend im Trainingsraum",
+        alt: "bramStandsBjj",
         grayscale: false,
         imagePosition: "object-top",
       },
       {
         src: "/images/bram_grapples.jpeg",
-        alt: "Bram im Grappling-Austausch mit einem Trainingspartner",
+        alt: "bramGrapples",
         grayscale: true,
         imagePosition: "object-top",
       },
@@ -108,14 +101,28 @@ export default async function LeistungenPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale as Locale);
+  const t = await getTranslations("Leistungen");
+  const tServices = await getTranslations("Services");
+  const tAlt = await getTranslations("Alt");
+  const tNav = await getTranslations("Nav");
+
+  const features: Record<(typeof services)[number]["key"], string[]> = {
+    onlineCoaching: (
+      ["plaene", "ernaehrung", "betreuung", "lifestyle"] as const
+    ).map((f) => tServices(`onlineCoaching.features.${f}`)),
+    personalTraining: [],
+    grapplingTraining: (["gruppen", "gi"] as const).map((f) =>
+      tServices(`grapplingTraining.features.${f}`),
+    ),
+  };
 
   return (
     <>
       <PageHeader
-        eyebrow="Leistungen"
-        title="Drei Wege zu deinem Ziel"
+        eyebrow={t("eyebrow")}
+        title={t("title")}
         image="/images/kettlebell_sideshot.jpeg"
-        alt="Bram beim Training im Fitnessstudio"
+        alt={tAlt("kettlebellSideshot")}
       />
 
       <section className="py-12 lg:py-24">
@@ -132,7 +139,7 @@ export default async function LeistungenPage({
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border">
                   <Image
                     src={s.image}
-                    alt={s.alt}
+                    alt={tAlt(s.alt)}
                     fill
                     sizes="(min-width: 1024px) 33vw, (max-width: 480px) 100vw, 480px"
                     className={`object-cover ${s.imagePosition} ${
@@ -141,16 +148,18 @@ export default async function LeistungenPage({
                   />
                 </div>
                 <p className="font-mono text-xs text-muted">{s.index}</p>
-                <h2 className="text-xl lg:text-2xl">{s.title}</h2>
+                <h2 className="text-xl lg:text-2xl">
+                  {tServices(`${s.key}.title`)}
+                </h2>
                 <p className="text-base font-medium text-accent">
-                  {s.tagline}
+                  {tServices(`${s.key}.tagline`)}
                 </p>
                 <p className="text-base leading-relaxed text-text">
-                  {s.body}
+                  {tServices(`${s.key}.body`)}
                 </p>
-                {"features" in s && (
+                {features[s.key].length > 0 && (
                   <ul className="flex flex-col gap-2">
-                    {s.features.map((f) => (
+                    {features[s.key].map((f) => (
                       <li
                         key={f}
                         className="flex items-start gap-2 text-base text-text"
@@ -161,9 +170,9 @@ export default async function LeistungenPage({
                     ))}
                   </ul>
                 )}
-                {"closing" in s && (
+                {s.closing && (
                   <p className="text-base font-semibold text-text">
-                    {s.closing}
+                    {tServices("personalTraining.closing")}
                   </p>
                 )}
                 <div className="grid grid-cols-2 gap-3">
@@ -174,7 +183,7 @@ export default async function LeistungenPage({
                     >
                       <Image
                         src={img.src}
-                        alt={img.alt}
+                        alt={tAlt(img.alt)}
                         fill
                         sizes="(min-width: 1024px) 16vw, (max-width: 480px) 50vw, 240px"
                         className={`object-cover ${img.imagePosition} ${
@@ -198,7 +207,7 @@ export default async function LeistungenPage({
                 href="/kontakt"
                 className="flex h-[52px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 lg:w-fit lg:px-14"
               >
-                Jetzt Erstgespräch sichern
+                {tNav("cta")}
               </Link>
             </MagneticButton>
           </Reveal>

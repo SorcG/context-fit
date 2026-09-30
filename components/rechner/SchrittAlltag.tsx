@@ -1,6 +1,7 @@
 "use client";
 
-import { rechnerTexteDe as texte } from "@/lib/rechner-texte-de";
+import { useTranslations } from "next-intl";
+import { palAnzeige } from "@/lib/rechner-anzeige";
 import type { PalLevel } from "@/lib/rechner-logik";
 import type { SchrittProps } from "./types";
 
@@ -12,16 +13,17 @@ const palOrder: PalLevel[] = [
 ];
 
 export default function SchrittAlltag({ data, update }: SchrittProps) {
+  const t = useTranslations("Rechner");
   const sex = data.sex ?? "male";
 
   return (
     <div className="flex flex-col gap-4">
       <span className="text-sm font-medium text-muted">
-        {texte.felder.alltagsaktivitaet}
+        {t("felder.alltagsaktivitaet")}
       </span>
       <div className="flex flex-col gap-3">
         {palOrder.map((level) => {
-          const info = texte.pal[level];
+          const info = palAnzeige[level];
           const selected = data.palLevel === level;
           return (
             <button
@@ -54,14 +56,14 @@ export default function SchrittAlltag({ data, update }: SchrittProps) {
                     {info.multiplikator[sex]}
                   </span>
                 </span>
-                <span className="text-sm text-muted">{info.helper}</span>
+                <span className="text-sm text-muted">{t(`palHelper.${level}`)}</span>
               </span>
             </button>
           );
         })}
       </div>
       <div className="rounded-xl border border-border bg-surface/50 p-4 text-sm text-muted">
-        {texte.palDauerhinweis}
+        {t("palDauerhinweis")}
       </div>
     </div>
   );
