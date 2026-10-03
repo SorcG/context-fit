@@ -71,6 +71,7 @@ export default async function UeberMichPage({
         title={"Bram\nvan Koppen"}
         image="/images/smile_with_curl.jpeg"
         alt={tAlt("smileWithCurl")}
+        mobileHeight="h-[60dvh] min-h-[480px]"
       />
 
       <section className="py-12 lg:py-24">

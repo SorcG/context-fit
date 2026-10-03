@@ -14,12 +14,14 @@ export default function PageHeader({
   image,
   alt,
   imagePosition = "object-top",
+  mobileHeight = "h-[46dvh] min-h-[360px]",
 }: {
   eyebrow: string;
   title: string;
   image: string;
   alt: string;
   imagePosition?: string;
+  mobileHeight?: string;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -97,7 +99,7 @@ export default function PageHeader({
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-[46dvh] min-h-[360px] w-full flex-col justify-end overflow-hidden lg:mx-auto lg:h-auto lg:min-h-0 lg:max-w-[1200px] lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-10 lg:py-28"
+      className={`relative flex ${mobileHeight} w-full flex-col justify-end overflow-hidden lg:mx-auto lg:h-auto lg:min-h-0 lg:max-w-[1200px] lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-10 lg:py-28`}
     >
       <div
         className="group absolute inset-0 lg:relative lg:inset-auto lg:order-2 lg:aspect-[4/5] lg:overflow-hidden lg:rounded-3xl lg:border lg:border-border"
