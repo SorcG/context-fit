@@ -29,8 +29,8 @@ export default async function KontaktPage({
       <PageHeader
         eyebrow={t("eyebrow")}
         title={t("title")}
-        image="/images/bram_handsup.jpeg"
-        alt={tAlt("bramHandsup")}
+        image="/images/smile_with_curl.jpeg"
+        alt={tAlt("smileWithCurl")}
       />
 
       <section className="py-12 lg:py-24">
