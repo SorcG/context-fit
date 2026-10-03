@@ -59,12 +59,29 @@ export default function SmoothScroll({
     // Covers in-page height changes that aren't route changes (e.g. an
     // accordion expanding) — document.body's box tracks real content height,
     // unlike document.documentElement which stays pinned to the viewport.
+    //
+    // On mobile, scrolling down collapses the browser toolbar, which changes
+    // the viewport height and therefore every dvh-based section (and body).
+    // ScrollTrigger.refresh() resets the scroll position, which cancels the
+    // native momentum — so viewport-height-only changes must not trigger it.
+    let lastViewportHeight = window.innerHeight;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const observer = new ResizeObserver(() => {
-      lenisRef.current?.resize();
-      ScrollTrigger.refresh();
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        lenisRef.current?.resize();
+        if (window.innerHeight !== lastViewportHeight) {
+          lastViewportHeight = window.innerHeight;
+          return;
+        }
+        ScrollTrigger.refresh();
+      }, 200);
     });
     observer.observe(document.body);
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   return <>{children}</>;
