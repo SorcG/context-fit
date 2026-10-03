@@ -12,6 +12,7 @@ interface ComparePhoto {
 
 interface ComparePair {
   view: number;
+  afterView: number;
   before: ComparePhoto;
   after: ComparePhoto;
   statBefore: string;
@@ -21,26 +22,28 @@ interface ComparePair {
 const pairs: ComparePair[] = [
   {
     view: 1,
+    afterView: 2,
     before: {
       src: "/images/vorher1.jpeg",
       position: "object-[center_49%]",
     },
     after: {
-      src: "/images/nachher1.jpeg",
-      position: "object-top",
+      src: "/images/nachher2.jpeg",
+      position: "object-[center_53%]",
     },
     statBefore: "104 kg",
     statAfter: "88 kg",
   },
   {
     view: 2,
+    afterView: 1,
     before: {
       src: "/images/vorher2.jpeg",
       position: "object-[center_92%]",
     },
     after: {
-      src: "/images/nachher2.jpeg",
-      position: "object-[center_53%]",
+      src: "/images/nachher1.jpeg",
+      position: "object-top",
     },
     statBefore: "104 kg",
     statAfter: "88 kg",

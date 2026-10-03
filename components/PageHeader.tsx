@@ -130,7 +130,7 @@ export default function PageHeader({
         <p className="text-sm font-semibold tracking-wide text-accent lg:text-base">
           {eyebrow}
         </p>
-        <h1 className="text-3xl leading-[1.1] text-text lg:text-5xl">
+        <h1 className="whitespace-pre-line text-3xl leading-[1.1] text-text lg:text-5xl">
           {title}
         </h1>
       </div>

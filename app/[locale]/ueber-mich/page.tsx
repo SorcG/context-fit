@@ -68,7 +68,7 @@ export default async function UeberMichPage({
     <>
       <PageHeader
         eyebrow={t("eyebrow")}
-        title="Bram van Koppen"
+        title={"Bram\nvan Koppen"}
         image="/images/smile_with_curl.jpeg"
         alt={tAlt("smileWithCurl")}
       />
