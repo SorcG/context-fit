@@ -37,8 +37,8 @@ const services = [
         imagePosition: "object-top",
       },
       {
-        src: "/images/stretching.jpeg",
-        alt: "stretching",
+        src: "/images/squat_sideshot.jpeg",
+        alt: "squatSideshot",
         grayscale: false,
         imagePosition: "object-top",
       },

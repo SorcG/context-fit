@@ -24,6 +24,38 @@ export default function PageHeader({
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const glowPos = useRef({ x: 50, y: 50 });
+
+  function setGlow(x: number, y: number) {
+    if (glowRef.current) {
+      glowRef.current.style.backgroundImage = `radial-gradient(circle at ${x}% ${y}%, var(--accent) 0%, transparent 40%)`;
+    }
+  }
+
+  function handleGlowMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (window.innerWidth < 1024) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    gsap.to(glowPos.current, {
+      x,
+      y,
+      duration: 0.4,
+      ease: "power2.out",
+      overwrite: true,
+      onUpdate: () => setGlow(glowPos.current.x, glowPos.current.y),
+    });
+  }
+
+  function handleGlowEnter(e: React.MouseEvent<HTMLDivElement>) {
+    if (window.innerWidth < 1024) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    gsap.set(glowPos.current, { x, y });
+    setGlow(x, y);
+  }
 
   useGSAP(
     () => {
@@ -67,7 +99,11 @@ export default function PageHeader({
       ref={sectionRef}
       className="relative flex h-[46dvh] min-h-[360px] w-full flex-col justify-end overflow-hidden lg:mx-auto lg:h-auto lg:min-h-0 lg:max-w-[1200px] lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-10 lg:py-28"
     >
-      <div className="group absolute inset-0 lg:relative lg:inset-auto lg:order-2 lg:aspect-[4/5] lg:overflow-hidden lg:rounded-3xl lg:border lg:border-border">
+      <div
+        className="group absolute inset-0 lg:relative lg:inset-auto lg:order-2 lg:aspect-[4/5] lg:overflow-hidden lg:rounded-3xl lg:border lg:border-border"
+        onMouseEnter={handleGlowEnter}
+        onMouseMove={handleGlowMove}
+      >
         <Image
           ref={imageRef}
           src={image}
@@ -77,7 +113,14 @@ export default function PageHeader({
           sizes="(min-width: 1024px) 50vw, 100vw"
           className={`object-cover ${imagePosition} lg:scale-110`}
         />
-        <div className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-500 group-hover:opacity-100 lg:block [background:radial-gradient(circle_at_50%_50%,_var(--accent)_0%,_transparent_65%)] [background-size:150%_150%] [mix-blend-mode:overlay]" />
+        <div
+          ref={glowRef}
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 50% 50%, var(--accent) 0%, transparent 40%)",
+          }}
+          className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-500 group-hover:opacity-30 lg:block [background-size:100%_100%] [mix-blend-mode:overlay]"
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-transparent lg:hidden" />
       <div
