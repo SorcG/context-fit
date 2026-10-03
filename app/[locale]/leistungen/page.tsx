@@ -31,8 +31,8 @@ const services = [
     imagePosition: "object-center",
     extraImages: [
       {
-        src: "/images/bram_frontshot.jpeg",
-        alt: "bramFrontshot",
+        src: "/images/stretching.jpeg",
+        alt: "stretching",
         grayscale: false,
         imagePosition: "object-top",
       },
