@@ -129,7 +129,7 @@ export default async function PraeventionPage({
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent">
                   <v.Icon className="h-5 w-5" />
                 </span>
-                <h3 className="text-base font-semibold text-text">
+                <h3 className="break-words text-base font-semibold text-text hyphens-auto lg:hyphens-manual">
                   {t(`vorteile.${v.key}.title`)}
                 </h3>
                 <p className="text-sm leading-relaxed text-muted">
