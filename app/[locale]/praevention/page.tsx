@@ -124,12 +124,12 @@ export default async function PraeventionPage({
               <Reveal
                 key={v.key}
                 delay={i * 0.08}
-                className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5"
+                className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-4 lg:p-5"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent">
                   <v.Icon className="h-5 w-5" />
                 </span>
-                <h3 className="break-words text-base font-semibold text-text hyphens-auto lg:hyphens-manual">
+                <h3 className="text-[clamp(0.5rem,2.7vw,1rem)] font-semibold text-text lg:text-base">
                   {t(`vorteile.${v.key}.title`)}
                 </h3>
                 <p className="text-sm leading-relaxed text-muted">
