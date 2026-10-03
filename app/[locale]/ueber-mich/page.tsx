@@ -69,8 +69,8 @@ export default async function UeberMichPage({
       <PageHeader
         eyebrow={t("eyebrow")}
         title={"Bram\nvan Koppen"}
-        image="/images/bram_sideshot.jpeg"
-        alt={tAlt("bramSideshot")}
+        image="/images/bram_frontshot.jpeg"
+        alt={tAlt("bramFrontshot")}
         mobileHeight="h-[60dvh] min-h-[480px]"
       />
 
