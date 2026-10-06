@@ -155,7 +155,6 @@ function CompareCard({ pair }: { pair: ComparePair }) {
       />
 
       <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-bg/50 via-transparent to-bg/10" />
-      <div className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:radial-gradient(circle_at_50%_50%,_var(--accent)_0%,_transparent_65%)] [background-size:150%_150%] [mix-blend-mode:overlay]" />
 
       <div className="absolute left-4 top-4 z-30">
         <span className="block rounded-full bg-bg/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted backdrop-blur">
