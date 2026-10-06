@@ -255,8 +255,17 @@
     "submit": "Anfrage senden",
     "responseTime": "Ich melde mich innerhalb von 24 Stunden persönlich bei dir.",
     "successTitle": "Danke, {name}!",
-    "successBody": "Deine Anfrage ist bereit. Bram meldet sich innerhalb von 24 Stunden persönlich bei dir zurück.",
-    "reset": "Neue Anfrage stellen"
+    "successBody": "Deine Anfrage ist versendet. Ich melde mich innerhalb von 24 Stunden persönlich bei dir zurück.",
+    "reset": "Neue Anfrage stellen",
+    "submitting": "Wird gesendet…",
+    "error": "Das hat leider nicht geklappt. Bitte versuche es noch einmal.",
+    "errors": {
+      "name": "Bitte gib deinen Namen ein.",
+      "email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "message": "Bitte schreib mir kurz, worum es geht."
+    },
+    "privacy": "Mit dem Absenden stimmst du zu, dass deine Angaben zur Bearbeitung deiner Anfrage verarbeitet werden. Mehr dazu in der <link>Datenschutzerklärung</link>.",
+    "subject": "Neue Anfrage über context-fit.com: {topic}"
   },
   "Rechner": {
     "eyebrow": "Kostenloses Tool",

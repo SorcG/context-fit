@@ -212,7 +212,15 @@
     "responseTime": "Ik neem binnen 24 uur persoonlijk contact met je op.",
     "successTitle": "Bedankt, {name}!",
     "successBody": "Je aanvraag staat klaar. Bram neemt binnen 24 uur persoonlijk contact met je op.",
-    "reset": "Nieuwe aanvraag"
+    "reset": "Nieuwe aanvraag",
+    "submitting": "Wordt verzonden…",
+    "error": "Dat is helaas niet gelukt. Probeer het nog een keer.",
+    "errors": {
+      "name": "Vul je naam in.",
+      "email": "Vul een geldig e-mailadres in.",
+      "message": "Schrijf me kort waar het over gaat."
+    },
+    "privacy": "Door te verzenden ga je ermee akkoord dat je gegevens worden verwerkt om je aanvraag af te handelen. Meer hierover in de <link>privacyverklaring</link>."
   },
   "Rechner": {
     "eyebrow": "Gratis tool",

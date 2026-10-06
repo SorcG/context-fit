@@ -1,11 +1,13 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import deMessages from "../messages/de.json";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
 
-// Sprachneutrale Keys — das spätere Backend bekommt immer denselben Wert,
+// Sprachneutrale Keys — Mail-Betreff und Thema gehen immer auf Deutsch raus,
 // egal in welcher Sprache das Formular ausgefüllt wurde.
 const topics = [
   "onlineCoaching",
@@ -42,12 +44,14 @@ function FloatingField({
   required,
   value,
   onChange,
+  error,
 }: {
   label: string;
   type?: string;
   required?: boolean;
   value: string;
   onChange: (value: string) => void;
+  error?: string;
 }) {
   const id = useId();
   return (
@@ -59,7 +63,8 @@ function FloatingField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder=" "
-        className="peer h-[56px] w-full rounded-xl border border-border bg-surface px-4 pt-4 text-base text-text outline-none transition-colors placeholder-shown:pt-0 focus:border-accent"
+        aria-invalid={error ? true : undefined}
+        className={`peer h-[56px] w-full rounded-xl border bg-surface px-4 pt-4 text-base text-text outline-none transition-colors placeholder-shown:pt-0 focus:border-accent ${error ? "border-accent" : "border-border"}`}
       />
       <label
         htmlFor={id}
@@ -68,6 +73,7 @@ function FloatingField({
         {label}
         {required && <span className="text-accent"> *</span>}
       </label>
+      {error && <p className="mt-1.5 text-sm text-accent">{error}</p>}
     </div>
   );
 }
@@ -79,11 +85,79 @@ export default function KontaktForm() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [botcheck, setBotcheck] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
+  const sendingRef = useRef(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (sendingRef.current || !topic) return;
+
+    const nextErrors: typeof errors = {};
+    if (!name.trim()) nextErrors.name = t("errors.name");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
+      nextErrors.email = t("errors.email");
+    }
+    if (!message.trim()) nextErrors.message = t("errors.message");
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
+    // Honeypot: Bots füllen das versteckte Feld aus — still Erfolg vortäuschen.
+    if (botcheck) {
+      setSubmitted(true);
+      return;
+    }
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!accessKey) {
+      console.error(
+        "NEXT_PUBLIC_WEB3FORMS_KEY fehlt — Kontaktformular kann nicht senden.",
+      );
+      setFailed(true);
+      return;
+    }
+
+    sendingRef.current = true;
+    setSending(true);
+    setFailed(false);
+    try {
+      const topicLabel = deMessages.KontaktForm.topics[topic];
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: deMessages.KontaktForm.subject.replace("{topic}", topicLabel),
+          from_name: "Context Fit Website",
+          email: email.trim(),
+          name: name.trim(),
+          ...(phone.trim() ? { phone: phone.trim() } : {}),
+          message: message.trim(),
+          topic: topicLabel,
+        }),
+      });
+      const data = await res.json();
+      if (data.success === true) {
+        setSubmitted(true);
+      } else {
+        setFailed(true);
+      }
+    } catch {
+      setFailed(true);
+    } finally {
+      sendingRef.current = false;
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -115,7 +189,7 @@ export default function KontaktForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-8">
       <Reveal className="flex flex-col gap-3">
         <span className="text-sm font-medium text-muted">
           {t("topicLabel")} <span className="text-accent">*</span>
@@ -146,6 +220,7 @@ export default function KontaktForm() {
             required
             value={name}
             onChange={setName}
+            error={errors.name}
           />
           <FloatingField
             label={t("email")}
@@ -153,6 +228,7 @@ export default function KontaktForm() {
             required
             value={email}
             onChange={setEmail}
+            error={errors.email}
           />
         </div>
         <FloatingField
@@ -169,7 +245,8 @@ export default function KontaktForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder=" "
-            className="peer w-full resize-none rounded-xl border border-border bg-surface px-4 pb-3 pt-6 text-base text-text outline-none transition-colors focus:border-accent"
+            aria-invalid={errors.message ? true : undefined}
+            className={`peer w-full resize-none rounded-xl border bg-surface px-4 pb-3 pt-6 text-base text-text outline-none transition-colors focus:border-accent ${errors.message ? "border-accent" : "border-border"}`}
           />
           <label
             htmlFor="message"
@@ -177,21 +254,51 @@ export default function KontaktForm() {
           >
             {t("message")} <span className="text-accent">*</span>
           </label>
+          {errors.message && (
+            <p className="mt-1.5 text-sm text-accent">{errors.message}</p>
+          )}
         </div>
+        <input
+          type="checkbox"
+          name="botcheck"
+          checked={botcheck}
+          onChange={(e) => setBotcheck(e.target.checked)}
+          tabIndex={-1}
+          aria-hidden
+          autoComplete="off"
+          className="pointer-events-none absolute -left-[9999px] h-0 w-0 opacity-0"
+        />
       </Reveal>
 
       <Reveal delay={0.1} className="flex flex-col gap-3 lg:items-start">
         <MagneticButton>
           <button
             type="submit"
-            disabled={!topic}
+            disabled={!topic || sending}
             className="flex h-[56px] w-full items-center justify-center rounded-full bg-accent px-6 text-base font-semibold text-text transition-transform active:scale-95 disabled:opacity-40 disabled:active:scale-100 lg:w-fit lg:px-16"
           >
-            {t("submit")}
+            {sending ? t("submitting") : t("submit")}
           </button>
         </MagneticButton>
+        {failed && (
+          <p role="alert" className="text-sm text-accent">
+            {t("error")}
+          </p>
+        )}
         <p className="text-center text-sm text-muted lg:text-left">
           {t("responseTime")}
+        </p>
+        <p className="text-center text-xs text-muted lg:text-left">
+          {t.rich("privacy", {
+            link: (chunks) => (
+              <Link
+                href="/datenschutz"
+                className="underline underline-offset-2 transition-colors hover:text-text"
+              >
+                {chunks}
+              </Link>
+            ),
+          })}
         </p>
       </Reveal>
     </form>
