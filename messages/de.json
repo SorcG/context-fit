@@ -198,7 +198,7 @@
   "Praevention": {
     "eyebrow": "Prävention",
     "title": "Von der Kasse bezahlt. Von mir empfohlen.",
-    "intro": "Nicht jeder kann oder will sich Personal Training leisten, und nicht jeder hat Lust auf ein volles Fitnessstudio. Für alle, die trotzdem etwas für ihre Gesundheit tun wollen, empfehle ich diese zertifizierten Online-Präventionskurse. Flexibel von zu Hause und deine Krankenkasse übernimmt bis zu 100% der Kosten. Kein Verkaufsgespräch, keine Verpflichtung — einfach ein guter Einstieg.",
+    "intro": "Nicht jeder kann oder will sich Personal Training leisten und nicht jeder hat Lust auf ein volles Fitnessstudio. Für alle, die trotzdem etwas für ihre Gesundheit tun wollen, empfehle ich diese zertifizierten Online-Präventionskurse. Flexibel von zu Hause und deine Krankenkasse übernimmt bis zu 100% der Kosten. Kein Verkaufsgespräch, keine Verpflichtung - einfach ein guter Einstieg.",
     "vorteile": {
       "flexibel": {
         "title": "100% flexibel",
@@ -214,7 +214,7 @@
       },
       "kasse": {
         "title": "Kasse übernimmt bis zu 100%",
-        "body": "Du investierst in deine Gesundheit — deine Krankenkasse beteiligt sich massiv."
+        "body": "Du investierst in deine Gesundheit und deine Krankenkasse beteiligt sich massiv."
       }
     },
     "ablaufTitle": "So läuft's ab",
@@ -233,7 +233,7 @@
       }
     },
     "cta": "Kurse ansehen",
-    "hinweis": "Du wirst zu praevention.digital weitergeleitet — einem unabhängigen, zertifizierten Kursanbieter. Die Anmeldung und Abwicklung läuft komplett dort."
+    "hinweis": "Du wirst zu praevention.digital weitergeleitet - einem unabhängigen, zertifizierten Kursanbieter. Die Anmeldung und Abwicklung läuft komplett dort."
   },
   "Kontakt": {
     "eyebrow": "Kontakt",
