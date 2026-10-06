@@ -58,6 +58,7 @@ function CompareCard({ pair }: { pair: ComparePair }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const beforeImgRef = useRef<HTMLImageElement>(null);
   const afterImgRef = useRef<HTMLImageElement>(null);
+  const pillBeforeRef = useRef<HTMLSpanElement>(null);
   const pillAfterRef = useRef<HTMLSpanElement>(null);
   const statAfterRef = useRef<HTMLSpanElement>(null);
   const pinnedRef = useRef(false);
@@ -88,6 +89,7 @@ function CompareCard({ pair }: { pair: ComparePair }) {
     });
     tl.to(afterImg, { opacity: 1, scale: 1 }, 0)
       .to(beforeImg, { opacity: 0 }, 0)
+      .to(pillBeforeRef.current, { opacity: 0 }, 0)
       .to(fadeTargets, { opacity: 1 }, 0);
 
     const enter = () => tl.play();
@@ -157,7 +159,9 @@ function CompareCard({ pair }: { pair: ComparePair }) {
       <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-bg/50 via-transparent to-bg/10" />
 
       <div className="absolute left-4 top-4 z-30 grid">
-        <span className="col-start-1 row-start-1 justify-self-start whitespace-nowrap rounded-full bg-bg/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted backdrop-blur">
+        <span
+          ref={pillBeforeRef}
+          className="col-start-1 row-start-1 justify-self-start whitespace-nowrap rounded-full bg-bg/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted backdrop-blur">
           {t("vorher")}
         </span>
         <span
