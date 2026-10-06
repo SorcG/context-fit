@@ -22,33 +22,12 @@ interface TestimonialItem {
 const ITEM_KEYS = ["luca", "justin", "eryk"] as const;
 
 // Bildpfade sind keine übersetzbaren Inhalte, daher hier per Key statt
-// über die Nachrichtendateien verknüpft. Eryk hat kein Foto (Platzhalter).
-const AVATARS: Record<(typeof ITEM_KEYS)[number], string | null> = {
+// über die Nachrichtendateien verknüpft.
+const AVATARS: Record<(typeof ITEM_KEYS)[number], string> = {
   luca: "/images/testi_luca.jpg",
   justin: "/images/testi_justin.png",
-  eryk: null,
+  eryk: "/images/testi_eryk.jpeg",
 };
-
-function AvatarPlaceholder() {
-  return (
-    <svg viewBox="0 0 64 64" className="h-full w-full" aria-hidden>
-      <circle cx="32" cy="32" r="32" className="fill-surface" />
-      <circle
-        cx="32"
-        cy="25"
-        r="10.5"
-        className="fill-none stroke-border"
-        strokeWidth="2.5"
-      />
-      <path
-        d="M15 55c0-10.5 7.6-17 17-17s17 6.5 17 17"
-        className="fill-none stroke-border"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 export default function Testimonials() {
   const t = useTranslations("Home.testimonials");
@@ -162,17 +141,13 @@ export default function Testimonials() {
                   }`}
                 >
                   <div className="relative h-16 w-16 shrink-0 rounded-full p-0.5 ring-2 ring-accent ring-offset-4 ring-offset-bg">
-                    {src ? (
-                      <Image
-                        src={src}
-                        alt={`${item.name}, ${item.role}`}
-                        fill
-                        sizes="64px"
-                        className="rounded-full object-cover object-top"
-                      />
-                    ) : (
-                      <AvatarPlaceholder />
-                    )}
+                    <Image
+                      src={src}
+                      alt={`${item.name}, ${item.role}`}
+                      fill
+                      sizes="64px"
+                      className="rounded-full object-cover object-top"
+                    />
                   </div>
 
                   <span
