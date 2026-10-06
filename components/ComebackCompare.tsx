@@ -156,13 +156,13 @@ function CompareCard({ pair }: { pair: ComparePair }) {
 
       <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-bg/50 via-transparent to-bg/10" />
 
-      <div className="absolute left-4 top-4 z-30">
-        <span className="block rounded-full bg-bg/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted backdrop-blur">
+      <div className="absolute left-4 top-4 z-30 grid">
+        <span className="col-start-1 row-start-1 justify-self-start whitespace-nowrap rounded-full bg-bg/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted backdrop-blur">
           {t("vorher")}
         </span>
         <span
           ref={pillAfterRef}
-          className="absolute inset-0 block rounded-full bg-accent px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-text opacity-0"
+          className="col-start-1 row-start-1 justify-self-start whitespace-nowrap rounded-full bg-accent px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-text opacity-0"
         >
           {t("nachher")}
         </span>
